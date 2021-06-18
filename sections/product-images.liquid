@@ -1,0 +1,183 @@
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign product_thumb_size = '160x' -%}
+{%- assign product_image_zoom_size = '1024x1024' -%}
+{%- assign enable_zoom = section.settings.enable_zoom -%}
+
+{%- assign product_thumbnail_width = 'col-md-15' -%}
+{%- assign product_thumbnail_perrow = '4' %}
+{%- assign product_image_size = '530x' -%}
+
+{%- assign product_thumbnail_perrow = product_thumbnail_perrow | times: 1 -%}
+
+{%- assign option_index = 'option1' -%}
+{%- assign image_matrix = '[ ' -%}
+{% for option in product.options_with_values %}
+  {%- assign option_lowercase = option | downcase -%}
+  {% if option.name == 'color' or  option.name == 'Color' or option.name == 'COLOR' %}
+    {% capture option_index %}option{{ forloop.index }}{% endcapture %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{%- assign variant_start = current_variant[option_index] -%}
+{% for image in product.images %}
+  {% unless image.attached_to_variant? or image.alt != product.title %}
+    {% capture default_images %}{{ default_images }}{% if default_images != blank %}, {% endif %}"{{ image.src | img_url: product_thumb_size }}"{% endcapture %}
+    {% capture image_grid__default_const %}{{ image_grid__default_const }}{% include 'loop-thumbnail' %}{% endcapture %}
+  {% endunless %}
+{% endfor %}
+
+{%- assign video_used = false -%}
+{%- assign product_video = '' -%}
+{% for media in product.media %}
+  {% case media.media_type %}
+    {% when 'video' %}
+      {%- assign video_used = true -%}
+      {% capture product_video %}
+        {{ product_video }}
+        <div class="col-30 order-first text-link product-single__thumbnail product-single__thumbnail-video product-single__thumbnail--{{ product.id }} product-single__thumbnail--{{ product.type | handle }}"
+           style="background-image:url({{ media.preview_image.src | img_url: '800x' }});">
+          {{ media | video_tag: class: 'media-video', image_size: '800x', muted: 'muted', autoplay: 'autoplay', loop: 'loop' }}
+        </div>
+      {% endcapture %}
+  {% endcase %}
+{% endfor %}
+
+{%- assign lifestyle_images = '' -%}
+{% for color_option in product.options_by_name['Color'].values %}
+  {% capture image_matrix %}{{ image_matrix }}{ "option_color": "{{ color_option }}", "images":[ {% endcapture %}
+  {%- assign comma_needed = false -%}
+  {% for image in product.images %}
+    {% if image.attached_to_variant? %}
+    {%- assign variant_check = image.variants[0] -%}
+    {% if image.alt contains "LIFESTYLE" or image.alt contains "Lifestyle" or image.alt contains "lifestyle" %}
+      {% capture lifestyle_images %}{{ lifestyle_images }}<div style="background:url('{{image.src | img_url: "1000x"}}') no-repeat; padding-top:500px;background-size:contain;background-position:center center;"></div>{% endcapture %}
+    {% elsif variant_check[option_index] == color_option %}
+        {% if variant_start == color_option %}
+          {% capture image_grid__default %}{{ image_grid__default }}{% include 'loop-thumbnail' %}{% endcapture %}
+        {% endif %}
+        {% capture image_matrix %}{{ image_matrix }}{% if comma_needed %}, {% endif %}"{{ image.src | img_url: product_thumb_size }}"{% endcapture %}
+        {%- assign comma_needed = true -%}
+      {% endif %}
+    {% elsif image.alt == color_option %}
+      {% if variant_start == color_option %}
+        {% capture image_grid__default %}{{ image_grid__default }}{% include 'loop-thumbnail' %}{% endcapture %}
+      {% endif %}
+      {% capture image_matrix %}{{ image_matrix }}{% if comma_needed %}, {% endif %}"{{ image.src | img_url: product_thumb_size }}"{% endcapture %}
+      {%- assign comma_needed = true -%}
+    {% endif %}
+  {% endfor %}
+  {% capture image_matrix %}{{ image_matrix }}{% if comma_needed and default_images != blank %}, {% endif %}{{ default_images }} ] }{% unless forloop.last %},{% endunless %}{% endcapture %}
+{% endfor %}
+{% capture image_matrix %}{{ image_matrix }} ]{% endcapture %}
+<script type="application/json" id="ImageJSON-{{ product.id }}">
+ {{ image_matrix }}
+</script>
+
+<div class="product-single__photos product-single__photos--{{ product.id }} row">
+  {{ image_grid__default }}
+  {{ product_video }}
+</div>
+{% if lifestyle_images != blank %}
+  <div class="lifestyle d-none d-md-block" style="background-color:#f7f7f7;">
+    {{ lifestyle_images }}
+  </div>
+{% endif %}
+{% if product.handle == "gift-card" %}
+  <div class="lifestyle d-none d-md-block" style="background-color:#f7f7f7;">
+{% for image in product.images %}
+<div style="background:url('{{image.src | img_url: "1000x"}}') no-repeat; padding-top:500px;background-size:contain;background-position:center center;"></div>
+{%endfor%}
+</div>
+    {%endif%}
+
+
+<style>
+      @media only screen and (min-width: 800px) {
+        .col-md-30 {
+            max-width: 66% !important;
+        }
+            }
+  
+</style>
+  <script>
+    $('.lifestyle').slick({
+  dots: true,
+  infinite: true,
+  arrows: false,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+});
+    
+    
+    
+    	$('.product-single__photos').on('click','.product-single__thumbnail',function() {
+          if( $(window).width() < 600 ) {
+          	var bg = $(this).css('background-image');
+        	bg = bg.replace('url(','').replace(')','').replace('1000x','800x').replace(/\"/gi, "");
+   			console.log(bg);
+         	$.magnificPopup.open({  
+    			items: {
+      				src: bg
+    			},
+    			type: 'iframe'
+			});
+          } else {
+         	var bg = $(this).css('background-image');
+        	bg = bg.replace('url(','').replace(')','').replace('800x','2000x').replace(/\"/gi, "");
+   			console.log(bg);
+          	$.magnificPopup.open({  
+              items: {
+                  src: '<div class="white-popup"><img src="'+bg+'"></div>',
+                  type: 'inline'
+              }
+			});
+         }
+	}); 
+  </script>
+
+{% schema %}
+  {
+    "name": "Product Images",
+    "class": "shopify-section-topspacing col-md-30",
+    "settings": [
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          },
+          {
+            "value": "full",
+            "label": "Full-width"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "checkbox",
+        "id": "vertical",
+        "label": "Vertical thumbnails?",
+        "info": "Works best when 'Image size' is larger"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable image zoom",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

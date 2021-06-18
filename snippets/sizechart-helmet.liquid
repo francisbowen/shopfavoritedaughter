@@ -1,0 +1,188 @@
+
+<style>
+.sizeguide__illustration{width: 250px;margin: 0 auto;display: block;}
+.sizeguide__illustration img{width: 100%;height: auto;}
+.sizeguide__inner{position: relative;margin-top: 60px;position: relative;width: 100%;text-align: left; padding-top:5%; color:#000;}
+
+@media screen and (min-width: 900px)
+{.sizeguide__illustration{margin: 0;display: inline-block;vertical-align: middle;width: 25%;}
+	
+.sizeguide__inner
+{
+display: inline-block;
+margin-top: 0;
+width: 70%;
+vertical-align: middle;
+}}
+
+.toggle__main-albel
+{display: none;}
+@media screen and (min-width: 450px)
+{.toggle__main-label
+{
+display: inline-block;
+vertical-align: middle;
+margin-right: 10px;
+}}
+
+.sizeguide input[type=checkbox]
+{
+	opacity: 0;
+	width: 100%;
+	z-index: 99;
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+}
+
+.sizeguide input[type=checkbox]:focus ~ .toggle__controls
+{
+  outline: 1px solid #1e1e1e;
+}
+
+.toggle__opt
+{
+	display: inline-block;
+	vertical-align: middle;
+	user-select: none;
+}
+.toggle__opt:active{font-family:"TradeGothicLTProBDCN20";}
+.toggle__opt:focus {font-family:"TradeGothicLTProBDCN20";}
+.toggle__opt:first-child
+{
+	text-align: right;
+	left: 0;
+}
+.toggle__opt:last-child
+{
+	right: 0;
+}
+
+.toggle__controls
+{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	width: 50px;
+  height: 20px;
+	margin: 0 10px;
+}
+
+.toggle__controls:before
+{
+  content: '';
+  position: absolute;
+	display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #464646;
+  
+  z-index: 1;
+  left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.toggle__controls:after
+{
+content: '';
+position: absolute;
+display: block;
+width: 20px;
+height: 7px;
+background-color: #171717;
+z-index: 1;
+left: 50%;
+top: 50%;
+transform: translate(-130%, -50%);
+transition: transform 0.30s ease-out;
+}
+
+.sizeguide input[type=checkbox]:checked ~ .toggle__controls:after{transform: translate(30%, -50%);}
+.sizeguide table {border-collapse: collapse; margin-top:10%; width: 100%;}
+.sizeguide th, td {text-align: left;padding: 12px 5px;}
+.sizeguide th {font-weight: normal; font-weight: bold;color: #000;}
+.sizeguide td {border: 1px solid #fff;}
+.sizeguide thead td {border: 0;}
+.sizeguide td:first-child {border-left: 0; font-weight:bold;}
+.sizeguide td:last-child {border-right: 0;}
+.sizeguide tr:nth-child(2n) { background: #fff;}
+p.sizeguide {color: #1e1e1e;
+font-family: "TradeGothicLTProLight";font-size: 13px;letter-spacing: 0.01em;
+float: left;width: 50%;margin-top: 45px;
+}
+.alt{display: none;}
+.sizeguide input[type=checkbox]:checked ~ table .alt
+{display: inline;}
+.sizeguide input[type=checkbox]:checked ~ table .default
+{display: none;}
+
+.sizeguide__note
+{max-width: 600px;text-align: left;line-height: 1.7;font-size: 1.03em;}
+h4.sizeguide {font-family:"TradeGothicLTProBDCN20"; text-align:left; font-size:22px; float:left; width:100%; padding-bottom:10px;}
+span.sizeguide_line {width:100%; float:left; text-align:left; border-bottom:1px solid #000;}
+</style>
+
+
+<div class="sizeguide">
+ <h4 class="sizeguide">Size Guide</h4>
+ <span class="sizeguide_line"></span>
+<div class="sizeguide__inner">
+<label for ="toggle" class="toggle__opt">CM</label>
+<input type="checkbox" id="toggle">
+<span class="toggle__controls"></span>
+<label for="toggle" class="toggle__opt">INCHES</label>
+
+<table>
+<thead>
+<tr>
+<td>SIZE</td>
+<th>XS-S (CM)</th>
+<th>M-L (CM)</th>
+<th>XL-XXL (CM)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Head Circumfrence</td>
+<td>
+<span class="default">51-54</span>
+<span class="alt">convert to inches</span>
+</td>
+
+<td>
+<span class="default">55-58</span>
+<span class="alt">convert to inches</span>
+</td>
+
+<td>
+<span class="default">59-62</span>
+<span class="alt">convert to inches</span>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
+
+</div>
+
+
+<!-- Measurement Guide -->
+<h4 class="sizeguide">Measurement Guide</h4>
+<span class="sizeguide_line"></span>
+<div class="sizeguide-measurement-wrapper">
+<p class="sizeguide">
+Helmet sizes are based on the circumference of your head.
+To determine the correct size, wrap a measuring tape around your head.
+Once you've determined the measurement, you can use the chart here as a guide.
+</p>
+<div class="sizeguide-measurement">
+	<img class="sizeguide-img" src="{{ 'road-helmet.jpg' | asset_url }}"  alt="Helmet Size Guide | POC Sports">
+</div>
+</div>
+</div>

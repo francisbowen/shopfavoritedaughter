@@ -1,0 +1,67 @@
+{% if settings.header_sticky %}
+  <script>
+    function sticky_relocate() {
+      var window_top = $(window).scrollTop(),
+          div_top = $('#sticky-anchor').offset().top;
+      if (window_top > div_top) {
+        $('#header-container').addClass('sticky-header');
+      } else {
+        $('#header-container').removeClass('sticky-header');
+      }
+    }
+    $(document).ready(function(){
+      $('#shopify-section-header').height($('#shopify-section-header').outerHeight());
+    });
+    $(window).load(function() {
+      sticky_relocate();
+      $(window).scroll(sticky_relocate);
+    });
+  </script>
+{% endif %}
+
+{% if settings.header_overlay and template contains 'index' %}
+  <script>
+    function transparentToggle() {
+      var window_top = $(window).scrollTop();
+      var div_top = $('#MainContent > div:nth-child(2)').offset().top - $('#container-header').outerHeight();
+      if (window_top > div_top) {
+        $('#container-header').removeClass('transparentTop');
+      } else {
+        $('#container-header').addClass('transparentTop');
+      }
+    }
+    $(document).ready(function(){
+      if($('.hidden-sm-down').is(':visible')) {
+        $('#PageContainer').css('margin-top','-'+$('#container-header').outerHeight()+'px')
+        $(window).scroll(function(){
+          transparentToggle();
+        });
+        transparentToggle();
+      }
+    });
+  </script>
+{% endif %}
+
+<div data-section-type="header-section" id="header-container" class="{% if settings.header_overlay %}homepageoverlay{% endif %}">
+  {% if settings.align_menu == 'below' %}
+    {% include 'header-row_top--no_menu' %}
+    <nav class="nav-below hidden-sm-down text-{{ settings.align_menu_text }}" id="AccessibleNav" role="navigation">
+      {% include 'site-nav', nav_alignment: 'site-nav--centered' %}
+    </nav>
+  {% else %}
+    {% include 'header-row_top--w_menu' %}
+  {% endif %}
+</div>
+
+<style>
+  {% if settings.logo != blank %}
+    .site-header__logo-image {
+      max-width: {{ settings.logo_max_width }}px;
+    }
+  {% endif %}
+  {% if settings.align_logo == 'left' %}
+    .site-header__logo-image {
+      margin: 0;
+    }
+  {% endif %}
+</style>

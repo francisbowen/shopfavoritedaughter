@@ -1,0 +1,75 @@
+<style>
+.site-header__icons-wrapper.scroll {position:absolute; top:-44px; right:2%;
+width:400px;
+}
+.scroll-menu-nav {
+position: fixed;
+z-index: 9;
+top: 0; height:66px; background:#000;
+display: none;
+width: 100%;
+font-size: 12px;
+font-family: Arial, sans-serif;
+font-weight: normal;
+color: #fff;
+text-align: center;
+cursor: pointer;
+} 
+@media (max-width:1100px) {
+
+  .scroll-menu-nav {display:none;}
+}
+.show, .footer-nav:hover {display: block;}
+.col.text-right.site-header__icons.order-4.scroll {margin-top:-5px;}
+</style>
+
+
+
+<div class="scroll-menu-nav">
+<div class="row align-items-center">
+  <a href="/">
+<div 
+style="position:absolute; top:10px;left:5%; width:100px"
+class="col-lg-10 col-md-15 order-{% if settings.align_logo == 'center' %}3{% else %}1{% endif %}">
+{% include 'header-logo' %}
+</div></a>
+  
+{% include 'site-nav' %}
+  
+<div class="col text-right site-header__icons order-4 scroll">
+<div class="site-header__icons-wrapper scroll">
+
+{% if settings.align_logo == 'left' %}
+{% include 'search-toggle' %}
+{% endif %}
+{% include 'search-form' %}
+{% include 'header-account' %}
+  
+<!-- Cart -->
+
+<style>.site-header__cart.scroll {height:39px; margin-top:-3px;}</style>
+
+<a href="/cart" class="site-header__cart scroll">
+<span>CART</span>
+<span class="visually-hidden">{{ 'layout.cart.title' | t }}</span>
+<span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+{% if cart.item_count > 0 %}
+<div id="CartCount" class="site-header__cart-count">
+<span>{{ cart.item_count }}</span>
+<span class="icon__fallback-text hidden-md-up">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+</div>
+{% endif %}
+</a>
+            
+
+</div>
+  
+{% if settings.cartdropdown %}
+{% include 'header-cart_dropdown' %}
+{% endif %}
+</div>
+
+
+
+</div>
+</div>

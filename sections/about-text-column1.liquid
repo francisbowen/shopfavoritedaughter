@@ -1,0 +1,72 @@
+<div class="container">
+   <div class="section-heading">
+   {% if section.settings.logo != blank %}
+      <div class="heading-logo">
+      {{ section.settings.logo | img_url: '55x55' | img_tag }}
+      </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+         <h3>{{ section.settings.title }}</h3>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+         <p>{{ section.settings.subtitle }}</p>
+      {% endif %}
+   </div>
+   {% if section.settings.left_text != blank or section.settings.right_text != blank%}
+   <div class="about-history-content">
+      <div class="row">
+      {% if section.settings.left_text != blank %}
+         <div class="col-md-30">
+            <div class="about-history-left">
+               <h4>
+                  {{ section.settings.left_text }}
+               </h4>
+            </div>
+         </div>
+         {% endif %}
+         {% if section.settings.right_text != blank %}
+         <div class="col-md-30">
+            <div class="about-history-right">
+               {{ section.settings.right_text }}
+            </div>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+   {% endif %}
+</div>
+{% schema %}
+   {
+      "name":"Two columns with titile",
+      "class":"about-history",
+      "settings":[
+         {
+            "type":"image_picker",
+            "id":"logo",
+            "label":"Logo"
+         },
+         {
+            "type":"text",
+            "id":"title",
+            "label":"title",
+            "default":"A Proven history of innovation since 1991."
+         },
+         {
+            "type":"text",
+            "id":"subtitle",
+            "label":"Subtitle",
+            "default":"Proudly built in golden, colorado"
+         },
+         {
+            "type":"textarea",
+            "id":"left_text",
+            "label":"Left column text"
+         },
+         {
+            "type":"richtext",
+            "id":"right_text",
+            "label":"Right columns text"
+         }
+      ]
+   }
+{% endschema %}

@@ -1,0 +1,34 @@
+<div class="product-review-section">
+  <div class="container">
+    <div style="width:100%;text-align:center;"><h3>Reviews</h3></div>
+
+    <div data-bv-show="reviews" data-bv-product-Id="{{product.id}}">
+      {% if product.metafields.bazaarvoice.reviews %}
+          {{ product.metafields.bazaarvoice.reviews }}
+      {% endif %}
+    </div>
+    <div data-bv-show="questions" data-bv-product-Id="{{product.id}}">
+      {% if product.metafields.bazaarvoice.questions %}
+          {{ product.metafields.bazaarvoice.questions }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .product-review-section{
+    margin-top: 40px;
+  	margin-bottom: 40px;
+  }
+  #BVRRSearchContainer{
+  	display: none;
+  }
+  #BVRRContainer .bv-action-bar{
+  	display: none !important;
+  }
+  #BVRRContainer .bv-content-list-reviews{
+  	border-top: 1px solid #cbcbcb !important;
+  }
+  div.bv-active-feedback, div.bv-content-details-container, div.bv-active-feedback{
+  	display: none !important;
+  }
+</style>

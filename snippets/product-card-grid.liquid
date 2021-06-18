@@ -1,0 +1,153 @@
+{%- assign image_color = false -%}
+{%- assign specific_image = false -%}
+{%- for tag in product.tags -%}
+{%- if tag contains '--' -%}
+{%- assign tag_split = tag | split: '--' -%}
+{%- if collection.handle == tag_split[0] -%}
+{%- assign image_color = tag_split[1] -%}
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if image_color -%}
+{%- for image in product.images -%}
+{%- if image.alt contains image_color -%}
+{%- assign specific_image = image -%}
+{% break %}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+<style>
+  span.color-swatch { 
+    background: inherit;
+    border: none;
+    border-radius: 50px;
+    width: 40px;
+    float: left;
+    height: 40px;
+    cursor: pointer;
+    margin: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+  }
+  span.product-badge.staff { background:#000; color:#fff; font-family:"TradeGothicLTProBDCN20"; width:100px;height:75px; line-height:1.2;}
+  span.product-badge.new { 
+    background: #05FFFF;
+    color: #1e1e1e;
+    font-family: "TradeGothicLTProBD2";
+    font-size: 16px;
+    width: 45px; 
+    height: 20px;
+    padding: 0px;
+    padding-top:3px;
+    float: right;
+    text-align: center;
+
+  }
+
+  .product-swatch-wrapper {float:left; width:100%; margin-bottom:20px;}
+  a.more-products {color:#1e1e1e;}
+  .badge.container { float:left; width:100%;}
+  @media (max-width:1010px) {
+    .badge.container { float:left; width:100%;}
+  }
+</style>
+
+
+{% if grid_image_width %}
+{%- assign grid_image_width_2 = grid_image_width | split:'x' -%}
+{%- assign grid_image_width_2 = grid_image_width_2[0] | times:  2 | append: 'x' -%}
+{% else %}
+{%- assign grid_image_width_2 = '1100x' -%}
+{% endif %}
+
+<div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+  <a class="grid-view-item__link animsition-link" href="{{ product.url | within: collection }}">
+    {%- if specific_image -%}
+    <div class="grid-view-item__image" style="background-image:url({{ specific_image | img_url: grid_image_width_2 }});"></div>
+    {%- else -%}
+    <div class="grid-view-item__image" style="background-image:url({{ product.featured_image.src | img_url: grid_image_width_2 }});"></div>
+    {%- endif -%}
+
+  </a>
+
+  <div class="product-card-grid-info">
+    <div class="product-swatch-wrapper">
+      <!-- Collection Product Color Swatches -->
+
+      {% comment %}
+      {%- assign product_options_color = product.options_by_name['Color'].values -%}
+      {% for color_option in product_options_color limit: 10 %}
+      {% for variant in product.variants %}
+      {% if variant.option1 == color_option or variant.option2 == color_option or variant.option3 == color_option %}
+      <span class="color-swatch" 
+            style="background-image:url({{ variant.image | img_url: '32x' }});" data-image="{{ variant.image | img_url: grid_image_width_2 }}" data-variant_id="{{ variant.id }}"></span>
+      {% break %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      {% endcomment %}
+
+
+
+      <form class="swatch clearfix" data-option-index="{{ option_index }}">
+        <div class="header">
+          {{ option.name }}
+        </div>
+        {%- assign product_options_color = product.options_by_name['Color'].values -%}
+        {% for option in product.options_with_values %}
+        {%- assign option_lowercase = option.name | downcase -%}
+        {% if option_lowercase == 'color' %}
+        {% capture option_index %}option{{ forloop.index }}{% endcapture %}
+        {% break %}
+        {% endif %}
+        {% endfor %}
+        {%- assign variant_image = product.featured_image | img_url: grid_image_width_2 -%}
+        {%- assign variant_id = '' -%}
+        {% for color_option in product_options_color limit: 10 %}
+        {% for image in product.images %}
+        {%- assign variant_check = image.variants[0] -%}
+        {% if image.attached_to_variant? and variant_check[option_index] == color_option %}
+        {%- assign variant_image = image | img_url: grid_image_width_2 -%}
+        {%- assign variant_id = variant_check.id -%}
+        {% break %}
+        {% endif %}
+        {% endfor %}
+        <div data-value="{{ color_option | escape }}" class="swatch-element color {{ color_option | handle }}">
+          <div class="tooltip">{{ color_option }}</div>
+          <input id="swatch-{{ product.id }}-{{ color_option | handle }}" type="radio" name="option-{{ product.id }}" value="{{ color_option | escape }}" data-image="{{ variant_image }}" data-variant="{{ variant_id }}"{% if forloop.first %} checked{% endif %} />
+          <label for="swatch-{{ product.id }}-{{ color_option | handle }}"></label>
+        </div>
+        {% endfor %}
+      </form>
+
+      {% if product_options_color.size > 10 %}
+      <a class="more-products" href="javascript:void(0)" onclick="return false;"> 
+        <span class="color-swatch text-center">|&nbsp;+</span>
+      </a>
+      {% endif %}
+
+
+    </div>
+    <div class="h4 grid-view-item__title" href="{{product.handle}}">
+      {{ product.title }}
+    </div>
+    {% if section.settings.show_vendor %}
+    <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+    {% endif %}
+    <div class="grid-view-item__meta" href="{{product.handle}}">
+      {% include 'product-price' %}
+      {% if template == 'index' %}
+      <a class="product-featured-shop-now" href="{{product.handle}}"><b>Shop Now</b></a>
+      {% endif %}
+
+      <!-- Size Charts -->
+      <!-- Women -->
+    </div>
+  </div>
+
+
+
+</div>
+

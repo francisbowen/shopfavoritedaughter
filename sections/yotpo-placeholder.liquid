@@ -1,0 +1,49 @@
+<div class="container yotpo">
+<img class="container yotpo" src="https://cdn.shopify.com/s/files/1/0395/8630/0070/files/yotpo-clean.png">
+</div>
+
+<style>
+
+.container.yotpo {width:100%;}
+img.container.yotpo {text-align:center;}
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "YOTPO Placeholder",
+    "class": "index-section",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "YOTPO Placeholder"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "YOTPO Placeholder",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          }
+        ]
+      }
+    ],
+    "presets": [
+   
+    ]
+  }
+{% endschema %}

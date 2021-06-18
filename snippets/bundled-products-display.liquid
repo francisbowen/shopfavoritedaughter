@@ -1,0 +1,158 @@
+{% for block in section.blocks %}
+  {% if block.settings.product == product.handle %}
+	<script>
+      var productJSONs = [];
+	</script>
+    {% assign bundled_products = collections[block.settings.collection].products %}
+    {% assign total_retail_price = 0 %}
+    {% assign total_bundled_price = block.settings.price | times: 100 %}
+    {% for bundled_product in bundled_products %}
+      {% assign total_retail_price = total_retail_price | plus: bundled_product.price %}
+    {% endfor %}
+
+
+
+    {% for bundled_product in bundled_products %}
+      {% assign bundled_product_price = bundled_product.price | times: 1000000 %}
+      {% assign price_percentage_of_retail = bundled_product_price | divided_by: total_retail_price %}
+      {% assign bundled_product_script_price = product.price | times: price_percentage_of_retail | divided_by: 1000000.0 %}
+      {% comment %}
+      bundled_product.price: {{ bundled_product_price }}<br />
+      total_retail_price: {{ total_retail_price }}<br />
+      price_percentage_of_retail: {{ price_percentage_of_retail }}<br />
+      bundled_product_script_price: {{ bundled_product_script_price }}<br />
+      {% endcomment %}
+      <script>
+        productJSONs.push({{ bundled_product | json }});
+      </script>
+      <div class="bundled-product-container row" data-temp="{{ price_percentage_of_retail | divided_by: 1000000.0 }}" data-script-price="{{ bundled_product_script_price | round }}" data-product-id="{{ bundled_product.id }}" data-product-title="{{ bundled_product.title | escape }}">
+        <div class="bundled-product-image col-md-15">
+          <a href="{{ bundled_product.url }}">
+            <img src="{{ bundled_product.featured_image.src | img_url:'320x' }}" alt="{{ bundled_product.title | escape }}" />
+          </a>
+        </div>
+        <div class="bundled-product-content col-md-45">
+          <h4><a href="{{ bundled_product.url }}">{{ bundled_product.title }}</a></h4>
+          {% unless bundled_product.options.size == 1 and bundled_product.variants[0].title == 'Default Title' %}
+            {% for option in bundled_product.options_with_values %}
+              <div  style="width:1px;height:1px;overflow:hidden;" class="selector-wrapper {{ bundled_product.handle }} js col">
+                <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+                {% comment %}
+                <select class="single-option-selector single-option-selector-{{ bundled_product.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+                {% endcomment %}
+              </div>
+              {% if settings.enable_colorswatch %}
+                {% include 'swatch-bundles' with swatch: option.name, bundled_product: bundled_product %}
+              {% endif %}
+
+            {% endfor %}
+          {% endunless %}        
+        </div>
+      </div>
+    {% endfor %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<script>
+  var bundleImages = [];
+  {% for image in product.images %}
+  var bundleImage = {'src':'{{ image.src | img_url: '800x'}}','alt':'{{ image.alt }}'};
+  bundleImages.push(bundleImage);
+  {% endfor %}
+  var addToCartVariants = []; //global
+  $(document).ready(function() {
+    identifyVariantsForCart();
+    $('.bundled-product-content .swatch-element.color').on('click',function() {
+      console.log('color swatch click');
+      var selectedColor = $(this).data('value');
+      var firstImageFound = false;
+      var secondImageFound = false;
+	  for (i = 0; i < bundleImages.length; i++) {
+        if(!firstImageFound && bundleImages[i].alt == selectedColor){
+          firstImageFound = true;
+          console.log('first image: '+bundleImages[i].src);
+          $('.product-single__photos .product-single__thumbnail:eq(0)').attr('href',bundleImages[i].src).css('background-image','url('+bundleImages[i].src+')').data('zoom',bundleImages[i].src);  
+        } else if (!secondImageFound && bundleImages[i].alt == selectedColor) {
+          secondImageFound = true;
+          console.log('second image: '+bundleImages[i].src);
+          $('.product-single__photos .product-single__thumbnail:eq(1)').attr('href',bundleImages[i].src).css('background-image','url('+bundleImages[i].src+')').data('zoom',bundleImages[i].src);          
+          $(this).closest('.bundled-product-container').find('img').attr('src',bundleImages[i].src);
+        }
+      }
+    });
+    $('.bundled-product-content .swatch-element').on('click',function() {
+      var swatch = $(this).closest('.swatch');
+      swatch.find('.swatch-element').removeClass('active');
+      $(this).addClass('active');
+      identifyVariantsForCart();
+    });
+    $('.product-form__cart-submit:not(.disabled)').on('click',function() {
+      console.log(JSON.stringify(addToCartVariants));
+      $(this).addClass('disabled');
+      var randomKey = getRandomKey(16);
+      var addItems = [];
+      console.log('scriptPrice: '+scriptPrice);
+      for (i = 0; i < addToCartVariants.length; i++) {
+        var scriptPrice = $('.bundled-product-container:eq('+i+')').data('script-price');
+        var item = {
+            quantity: 1,
+            id: addToCartVariants[i],
+            properties: {
+              '_bundle_key': randomKey,
+              '_script_price':scriptPrice
+            }
+          }
+        addItems.push(item);
+      }
+      console.log('items: '+JSON.stringify(addItems));    
+      jQuery.post('/cart/add.js', {items: addItems}, "json").always(function(data) {
+        console.log('added to cart: '+JSON.stringify(data));
+        window.location.href = '/cart';
+      }); 
+    });
+  });
+  
+  function identifyVariantsForCart() {
+    var i = 0;
+    addToCartVariants = [];
+    $('.bundled-product-container').each(function() {
+      console.log($(this).data('product-title'));
+      //console.log('product '+i);
+      var options = [];
+      //console.log('prod json: '+JSON.stringify(productJSONs[i]));
+      $(this).find('.swatch-element.active').each(function() {
+        console.log('data value: '+$(this).data('value'));
+		options.push($(this).data('value').toString());
+      });
+      for (variantI = 0; variantI < productJSONs[i].variants.length; variantI++) {
+        //console.log('indexes: '+i+' / '+variantI);
+        //console.log('var id: '+productJSONs[i].variants[variantI].id);
+        console.log('? '+JSON.stringify(productJSONs[i].variants[variantI].options.map(v => v.toLowerCase()))+' == '+JSON.stringify(options));
+        if(JSON.stringify(productJSONs[i].variants[variantI].options.map(v => v.toLowerCase()))==JSON.stringify(options)) {
+          //console.log('equals '+JSON.stringify(productJSONs[i].variants[variantI].options.map(v => v.toLowerCase()))+' == '+JSON.stringify(options));
+          addToCartVariants.push(productJSONs[i].variants[variantI].id);
+          
+        } 
+      }
+      i++;
+    });
+    console.log('addToCartVariants: '+JSON.stringify(addToCartVariants));
+  }
+  function getRandomKey(length) {
+     var result           = '';
+     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+     var charactersLength = characters.length;
+     for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+     }
+     return result;
+  }
+</script>
+

@@ -1,0 +1,2986 @@
+{
+  "current": {
+    "invbuff": true,
+    "invbuffnum": 0,
+    "dbat": "",
+    "appkey": "",
+    "aprovecodes": "",
+    "color_body_bg": "#ffffff",
+    "color_modal_bg": "#31333d",
+    "opacity_modal_bg": 0,
+    "header_bg_color": "#ffffff",
+    "header_link_color": "#31333d",
+    "header_link_color_hover": "#788188",
+    "header_submenu_link_title_color": "#31333d",
+    "header_submenu_link_color": "#31333d",
+    "footer_bg_color": "#060606",
+    "footer_text_color": "#ffffff",
+    "footer_link_color": "#ffffff",
+    "footer_link_color_hover": "#ffffff",
+    "color_text": "#31333d",
+    "color_body_text": "#788188",
+    "color_link": "#ffffff",
+    "color_link_hover": "#31333d",
+    "color_sale_text": "#7796a8",
+    "color_button": "#ffffff",
+    "color_button_text": "#31333d",
+    "color_button_hover": "#31333d",
+    "color_button_text_hover": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_small_button_hover": "#fff",
+    "color_small_button_text_hover": "#223646",
+    "color_addtocart": "#7796a8",
+    "color_addtocart_text": "#fff",
+    "color_addtocart_hover": "#537182",
+    "color_addtocart_text_hover": "#fff",
+    "button_radius": 0,
+    "color_borders": "#e8e9eb",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 0,
+    "type_header_family": "Google_Montserrat_300_sans",
+    "type_header_base_size": "28px",
+    "type_header_upcase": false,
+    "type_base_family": "Google_Montserrat_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": false,
+    "header_sticky": true,
+    "header_overlay": false,
+    "align_logo": "center",
+    "align_menu": "inline",
+    "align_menu_text": "left",
+    "logo": "shopify:\/\/shop_images\/logo.jpg",
+    "logo_scrolled": "",
+    "logo_max_width": "200",
+    "cartdropdown": false,
+    "enablesearch": true,
+    "searchwhat": "product",
+    "main_linklist": "main-menu",
+    "megamenu1": "Shop",
+    "megamenu2": "",
+    "megamenu3": "",
+    "megamenu4": "",
+    "megamenu5": "",
+    "megamenu6": "",
+    "megamenu7": "",
+    "megamenu8": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "newsletter_action_url": "",
+    "newsletter_poup": false,
+    "newsletter_bg": "",
+    "newsletter_color": "#222222",
+    "newsletter_popup_length": "0",
+    "newsletter_popup_title": "",
+    "newsletter_popup_content": "",
+    "enable_crossclick": false,
+    "enable_colorswatch": true,
+    "color_swatchimage": false,
+    "cartajax": false,
+    "favicon": "shopify:\/\/shop_images\/Favicon_FD-02-01_32x32_f45d08cf-343a-458a-b281-1d807aa6233c.jpg",
+    "checkout_header_image": "shopify:\/\/shop_images\/bg.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/sTPPis18Q.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#f7f7f7",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#7796a8",
+    "checkout_button_color": "#31333d",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "WAMheader": {
+        "type": "WAMheader",
+        "settings": {}
+      },
+      "notification": {
+        "type": "notification",
+        "blocks": {
+          "8df1a763-dc95-4283-b5bd-5787414bd10f": {
+            "type": "message",
+            "settings": {
+              "message_text": "SIGN UP & RECEIVE 10% OFF YOUR FIRST ORDER!",
+              "align_message_icon": "left",
+              "message_icon": "",
+              "message_link": "https:\/\/shopfavoritedaughter.com\/account\/login"
+            }
+          },
+          "db85a6cd-f4d7-4c1f-b555-cb5aa11945b9": {
+            "type": "message",
+            "settings": {
+              "message_text": "FREE SHIPPING ON ORDERS OF $100+",
+              "align_message_icon": "left",
+              "message_icon": ""
+            }
+          }
+        },
+        "block_order": [
+          "8df1a763-dc95-4283-b5bd-5787414bd10f",
+          "db85a6cd-f4d7-4c1f-b555-cb5aa11945b9"
+        ],
+        "settings": {
+          "message": true,
+          "color_bg": "#e7d2cc",
+          "color_text": "#3d4246"
+        }
+      },
+      "mobile-nav": {
+        "type": "mobile-nav",
+        "blocks": {
+          "473b29c2-1338-4537-ac62-bd7094dec359": {
+            "type": "row",
+            "settings": {
+              "main_title": "Shop",
+              "main_linklist": "shop-items",
+              "main_icon": "",
+              "enable_icon": false
+            }
+          },
+          "9b51680c-b92e-4def-a663-f7eab578836c": {
+            "type": "row",
+            "settings": {
+              "main_title": "Sisters",
+              "main_linklist": "erin-sara",
+              "main_icon": "",
+              "enable_icon": false
+            }
+          },
+          "1df397b4-d418-479c-aa87-ddc4520a7d05": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "Support",
+              "main_icon": "",
+              "main_link": "shopify:\/\/pages\/support"
+            }
+          },
+          "a917334c-4ae2-443c-85e9-95cdfdccf9d3": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "My Account",
+              "main_icon": "",
+              "main_link": "\/account"
+            }
+          }
+        },
+        "block_order": [
+          "473b29c2-1338-4537-ac62-bd7094dec359",
+          "9b51680c-b92e-4def-a663-f7eab578836c",
+          "1df397b4-d418-479c-aa87-ddc4520a7d05",
+          "a917334c-4ae2-443c-85e9-95cdfdccf9d3"
+        ],
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1598245220838": {
+            "type": "menu",
+            "settings": {
+              "title": "Help",
+              "linklist": "help"
+            }
+          },
+          "1593107771674": {
+            "type": "menu",
+            "settings": {
+              "title": "Support",
+              "linklist": "footer"
+            }
+          },
+          "e1f484cd-b29e-42e7-95c2-e6305ed21495": {
+            "type": "menu",
+            "settings": {
+              "title": "Sisters",
+              "linklist": "erin-sara"
+            }
+          }
+        },
+        "block_order": [
+          "1598245220838",
+          "1593107771674",
+          "e1f484cd-b29e-42e7-95c2-e6305ed21495"
+        ],
+        "settings": {
+          "footer_socials_enable": true,
+          "socials_title": "",
+          "footer_newsletter_enable": true,
+          "footer_newsletter_alone": false,
+          "newsletter_background": "",
+          "newsletter_color": "#000000"
+        }
+      },
+      "megamenu1": {
+        "type": "megamenu1",
+        "blocks": {
+          "68f3b7ea-bff8-45a8-9de9-2bb7302828f4": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Shop All",
+              "submenu_link_title": "shopify:\/\/collections\/shop",
+              "linklist": "shop-items",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "cce9af58-12e2-425f-8ec4-26f38f13d5a3": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Sets",
+              "submenu_link_title": "shopify:\/\/collections\/hoodie-mask-joggers",
+              "linklist": "sets",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1592927659557": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "Tops",
+              "image": "shopify:\/\/shop_images\/FD_NewArrivals_MainMenu_3.jpg",
+              "caption": "Tops",
+              "link": "shopify:\/\/collections\/tops",
+              "column_width": "col-30"
+            }
+          }
+        },
+        "block_order": [
+          "68f3b7ea-bff8-45a8-9de9-2bb7302828f4",
+          "cce9af58-12e2-425f-8ec4-26f38f13d5a3",
+          "1592927659557"
+        ],
+        "settings": {}
+      },
+      "megamenu2": {
+        "type": "megamenu2",
+        "blocks": {
+          "1593013044809": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Sisters",
+              "submenu_link_title": "shopify:\/\/collections\/cycling-helmets",
+              "linklist": "erin-sara",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593014798647": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Apparel",
+              "submenu_link_title": "shopify:\/\/collections\/cycling-apparel",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593019158211": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Accessories",
+              "submenu_link_title": "shopify:\/\/collections\/cycling-accessories",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          }
+        },
+        "block_order": [
+          "1593013044809",
+          "1593014798647",
+          "1593019158211"
+        ],
+        "settings": {}
+      },
+      "megamenu3": {
+        "type": "megamenu3",
+        "blocks": {
+          "1593034656747": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Sunglasses",
+              "submenu_link_title": "shopify:\/\/collections\/sunglasses",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col-20"
+            }
+          },
+          "1593034744413": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Performance",
+              "link": "shopify:\/\/collections\/sunglasses-performance",
+              "column_width": "col-20"
+            }
+          },
+          "1593034853796": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Lifestyle Sunglasses",
+              "link": "shopify:\/\/collections\/sunglasses-lifestyle",
+              "column_width": "col-20"
+            }
+          }
+        },
+        "block_order": [
+          "1593034656747",
+          "1593034744413",
+          "1593034853796"
+        ],
+        "settings": {}
+      },
+      "megamenu4": {
+        "type": "megamenu4",
+        "blocks": {
+          "1593035395526": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Helmets",
+              "submenu_link_title": "shopify:\/\/collections\/snow-helmets",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593042352565": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Goggles",
+              "submenu_link_title": "shopify:\/\/collections\/snow-goggles",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593042306271": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Armor",
+              "submenu_link_title": "shopify:\/\/collections\/snow-armor",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593043634249": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Apparel",
+              "submenu_link_title": "shopify:\/\/collections\/snow-apparel",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593042401720": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Accessories",
+              "submenu_link_title": "shopify:\/\/collections\/snow-accessories",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593044731352": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Obex Spin",
+              "link": "",
+              "column_width": "col"
+            }
+          }
+        },
+        "block_order": [
+          "1593035395526",
+          "1593042352565",
+          "1593042306271",
+          "1593043634249",
+          "1593042401720",
+          "1593044731352"
+        ],
+        "settings": {}
+      },
+      "megamenu6": {
+        "type": "megamenu6",
+        "blocks": {
+          "1593528204573": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Snow Outlet",
+              "submenu_link_title": "shopify:\/\/collections\/snow-outlet",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593529144736": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Mountain Biking Outlet",
+              "submenu_link_title": "shopify:\/\/collections\/mountain-biking-outlet",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593530145993": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Cycling Outlet",
+              "submenu_link_title": "shopify:\/\/collections\/cycling-outlet",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593530254226": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Sunglasses Outlet",
+              "submenu_link_title": "shopify:\/\/collections\/sunglasses-outlet",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          }
+        },
+        "block_order": [
+          "1593528204573",
+          "1593529144736",
+          "1593530145993",
+          "1593530254226"
+        ],
+        "settings": {}
+      },
+      "swatch-colors": {
+        "type": "swatch-colors",
+        "blocks": {
+          "1598212211130": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "military olive",
+              "color1": "#a69371",
+              "color2": "#a69371",
+              "color3": "#a69371"
+            }
+          },
+          "1598215646076": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "desert sage",
+              "color1": "#e4e7e4",
+              "color2": "#e4e7e4",
+              "color3": ""
+            }
+          },
+          "1600299337784": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "muted black",
+              "color1": "#31333d",
+              "color2": "#31333d",
+              "color3": ""
+            }
+          },
+          "1600299441147": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "midnight navy",
+              "color1": "#5b7398",
+              "color2": "#5b7398",
+              "color3": ""
+            }
+          },
+          "1600299482450": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "tobacco",
+              "color1": "#caa16e",
+              "color2": "#caa16e",
+              "color3": ""
+            }
+          },
+          "1600299538380": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "heather grey",
+              "color1": "#c7cbd6",
+              "color2": "#c7cbd6",
+              "color3": ""
+            }
+          },
+          "1600987573188": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "salmon",
+              "color1": "#f2bfae",
+              "color2": "#f2bfae",
+              "color3": ""
+            }
+          },
+          "1600987603842": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "BLACK",
+              "color1": "#131619",
+              "color2": "#131619",
+              "color3": ""
+            }
+          },
+          "1601996852237": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "bone",
+              "color1": "#e8e2da",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "1601996886424": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "mauve",
+              "color1": "#c2a9b2",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "1601996934314": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "lobster red",
+              "color1": "#f08b63",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "1601997072768": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "root",
+              "color1": "#bc6344",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "db5d3e92-1a81-4183-9975-e69a08ce75a7": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "LIGHT INDIGO",
+              "color1": "rgba(0,0,0,0)",
+              "color2": "rgba(0,0,0,0)",
+              "color3": "rgba(0,0,0,0)",
+              "image": "shopify:\/\/shop_images\/lightindigo.png"
+            }
+          },
+          "a816d02b-acc0-4de7-96d4-94998f198cb3": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "MEDIUM INDIGO",
+              "color1": "rgba(0,0,0,0)",
+              "color2": "rgba(0,0,0,0)",
+              "color3": "rgba(0,0,0,0)",
+              "image": "shopify:\/\/shop_images\/mediumindigo.png"
+            }
+          },
+          "f07ddae3-53b6-41e7-9182-89b19c2dbb14": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "WHITE",
+              "color1": "#e7e7d0",
+              "color2": "#e7e7d0",
+              "color3": "#e7e7d0"
+            }
+          },
+          "f45ff14c-1089-4ace-85f6-bc037c506b1f": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "grey moth",
+              "color1": "#afaeaf",
+              "color2": "#afaeaf",
+              "color3": "#afaeaf"
+            }
+          },
+          "7e495062-bbfb-4515-a20a-7d834ed08162": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "dark spruce",
+              "color1": "#2a4341",
+              "color2": "#2a4341",
+              "color3": "#2a4341"
+            }
+          },
+          "4092e461-b204-4721-83d5-d3bed8e83a06": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "storm cloud",
+              "color1": "#5f5c61",
+              "color2": "#5f5c61",
+              "color3": "#5f5c61"
+            }
+          },
+          "7093905e-6150-4bd6-8409-453a385d6438": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "oatmeal",
+              "color1": "#ebd0b3",
+              "color2": "#ebd0b3",
+              "color3": "#ebd0b3"
+            }
+          },
+          "71e0d261-06cb-46de-83fe-f9f7c4d661c8": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "green",
+              "color1": "#175f52",
+              "color2": "#175f52",
+              "color3": "#175f52"
+            }
+          },
+          "0c0a9304-dd78-47e3-8beb-c06c95ab8b02": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "ivory",
+              "color1": "#eeecdf",
+              "color2": "#eeecdf",
+              "color3": "#eeecdf"
+            }
+          },
+          "a5c03560-17a7-42ef-aff6-0263d85abaa5": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "charcoal",
+              "color1": "#7c7a84",
+              "color2": "#7c7a84",
+              "color3": "#7c7a84"
+            }
+          },
+          "9090dd2c-fc97-47b2-8117-41221b327bca": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "tawny birch",
+              "color1": "#b98f7b",
+              "color2": "#b98f7b",
+              "color3": "#b98f7b"
+            }
+          },
+          "f8d193b4-8a15-4e7e-9a69-73499160abd3": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "ghost gray",
+              "color1": "#b5b6ba",
+              "color2": "#b5b6ba",
+              "color3": "#b5b6ba"
+            }
+          },
+          "eec2e041-6378-4dd9-b612-4451d13614c6": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "mahogany rose",
+              "color1": "#ede2e1",
+              "color2": "#ede2e1",
+              "color3": "#ede2e1"
+            }
+          },
+          "d91426bb-4ad7-4f8b-8e73-d7f327f3126a": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "light blue",
+              "color1": "#7588ad",
+              "color2": "#7588ad",
+              "color3": "#7588ad"
+            }
+          },
+          "e306ffe6-7cbc-4ebf-b1da-8bad2f8c9285": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "lilac",
+              "color1": "#afaccd",
+              "color2": "#afaccd",
+              "color3": "#afaccd"
+            }
+          },
+          "f8474fef-b746-4ba1-8b57-33aebc45c2e5": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "jet black",
+              "color1": "#000000",
+              "color2": "#000000",
+              "color3": "#000000"
+            }
+          },
+          "9d72257b-7717-44aa-afc1-d7130bc05753": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "pink",
+              "color1": "#e9aca0",
+              "color2": "#e9aca0",
+              "color3": "#e9aca0"
+            }
+          },
+          "f6d5e320-2c82-4487-a2d2-1703b5a7eb49": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "meteorite",
+              "color1": "#040402",
+              "color2": "#040402",
+              "color3": "#040402"
+            }
+          },
+          "63ce17dd-5f99-4a53-8dcf-537db6cae721": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "snow white",
+              "color1": "#e2ded6",
+              "color2": "#e2ded6",
+              "color3": "#e2ded6"
+            }
+          },
+          "9c21608d-b8bd-406c-b947-3f055251988c": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "neat navy",
+              "color1": "#242935",
+              "color2": "#242935",
+              "color3": "#242935"
+            }
+          },
+          "95364df3-ccc6-43a7-adac-ce881543e3f7": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "platinum grey",
+              "color1": "#cacacc",
+              "color2": "#cacacc",
+              "color3": "#cacacc"
+            }
+          },
+          "14be8a70-251f-4516-bdd3-458926fd89e1": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "tan",
+              "color1": "#f0e4db",
+              "color2": "#f0e4db",
+              "color3": "#f0e4db"
+            }
+          },
+          "f590d1c3-aea5-46b9-afb1-a30727051d60": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "Bordeaux",
+              "color1": "#7c4243",
+              "color2": "#7c4243",
+              "color3": "#7c4243"
+            }
+          },
+          "074f1f5b-83e7-48b7-a9b6-2481855dd4d4": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "Navy",
+              "color1": "#4a4d61",
+              "color2": "#4a4d61",
+              "color3": "#4a4d61"
+            }
+          },
+          "5b8c5c05-1ea7-4658-a732-fd3eeb030fd3": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "forest",
+              "color1": "#393939",
+              "color2": "#393939",
+              "color3": "#393939"
+            }
+          },
+          "1e821684-410a-4202-a473-574b28ee5c86": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "pastel yellow",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/FFTRHM6000_YELLOW_sw.gif"
+            }
+          },
+          "ef7aff7b-a0db-4c63-9cc6-1a6371486b51": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "sugar plum",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/FCNVCH6001-swatch-sugarplum.jpg"
+            }
+          },
+          "011bb886-b435-4d07-8ff3-a07230ba06a1": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "blue mist",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/FCNVCH6001-swatch-bluemist.jpg"
+            }
+          },
+          "80b638ba-850f-4b0c-9209-b8c01da844af": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "aqua",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/MTLMDL5748_AQUARIUS_a.jpg"
+            }
+          },
+          "ec851140-068d-4681-a282-3446fc1d6d6a": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "earth",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fcsoer5478_earth_sw.gif"
+            }
+          },
+          "9ec82d23-5bd8-435b-bc18-1e9e6a862f02": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "lake",
+              "color1": "#90a6b6",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "7fc743b8-d65e-4df3-9525-00db0e544b71": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "new york",
+              "color1": "#4c4c50",
+              "color2": "",
+              "color3": ""
+            }
+          },
+          "c3738bd6-b5ad-4b5b-9a10-6035679f2b57": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "nashville",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/FTMXNS5478_nashville.jpg"
+            }
+          },
+          "a66a9161-f5e3-4d8c-81d4-afc0a3b16643": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "seattle",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fculse5478_seattle_sw.gif"
+            }
+          },
+          "67c07978-8861-4f3d-bd8d-899e76705f3e": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "champagne",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fgw3cg5745_champagne_sw.gif"
+            }
+          },
+          "4ef0bf36-5bf9-4343-a45c-98e05f10f359": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "navy",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fgw3cg5745_navy_sw.gif"
+            }
+          },
+          "3c6f614a-80da-47bf-be75-fcb5a92deb77": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "light pink",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fgw3cg5745_light_pink_sw.gif"
+            }
+          },
+          "4c6ced85-04f0-4807-8295-1a12e8ab1c30": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "baby blue",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/16_FD_430_FEANRC4003-BABY_BLUE_FEANRS8004-BABY_BLUE_sw.gif"
+            }
+          },
+          "fdf7ccbe-f6ff-4733-a705-de6e83f55aab": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "lanai",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/ftbrln5545_lanai_sw.gif"
+            }
+          },
+          "73832e14-aea3-4894-b1ce-e3fd774a9079": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "sea glass",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/feansc3502_sea_glass_sw_2f3dabfd-43ff-4e3e-8e1f-b8d8630259db.gif"
+            }
+          },
+          "b2d3d2b2-ee76-4097-ad81-cea12c1d02b6": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "orange",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/feancs3502_orange_sw.gif"
+            }
+          },
+          "9bccc9c9-92f3-4ada-9c8b-5e5225fc6e8d": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "beige",
+              "color1": "rgba(0,0,0,0)",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2021-04-14_at_2.44.43_PM.png"
+            }
+          },
+          "310c963e-6958-4cb7-b11b-a0cabf6ed82c": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "Gold",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/IMG_5804.jpg"
+            }
+          },
+          "f5e4eae1-b553-4d7e-9f13-9ef558ad94f0": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "malibu",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fcjlmb5991_malibu_sw.gif"
+            }
+          },
+          "21a38b92-bf33-4ebf-9c43-a1ea774ca84c": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "blue\/white stripe",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fewcpb1500_blue_white_stripe_sw.gif"
+            }
+          },
+          "b4ddfa3a-bf98-4201-92e7-967e3d0bbfda": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "floral print",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fe8cst1501_floral_print_a.jpg"
+            }
+          },
+          "10746e3c-eabc-48d1-8793-d244cd32f9a5": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "grey\/white stripe",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fe6ctr4503_grey_white_stripe_c.jpg"
+            }
+          },
+          "7424c864-9203-4417-b5e6-d1c497fccca4": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "blue daisy",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_BLUEDAISY_a.jpg"
+            }
+          },
+          "3012f5ed-e8b2-4b5a-af50-69aee02e83b5": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "dove grey",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_DOVEGREY_a.jpg"
+            }
+          },
+          "b39a18d0-bcae-4ad8-a359-5a94bd2cfbea": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "jet black",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_JETBLACK_a.jpg"
+            }
+          },
+          "1cb05856-8d23-48b9-957b-ec1df257f2a0": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "mint green",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_MINTGREEN_a.jpg"
+            }
+          },
+          "e53e4616-9d0b-4cb5-b44b-7526c8b84b22": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "oatmeal",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_OATMEAL_a.jpg"
+            }
+          },
+          "3f8ff664-5381-444e-a928-73221743d2dd": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "pale rose",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_PALEROSE_a.jpg"
+            }
+          },
+          "4274193e-5318-41d9-ac06-1d1474199b4c": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "pink azalea",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_PINK_AZALEA_a.jpg"
+            }
+          },
+          "aced0583-a573-4732-ad3a-8d8ca370c70f": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "skyline",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/JWSM7034_SKYLINE_a.jpg"
+            }
+          },
+          "b5ce1ddf-db8f-4e4b-946e-5788197caaf0": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "munich",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/fg77mu9507_munich_sw.gif"
+            }
+          },
+          "dd3a3f4b-5ada-4717-8c97-2e377a2ede3b": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "antique white",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2021-06-09_at_11.06.55_AM.png"
+            }
+          },
+          "8b5c9358-ca99-4df4-adc5-a51f098a7b5b": {
+            "type": "color_swatches",
+            "settings": {
+              "title": "moscow",
+              "color1": "",
+              "color2": "",
+              "color3": "",
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2021-06-15_at_3.53.00_PM.png"
+            }
+          }
+        },
+        "block_order": [
+          "1598212211130",
+          "1598215646076",
+          "1600299337784",
+          "1600299441147",
+          "1600299482450",
+          "1600299538380",
+          "1600987573188",
+          "1600987603842",
+          "1601996852237",
+          "1601996886424",
+          "1601996934314",
+          "1601997072768",
+          "db5d3e92-1a81-4183-9975-e69a08ce75a7",
+          "a816d02b-acc0-4de7-96d4-94998f198cb3",
+          "f07ddae3-53b6-41e7-9182-89b19c2dbb14",
+          "f45ff14c-1089-4ace-85f6-bc037c506b1f",
+          "7e495062-bbfb-4515-a20a-7d834ed08162",
+          "4092e461-b204-4721-83d5-d3bed8e83a06",
+          "7093905e-6150-4bd6-8409-453a385d6438",
+          "71e0d261-06cb-46de-83fe-f9f7c4d661c8",
+          "0c0a9304-dd78-47e3-8beb-c06c95ab8b02",
+          "a5c03560-17a7-42ef-aff6-0263d85abaa5",
+          "9090dd2c-fc97-47b2-8117-41221b327bca",
+          "f8d193b4-8a15-4e7e-9a69-73499160abd3",
+          "eec2e041-6378-4dd9-b612-4451d13614c6",
+          "d91426bb-4ad7-4f8b-8e73-d7f327f3126a",
+          "e306ffe6-7cbc-4ebf-b1da-8bad2f8c9285",
+          "f8474fef-b746-4ba1-8b57-33aebc45c2e5",
+          "9d72257b-7717-44aa-afc1-d7130bc05753",
+          "f6d5e320-2c82-4487-a2d2-1703b5a7eb49",
+          "63ce17dd-5f99-4a53-8dcf-537db6cae721",
+          "9c21608d-b8bd-406c-b947-3f055251988c",
+          "95364df3-ccc6-43a7-adac-ce881543e3f7",
+          "14be8a70-251f-4516-bdd3-458926fd89e1",
+          "f590d1c3-aea5-46b9-afb1-a30727051d60",
+          "074f1f5b-83e7-48b7-a9b6-2481855dd4d4",
+          "5b8c5c05-1ea7-4658-a732-fd3eeb030fd3",
+          "1e821684-410a-4202-a473-574b28ee5c86",
+          "ef7aff7b-a0db-4c63-9cc6-1a6371486b51",
+          "011bb886-b435-4d07-8ff3-a07230ba06a1",
+          "80b638ba-850f-4b0c-9209-b8c01da844af",
+          "ec851140-068d-4681-a282-3446fc1d6d6a",
+          "9ec82d23-5bd8-435b-bc18-1e9e6a862f02",
+          "7fc743b8-d65e-4df3-9525-00db0e544b71",
+          "c3738bd6-b5ad-4b5b-9a10-6035679f2b57",
+          "a66a9161-f5e3-4d8c-81d4-afc0a3b16643",
+          "67c07978-8861-4f3d-bd8d-899e76705f3e",
+          "4ef0bf36-5bf9-4343-a45c-98e05f10f359",
+          "3c6f614a-80da-47bf-be75-fcb5a92deb77",
+          "4c6ced85-04f0-4807-8295-1a12e8ab1c30",
+          "fdf7ccbe-f6ff-4733-a705-de6e83f55aab",
+          "73832e14-aea3-4894-b1ce-e3fd774a9079",
+          "b2d3d2b2-ee76-4097-ad81-cea12c1d02b6",
+          "9bccc9c9-92f3-4ada-9c8b-5e5225fc6e8d",
+          "310c963e-6958-4cb7-b11b-a0cabf6ed82c",
+          "f5e4eae1-b553-4d7e-9f13-9ef558ad94f0",
+          "21a38b92-bf33-4ebf-9c43-a1ea774ca84c",
+          "b4ddfa3a-bf98-4201-92e7-967e3d0bbfda",
+          "10746e3c-eabc-48d1-8793-d244cd32f9a5",
+          "7424c864-9203-4417-b5e6-d1c497fccca4",
+          "3012f5ed-e8b2-4b5a-af50-69aee02e83b5",
+          "b39a18d0-bcae-4ad8-a359-5a94bd2cfbea",
+          "1cb05856-8d23-48b9-957b-ec1df257f2a0",
+          "e53e4616-9d0b-4cb5-b44b-7526c8b84b22",
+          "3f8ff664-5381-444e-a928-73221743d2dd",
+          "4274193e-5318-41d9-ac06-1d1474199b4c",
+          "aced0583-a573-4732-ad3a-8d8ca370c70f",
+          "b5ce1ddf-db8f-4e4b-946e-5788197caaf0",
+          "dd3a3f4b-5ada-4717-8c97-2e377a2ede3b",
+          "8b5c9358-ca99-4df4-adc5-a51f098a7b5b"
+        ],
+        "settings": {}
+      },
+      "megamenu5": {
+        "type": "megamenu5",
+        "blocks": {
+          "1593046191234": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Apparel",
+              "submenu_link_title": "shopify:\/\/collections\/lifestyle-apparel",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593046216232": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Accessories",
+              "submenu_link_title": "shopify:\/\/collections\/lifestyle-accessories",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1593046227563": {
+            "type": "megamenu_menu",
+            "settings": {
+              "submenu_link_text_title": "Collections",
+              "submenu_link_title": "shopify:\/\/collections\/lifestyle-collections",
+              "linklist": "",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          }
+        },
+        "block_order": [
+          "1593046191234",
+          "1593046216232",
+          "1593046227563"
+        ],
+        "settings": {}
+      },
+      "megamenu7": {
+        "type": "megamenu7",
+        "blocks": {
+          "1593610875085": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "About POC",
+              "link": "shopify:\/\/pages\/about-poc",
+              "column_width": "col-20"
+            }
+          },
+          "1593610942955": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "POC Lab",
+              "link": "shopify:\/\/pages\/poc-lab",
+              "column_width": "col-20"
+            }
+          },
+          "1593611195412": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Watts Lab",
+              "link": "shopify:\/\/pages\/watts-lab",
+              "column_width": "col-20"
+            }
+          }
+        },
+        "block_order": [
+          "1593610875085",
+          "1593610942955",
+          "1593611195412"
+        ],
+        "settings": {}
+      },
+      "megamenu8": {
+        "type": "megamenu8",
+        "blocks": {
+          "1593612404553": {
+            "type": "megamenu_text",
+            "settings": {
+              "journal_title": "Discover What Inspire Us",
+              "journal_paragraph": "Head to the POC Journal to read stories about our athletes, collaborations, technical innovations and the things that inspire us.",
+              "submenu_link_text_title": "Explore POC Journal",
+              "submenu_link_title": "http:\/\/www.https\/\/journal.pocsports.com",
+              "column_width": "col"
+            }
+          },
+          "1593611392670": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Make or Break from Dawn to Dusk",
+              "link": "https:\/\/journal.pocsports.com\/make-or-break-from-dawn-to-dusk\/",
+              "column_width": "col-20"
+            }
+          },
+          "1593611471856": {
+            "type": "megamenu_image",
+            "settings": {
+              "title": "",
+              "image": "",
+              "caption": "Complement Each Other",
+              "link": "https:\/\/journal.pocsports.com\/complement-each-other\/",
+              "column_width": "col-20"
+            }
+          }
+        },
+        "block_order": [
+          "1593612404553",
+          "1593611392670",
+          "1593611471856"
+        ],
+        "settings": {}
+      },
+      "header-bg": {
+        "type": "header-bg",
+        "blocks": {
+          "f3073ef1-acd9-4010-b79e-52e9bd8b43fa": {
+            "type": "page_header",
+            "settings": {
+              "title": ".",
+              "page": "our-story"
+            }
+          },
+          "5d1c9de1-a8aa-4e38-a7d0-34a3ca3b1d0d": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "",
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_oatcash-rt_1400x_32269716-1153-4434-a291-084f2dcde751.jpg"
+            }
+          },
+          "f21f3c5d-d407-43e5-adbf-6c6403212662": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "warranty"
+            }
+          },
+          "a6eda90f-ea2c-4484-b36a-cc09b346cacd": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "accessibility"
+            }
+          },
+          "a4551a28-1176-4091-aa4f-4c7d1272746a": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "faq"
+            }
+          },
+          "2ec534d5-30a8-4530-87b7-3f882134c60a": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "privacy-policy"
+            }
+          },
+          "9b523d71-e1d8-4fcd-84f0-66436feab49f": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "terms-of-service"
+            }
+          },
+          "9095becd-3d73-439b-956a-7a0817306280": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "",
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_pink.mint-rt_1400x_6030af38-dd58-4725-8e63-2ed604b7ea8e.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "f3073ef1-acd9-4010-b79e-52e9bd8b43fa",
+          "5d1c9de1-a8aa-4e38-a7d0-34a3ca3b1d0d",
+          "f21f3c5d-d407-43e5-adbf-6c6403212662",
+          "a6eda90f-ea2c-4484-b36a-cc09b346cacd",
+          "a4551a28-1176-4091-aa4f-4c7d1272746a",
+          "2ec534d5-30a8-4530-87b7-3f882134c60a",
+          "9b523d71-e1d8-4fcd-84f0-66436feab49f",
+          "9095becd-3d73-439b-956a-7a0817306280"
+        ],
+        "settings": {}
+      },
+      "filters": {
+        "type": "filters",
+        "blocks": {
+          "1594043013115": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Product Type",
+              "filter_tags": "Backpack, Back Protection, Ski Helmet,"
+            }
+          },
+          "1594043049037": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Color",
+              "filter_tags": "Green, Blue, Red, Pink, Orange, Yellow, Grey, Black, White, Brown"
+            }
+          },
+          "1594043114405": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Size",
+              "filter_tags": "XS, X, M, L, XL, XXL, Onesize"
+            }
+          },
+          "1594308717142": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Activity",
+              "filter_tags": "Cycling, Mountain Biking, Snow, Lifestyle"
+            }
+          },
+          "1594072546570": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Collection",
+              "filter_tags": "VPD 2.0,"
+            }
+          },
+          "1594308627875": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Protection Level",
+              "filter_tags": "Very Resistant, Moderate, Lite"
+            }
+          },
+          "1594072033226": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Gender \/ Age",
+              "filter_tags": "Men, Women, Unisex, Youth"
+            }
+          },
+          "1594308685857": {
+            "type": "collection_filters",
+            "settings": {
+              "title": "Price Range",
+              "filter_tags": "$, $$, $$$, $$$$"
+            }
+          }
+        },
+        "block_order": [
+          "1594043013115",
+          "1594043049037",
+          "1594043114405",
+          "1594308717142",
+          "1594072546570",
+          "1594308627875",
+          "1594072033226",
+          "1594308685857"
+        ],
+        "settings": {}
+      },
+      "collection-template2": {
+        "type": "collection-template2",
+        "blocks": {
+          "41e28c5b-c3d2-4a0e-b3fb-8e331b825387": {
+            "type": "image",
+            "settings": {
+              "active": true,
+              "collection": "",
+              "activeone": true,
+              "image": "shopify:\/\/shop_images\/Klarna_ContentBlock_2dcebb6c-984c-4bbf-ab65-430bac962ef8.jpg",
+              "alignment": "center",
+              "position": "7",
+              "textoverlay": false,
+              "title": "",
+              "adcopy": "",
+              "adcta": "",
+              "link": "shopify:\/\/pages\/klarna",
+              "activetwo": false,
+              "alignmenttwo": "center",
+              "positiontwo": "11",
+              "textoverlaytwo": false,
+              "titletwo": "",
+              "adcopytwo": "",
+              "adctatwo": ""
+            }
+          },
+          "e66c6506-ef85-48e3-a580-2831b542b78f": {
+            "type": "image",
+            "settings": {
+              "active": false,
+              "collection": "",
+              "activeone": false,
+              "alignment": "center",
+              "position": "5",
+              "textoverlay": true,
+              "title": "",
+              "adcopy": "",
+              "adcta": "",
+              "activetwo": false,
+              "alignmenttwo": "center",
+              "positiontwo": "11",
+              "textoverlaytwo": true,
+              "titletwo": "",
+              "adcopytwo": "",
+              "adctatwo": ""
+            }
+          }
+        },
+        "block_order": [
+          "41e28c5b-c3d2-4a0e-b3fb-8e331b825387",
+          "e66c6506-ef85-48e3-a580-2831b542b78f"
+        ],
+        "settings": {
+          "layout": "grid",
+          "grid": "3",
+          "rows": "8",
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": false,
+          "tags_enable": false
+        }
+      },
+      "product-images": {
+        "type": "product-images",
+        "settings": {
+          "image_size": "large",
+          "vertical": true,
+          "enable_zoom": true
+        }
+      },
+      "product-tabs": {
+        "type": "product-tabs",
+        "settings": {}
+      },
+      "product-related": {
+        "type": "product-related",
+        "settings": {
+          "title": "",
+          "related_featured": false,
+          "related_collection": "",
+          "related_tag": false,
+          "related_recent": false
+        }
+      },
+      "product-sizing": {
+        "type": "product-sizing",
+        "blocks": {
+          "a97e9bb6-30db-4c9b-a1c5-0e5e2a1df3b0": {
+            "type": "size",
+            "settings": {
+              "title": "",
+              "type": ""
+            }
+          }
+        },
+        "block_order": [
+          "a97e9bb6-30db-4c9b-a1c5-0e5e2a1df3b0"
+        ],
+        "settings": {}
+      },
+      "product-gallery": {
+        "type": "product-gallery",
+        "settings": {
+          "contained": "container",
+          "autoplay": false,
+          "autoplay_speed": "7000",
+          "dots": true,
+          "arrows": false,
+          "slideshow_height": "large",
+          "text_size": "medium"
+        }
+      },
+      "page-template": {
+        "type": "page-template",
+        "blocks": {
+          "1595199376478": {
+            "type": "menu_sidebar",
+            "settings": {
+              "title": "Help",
+              "quick_links": "help"
+            }
+          },
+          "0d266ef8-84d7-4e7e-8b2e-d46f3303bafe": {
+            "type": "menu_sidebar",
+            "settings": {
+              "title": "Support",
+              "quick_links": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "1595199376478",
+          "0d266ef8-84d7-4e7e-8b2e-d46f3303bafe"
+        ],
+        "settings": {
+          "enable_sidebar": true,
+          "sidebar_position": "sidebar-left"
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "32ebdd91-9913-45cf-8a96-1f2616e30f50": {
+            "type": "text",
+            "settings": {
+              "title": "HOW DO I MAKE A PURCHASE?",
+              "text": "<p>Shopping at <a href=\"https:\/\/shopfavoritedaughter.com\/\" title=\"https:\/\/shopfavoritedaughter.com\/\">Favorite Daughter<\/a> is easy:<\/p><p>Please <a href=\"\/account\/login\" title=\"\/account\/login\">REGISTER<\/a> to a new account or <a href=\"\/account\/login\" title=\"\/account\/login\">LOGIN<\/a> to your existing account (NOTE: Returning visitor to the new site will have to re-LOGIN i.e. REGISTER) by using the <a href=\"\/account\/login\" title=\"\/account\/login\">SIGN IN<\/a> links at the top of any page. You can also use your Facebook, Google+, Amazon or PayPal account for Signing In.If you know what you are looking for, please Click the WOMEN, MEN, KIDS Links provided at the left of each page to reveal their subcategory links. You can also shop using our Jean FIT GUIDE section or SEARCH by key words using our SEARCH tool provided at the top of each page.Once you have found an item that you would like to purchase, select your size and quantity then click on the &#x27;ADD TO CART&#x27; button provided.To Review the items you have selected for purchase hover over the &#x27;MY CART&#x27; link at the top of each page and click the VIEW BAG button. You can use the &#x27;REMOVE ITEM&#x27; button to delete items from your shopping CART.Click on &#x27;CHECKOUT&#x27; to complete your order.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "67de627b-d3c0-48e5-b7c4-8820857bd0bf": {
+            "type": "text",
+            "settings": {
+              "title": "DO I NEED TO SET UP AN ACCOUNT TO PLACE AN ORDER?",
+              "text": "<p>No, you can shop at Favorite Daughter as a GUEST without creating an account. However, registering your details will allow you to:<br\/>• Track your order and review past purchases<br\/>• Build a personal wish list<br\/>• Shop without entering your address details<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "448b5a50-87eb-469a-bda1-4e93846a33b1": {
+            "type": "text",
+            "settings": {
+              "title": "I'VE FORGOTTEN MY PASSWORD?",
+              "text": "<p>If you have forgotten your password, click the <a href=\"\/account\/login\" title=\"\/account\/login\">FORGOT PASSWORD<\/a> link in the Log In Window for instructions on resetting your Password.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "31b13415-bb6b-47dc-ab6c-351f7b0d68dd": {
+            "type": "text",
+            "settings": {
+              "title": "HOW DO I KNOW THAT THE PRODUCTS YOU SELL ARE AUTHENTIC?",
+              "text": "<p>We unconditionally guarantee that every item we sell is 100% authentic. Please note that we are unable to comment on the authenticity of any items not purchased from <a href=\"https:\/\/ShopFavoriteDaughter.com\" title=\"https:\/\/ShopFavoriteDaughter.com\">ShopFavoriteDaughter.com<\/a>.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "52d43e53-ee6c-4481-93d1-fd34c801bf4f": {
+            "type": "text",
+            "settings": {
+              "title": "WHICH SIZE SHOULD I CHOOSE?",
+              "text": "<p><a title=\"Size Chart\" href=\"\/pages\/size-chart\">View Size Chart Here<\/a><\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "3302bb2b-0b05-4e8f-9b9b-768894b41901": {
+            "type": "text",
+            "settings": {
+              "title": "HOW DO I KNOW IF AN ITEM IS IN STOCK?",
+              "text": "<p>All items are in stock unless the size or color is not displayed. Please be aware that even if an item is in your shopping cart, it can still be bought by another customer until you have completed your order.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "ca100443-80d1-4085-8b87-4c2c04031325": {
+            "type": "text",
+            "settings": {
+              "title": "WHAT PAYMENT METHODS DOES FAVORITE DAUGHTER ACCEPT?",
+              "text": "<p>We accept Visa, MasterCard, American Express and Discover as well as Paypal, Apple Pay, Amazon Pay and Affirm. Please note that we do not accept any other methods of payment apart from those listed above.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "885ea48f-bdb2-4968-ac80-950074751ab3": {
+            "type": "text",
+            "settings": {
+              "title": "IS IT SAFE TO USE MY CREDIT CARD ONLINE AT FAVORITE DAUGHTER?",
+              "text": "<p>At Favorite Daughter, your personal online security is important to us. We use the latest SSL encryption technology to store and safely transmit your personal and credit card information through our systems. All orders are processed through a secure checkout system provided by Authorize.net. Additionally, for your safety and protection, we will confirm that the billing address you provide matches the address on file with your credit card company.<\/p><p><br\/><\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "3dc02345-2d44-4ea8-9577-4e8de87baa39": {
+            "type": "text",
+            "settings": {
+              "title": "DOES FAVORITE DAUGHTER SHIP TO POST OFFICE BOXES?",
+              "text": "<p>Again, please note that we are unable to deliver to Post Office boxes (PO Box in shipping address) at this time.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "eabd5c42-977f-4e8c-a433-08864fba9b2c": {
+            "type": "text",
+            "settings": {
+              "title": "DOES FAVORITE DAUGHTER SHIP TO HAWAII OR ALASKA?",
+              "text": "<p>Free shipping services and expedited shipping fees at checkout includes Hawaii &amp; Alaska using the USPS service. At this time, Favorite Daughter does not include a USPS Return Mailing Label for orders shipped to Alaska or Hawaii.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "eb7e6aef-e29b-4471-9a31-ddc3a34d9908": {
+            "type": "text",
+            "settings": {
+              "title": "HOW MUCH TAX WILL I HAVE TO PAY?",
+              "text": "<p>Companies selling items on the Internet are subject to the same sales tax collection requirements as other retailers. Sales tax rates for <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> are obtained from a leading tax rate service provider.<\/p><p><a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> reserves the right to apply sales tax where applicable. Specifically, items sold by <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> and shipped to destinations in the states of California, Illinois, New York, Florida, Texas, Washington, Nevada, Virginia, Massachusetts, Pennsylvania are subject to tax. The tax rate applied is calculated on the total selling price of each individual item in your shopping bag and will be the combined state and local rate for the shipping address of your order.<\/p><p>No sales tax is charged when purchasing gift certificates though purchases paid with gift certificates will be subject to tax according to the shipping destination.<\/p><p><strong>NOTE:<\/strong> Prices displayed on the website are exclusive of taxes. Additionally, Favorite Daughter is not responsible for reporting or paying Use Tax to states.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "0475d408-a6fd-4fb0-b31a-5f37076cc700": {
+            "type": "text",
+            "settings": {
+              "title": "DOES FAVORITE DAUGHTER SHIP TO MULTIPLE ADDRESSES?",
+              "text": "<p>Unfortunately, you may only ship to one address per order. If your order contains gifts or items that require shipping to multiple locations, you will need to place separate orders for each address.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "9c28349a-2487-4497-a4ba-97a3df7ca3ea": {
+            "type": "text",
+            "settings": {
+              "title": "HOW SOON CAN I GET MY ORDER AND HOW MUCH WILL IT COST?",
+              "text": "<p>We offer different shipping options to meet your needs – as listed below:<\/p><p><strong>DOMESTIC SHIPPING COSTS &amp; METHODS (Excludes Hawaii &amp; Alaska)<\/strong><br\/>UPS Ground For US Orders of $75+ - Free<br\/>UPS Ground - $10.00<br\/>UPS 2nd Day - $20.00<br\/>UPS Next Day - $30.00<\/p><p>For UPS 3 day, UPS 2nd day and NEXT DAY delivery, please ensure you place your order before 3pm EST weekdays. All weekday (non-Holiday) orders placed before 3pm EST will ship that day* if your address is verified by 5pm EST. All orders from Mon-Fri (non-Holiday) placed after 3pm EST as well as all orders placed on Saturday and Sunday will be shipped the following business day once inventory is confirmed, address is verified and order is processed*.<\/p><p>Orders will be delivered via UPS between 9am-5pm on weekdays only. Orders will not be delivered on national holidays. Processed and verified *orders placed on <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> can be expected to arrive within 7-10 business days* with UPS ground shipping method .<\/p><p>Favorite Daughter does not deliver on Saturday, Sunday or Holidays.<\/p><p>*Please note that your order will only be shipped once payment and delivery details have been verified and approved. Order cut-off times are provided as guidelines only, and do not take into account possible delays caused by verification. Shipping to other than the bill to address on any order may result in a delay. We cannot ship Paypal orders that have unconfirmed shipping addresses within the customers respective accounts. If an orders’ shipping address is not confirmed within a customers’ PayPal account within 96 hours of being placed at <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a>, those orders may be cancelled. Additionally, we reserve the right to ship at our discretion if an order&#x27;s shipping address does not match the billing address.<\/p><p>Questions? Call Toll Free: <a href=\"tel:888-715-2001\" title=\"tel:888-715-2001\">888-715-2001<\/a> | USA Hours of Operation: 6AM - 6PM PST, Monday - Sunday with the exception of New Year&#x27;s Day and Christmas. Or email us at <a href=\"mailto:Hello@shopfavoritedaughter.com\" target=\"_blank\">Hello@shopfavoritedaughter.com<\/a><\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "3c960e05-b083-4f94-9bcd-a7d5ad5ff47b": {
+            "type": "text",
+            "settings": {
+              "title": "DO YOU SHIP TO MILITARY ADDRESSES?",
+              "text": "<p>For security reasons, we do not currently ship APO\/FPO addresses.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "8f060349-b99a-4b4d-a49e-241f19f40349": {
+            "type": "text",
+            "settings": {
+              "title": "DO YOU SHIP TO PO BOXES?",
+              "text": "<p>For security reasons, we do not currently ship to P.O. boxes.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "639cf5ef-1cf0-4de6-a067-46ae0997d965": {
+            "type": "text",
+            "settings": {
+              "title": "INTERNATIONAL SHIPPING",
+              "text": "<p><strong>Delivery Rates &amp; Services<\/strong><\/p><p>ShopFavoriteDaughter.com currently ships to the following countries: Canada, United Kingdom, France, Mexico and Australia.<\/p><p>ShopFavoriteDaughter.com Expedited International Shipping Costs Through UPS<\/p><p>• Canada 22.95 (USD)<br\/>• Australia 50.95 (USD)<br\/>• France 44.75 (USD)<br\/>• Germany 44.75 (USD)<br\/>• Mexico 40.45 (USD)<br\/>• UK 50.95 (USD)<\/p><p>Your order will be delivered by UPS who will attempt to deliver the goods to you three (3) times. They will also leave a notice card after each delivery attempt to advise you what you can do to arrange the receipt of your package. Your signature will be required upon delivery.<\/p><p>If you have any questions related to your delivery, please contact our Customer Care team.<\/p><p><strong>Taxes And Duties<\/strong><\/p><p>• All international orders may be subject to taxes and duties.<br\/>• Taxes and duties are still owed if the item is refused.<br\/>• We ship your package DDU, &quot;duties and taxes unpaid&quot;, and we do not collect nor do we calculate the VAT, duties and\/or taxes during checkout.<br\/>• Any fees that are due will be collected upon delivery of the order.<br\/>• All applicable customs, taxes, import duties and collection fees are the responsibility of the customer (even if you refuse any shipments upon delivery).<br\/>• Customs authorities require that we state the value of your order directly on your package.<br\/>• Customs agents have the right to release or deny release of your package, and in rare cases, they may also delay delivery.<br\/>• Taxes and fees are based on many factors, including location, material, item value, etc.<br\/>• The amount of taxes due is determined solely by the government.<br\/>• Some countries may require additional fees paid Collect on Delivery (COD).<br\/>• If your order does require these additional charges, they must be paid by you in order for your package to clear customs.<br\/>• These fees are paid to the local carrier and are not collected by Favorite Daughter.<br\/>• Contact the customs office in the destination country for information about any applicable duties or taxes.<br\/>• In the European Union, duties and taxes can be 30% or more of the total declared value of your order.<\/p><p><strong>International Returns<\/strong><\/p><p>Your order will be delivered by UPS who will attempt to deliver the goods to you three (3) times. Please send items back to us at the address below using any trackable shipping method. Once we receive your package, we will promptly process your return. Please be sure that your package is insured and prepaid. Sorry, we cannot accept COD returns.<\/p><p>If an order is placed on JoesJeans.com and then refused, you will be responsible for the original duties,taxes,shipping &amp; handling costs, as well as any duties, taxes and\/or customs charges that were incurred in shipping the package. These amounts will be subtracted from your merchandise refund.<\/p><p>NOTE: Favorite Daughter has made every effort to minimize our international shipping charges. We only charge our cost for these services. We do not make any profit on our shipping services to international customers. Also, we are required by law to disclose the full value of the package contents and cannot alter this value. For further information on international customers, including our <a href=\"\/pages\/privacy\" title=\"\/pages\/privacy\">Privacy Policy<\/a>, please visit our <a href=\"https:\/\/www.joesjeans.com\/terms\">Terms and Conditions<\/a>.<\/p>",
+              "width": "50%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "0f5412f4-9464-4690-9273-2d7c2ad3b6c5": {
+            "type": "text",
+            "settings": {
+              "title": "IS MY PACKAGE INSURED?",
+              "text": "<p>All items are insured against theft and accidental damage whilst in transit from Favorite Daughter to the shipping address. Once your items have been delivered to the specified delivery address and signed for, they are no longer covered by insurance. If your box is damaged upon arrival, we recommend that you either refuse the delivery, or make a note when signing for it that you are accepting a damaged box.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "883dbe1f-13a6-419f-a979-27053a7d48fe": {
+            "type": "text",
+            "settings": {
+              "title": "DO I NEED TO SIGN FOR MY ORDER?",
+              "text": "<p>Due to the high value of the goods that we sell, we require proof of delivery for orders over $500. This means we are unable to authorize packages to be delivered without a signature when the order is over $500.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "7abe794d-a2b1-4031-a76b-710aabfa3893": {
+            "type": "text",
+            "settings": {
+              "title": "CAN I CHANGE MY SHIPPING ADDRESS AFTER MY ORDER HAS BEEN DISPATCHED?",
+              "text": "<p>We are unfortunately unable to redirect orders once your items have been dispatched. Therefore, please ensure you provide a suitable shipping address for the specified delivery times.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "e2605bb6-42b7-47b2-ad38-7572930e1382": {
+            "type": "text",
+            "settings": {
+              "title": "HOW WILL I KNOW YOU RECEIVED MY ORDER & WHEN WILL PAYMENT BE DEDUCTED?",
+              "text": "<p>After you place your order, you will be sent an email confirming that it has been received. Your card will be debited at the time the order was placed. In the rare instance that any of the items you have ordered are not available, we will contact you by email and will only charge your credit card for the value of the items in stock.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "05890907-5a00-4d44-a74a-3179798ee9bf": {
+            "type": "text",
+            "settings": {
+              "title": "CAN I TRACK MY ORDER?",
+              "text": "<p>Once your order has been shipped, you will receive email confirmation of your shipping details and an UPS tracking number. If you have registered, you will be able to view and track the status of your shipment by signing in and selecting <a href=\"\/account\" title=\"\/account\">My Account<\/a> followed by <a href=\"\/orders\/track\" title=\"\/orders\/track\">TRACK\/VIEW<\/a> MY ORDERS.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "63c0c352-2bd1-40be-bcba-628bf4e6faa1": {
+            "type": "text",
+            "settings": {
+              "title": "HOW DO I RETURN OR EXCHANGE AN ITEM?",
+              "text": "<p>In the event that you are unhappy with your purchase from either <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> or our retail store, will gladly accept a return within 30 days of purchase.<\/p><p>Your product(s) must be returned new, unused with all garment tags still attached and within thirty days of the receipt of your order. We are unable to accept merchandise which is not received with these specified conditions.Also, please remember to send all return\/exchanges directly to Favorite Daughere ONLINE STORE, 19801 S. Santa Fe Ave., Rancho Dominguez, CA 90221 if you decide to not use the return label.If you wish to exchange your purchase from <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> for a completely new item or a different size, just follow the steps in the returns process.To ensure that your return is adequately protected in transit, we recommend you send your items back to us in the original packaging provided.Please click here to start the return process<a href=\"https:\/\/returns.joesjeans.com\/\" target=\"_blank\"><strong>START YOUR RETURN<\/strong><\/a>Please click here to start the return process if you purchased with Shoprunner<a href=\"https:\/\/members.shoprunner.com\/orders\/\" target=\"_blank\"><strong>START YOUR RETURN WITH SHOPRUNNER<\/strong><\/a>We will inspect and process your return. Your refund will be applied to your original method of payment within 14 business days of receipt to JOESJEANS ONLINE STORE, 19801 S. Santa Fe Ave., Rancho Dominguez, CA 90221. Posting to your credit card account could take an additional 10 days depending on your credit card company.You will receive email notification once your return has been received and processed.Items purchased at any of JOE&#x27;S brick and mortar stores including JOE&#x27;S full price retail stores, JOE&#x27;S Outlet stores or at over 1,200 retail doors carrying JOE&#x27;S Jeans products in the U.S. and abroad cannot be returned to <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a>. Please contact Hello@shopfavoritedaughter.com or call please call Toll Free: <a href=\"tel:8887152001\" title=\"tel:8887152001\">888-715-2001<\/a> regarding problems with items not purchased at <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a>.All promotional offers listed at <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> cannot be combined with any other offers or previous promotions and cannot be applied to previous purchases.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "cf5a1713-0e80-4bb7-95da-e69588a66c32": {
+            "type": "text",
+            "settings": {
+              "title": "WILL I BE REFUNDED THE FULL VALUE OF MY ORDER?",
+              "text": "<p>All correctly returned products purchased through <a href=\"https:\/\/ShopFavoriteDaughter.com\/\" title=\"https:\/\/ShopFavoriteDaughter.com\/\">ShopFavoriteDaughter.com<\/a> will either be refunded to the purchaser&#x27;s credit card or Favorite Daughter account, and will exclude any expedited shipping costs. All applicable sales taxes will be refunded. Outside the United States, customs duties and sales taxes are non-refundable. However, you may be able to recover these by contacting your local customs bureau directly.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "75aaa683-1506-4b95-bbaa-fd9f56a0cf54": {
+            "type": "text",
+            "settings": {
+              "title": "IS MY PERSONAL INFORMATION KEPT PRIVATE?",
+              "text": "<p>Please be assured that all the information you share with us is private and confidential. At no point will we share, rent or sell your personal information without your consent. To register at Favorite Daughter, we will need to know your name, mailing address and email address. To process credit card orders online we also require your billing address, shipping address, telephone number, credit card number and expiration date. Favorite Daughter only keeps a record of your transactions; your credit card details are not held on our website. Please note that Favorite Daughter may also use the information you provide to inform you of new goods and services via email. If you prefer not to receive these emails, please send an email to <a href=\"mailto:Hello@shopfavoritedaughter.com\" title=\"mailto:Hello@shopfavoritedaughter.com\">Hello@shopfavoritedaughter.com<\/a>. click here to read our <a href=\"\/pages\/privacy\" title=\"\/pages\/privacy\">PRIVACY POLICY<\/a> in full.<\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          },
+          "868e99cc-8bce-4a54-a5d6-e66bc265ab8c": {
+            "type": "text",
+            "settings": {
+              "title": "WHAT ITEMS ARE NON-REFUNDABLE?",
+              "text": "<p><strong>Worn items, sale items and free gifts or promotional items with retail value.<\/strong><\/p>",
+              "width": "100%",
+              "button_text": "",
+              "alignment": "align-self-center",
+              "align_text": "left"
+            }
+          }
+        },
+        "block_order": [
+          "32ebdd91-9913-45cf-8a96-1f2616e30f50",
+          "67de627b-d3c0-48e5-b7c4-8820857bd0bf",
+          "448b5a50-87eb-469a-bda1-4e93846a33b1",
+          "31b13415-bb6b-47dc-ab6c-351f7b0d68dd",
+          "52d43e53-ee6c-4481-93d1-fd34c801bf4f",
+          "3302bb2b-0b05-4e8f-9b9b-768894b41901",
+          "ca100443-80d1-4085-8b87-4c2c04031325",
+          "885ea48f-bdb2-4968-ac80-950074751ab3",
+          "3dc02345-2d44-4ea8-9577-4e8de87baa39",
+          "eabd5c42-977f-4e8c-a433-08864fba9b2c",
+          "eb7e6aef-e29b-4471-9a31-ddc3a34d9908",
+          "0475d408-a6fd-4fb0-b31a-5f37076cc700",
+          "9c28349a-2487-4497-a4ba-97a3df7ca3ea",
+          "3c960e05-b083-4f94-9bcd-a7d5ad5ff47b",
+          "8f060349-b99a-4b4d-a49e-241f19f40349",
+          "639cf5ef-1cf0-4de6-a067-46ae0997d965",
+          "0f5412f4-9464-4690-9273-2d7c2ad3b6c5",
+          "883dbe1f-13a6-419f-a979-27053a7d48fe",
+          "7abe794d-a2b1-4031-a76b-710aabfa3893",
+          "e2605bb6-42b7-47b2-ad38-7572930e1382",
+          "05890907-5a00-4d44-a74a-3179798ee9bf",
+          "63c0c352-2bd1-40be-bcba-628bf4e6faa1",
+          "cf5a1713-0e80-4bb7-95da-e69588a66c32",
+          "75aaa683-1506-4b95-bbaa-fd9f56a0cf54",
+          "868e99cc-8bce-4a54-a5d6-e66bc265ab8c"
+        ],
+        "settings": {
+          "title": "Text columns with images",
+          "align_text": "left"
+        }
+      },
+      "page-template-distributors": {
+        "type": "page-template-distributors",
+        "blocks": {
+          "1595215436139": {
+            "type": "menu_sidebar",
+            "settings": {
+              "title": "",
+              "quick_links": ""
+            }
+          }
+        },
+        "block_order": [
+          "1595215436139"
+        ],
+        "settings": {
+          "enable_sidebar": true,
+          "sidebar_position": "sidebar-left"
+        }
+      },
+      "page-template-about": {
+        "type": "page-template-about",
+        "blocks": {
+          "1595217234507": {
+            "type": "menu_sidebar",
+            "settings": {
+              "title": "",
+              "quick_links": ""
+            }
+          }
+        },
+        "block_order": [
+          "1595217234507"
+        ],
+        "settings": {
+          "enable_sidebar": true,
+          "sidebar_position": "sidebar-left"
+        }
+      },
+      "login-page": {
+        "type": "login-page",
+        "settings": {
+          "padding-top": 100,
+          "padding-bottom": 100,
+          "fluid": true,
+          "logncreate": true,
+          "bgimage": true,
+          "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_greycargo-rt_1400x_3698acff-9afc-4b0b-ae45-15b1843f39b8.jpg"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": false
+        }
+      },
+      "about-text-column1": {
+        "type": "about-text-column1",
+        "settings": {
+          "title": "title",
+          "subtitle": "",
+          "left_text": "pull quote",
+          "right_text": "<p><strong>copy region<\/strong><\/p>"
+        }
+      },
+      "masonary": {
+        "type": "masonary",
+        "blocks": {
+          "b182c09a-cf78-4124-906c-442dfaba8afb": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_greycargo-rt_1400x_3698acff-9afc-4b0b-ae45-15b1843f39b8.jpg",
+              "image_size": "large-height",
+              "title": "",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "e8ef7bf4-2860-4fb5-8f82-bceedfd25630": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/TDFPLD5545_MEDIUM_INDIGO_l_1400x_49eb21fb-6ff2-4c06-99eb-f4c8cac63502.jpg",
+              "image_size": "large",
+              "title": "",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "629e33ca-14dc-4bc7-9adf-7e3cefd26ca6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_blackskinny-rt_1400x_cd1765f5-c0ac-497c-8aa4-30acb7798b07.jpg",
+              "image_size": "medium",
+              "title": "",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "b182c09a-cf78-4124-906c-442dfaba8afb",
+          "e8ef7bf4-2860-4fb5-8f82-bceedfd25630",
+          "629e33ca-14dc-4bc7-9adf-7e3cefd26ca6"
+        ],
+        "settings": {
+          "contained": "container-fluid"
+        }
+      },
+      "about-text-column2": {
+        "type": "about-text-column2",
+        "settings": {
+          "left_text": "",
+          "right_text": "<p><strong>title <\/strong><\/p><p>sub info<\/p>"
+        }
+      },
+      "masonary-secondary": {
+        "type": "masonary-secondary",
+        "blocks": {
+          "dfb12f2c-bd5c-4d66-9fc5-2a509a1db2bb": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_oatcash-rt_1400x_32269716-1153-4434-a291-084f2dcde751.jpg",
+              "image_size": "medium",
+              "title": "hover info",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "e537e22c-2796-459d-a869-7a7081ff87de": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_greycargo-rt_1400x_3698acff-9afc-4b0b-ae45-15b1843f39b8.jpg",
+              "image_size": "medium",
+              "title": "100% Recycled Down",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "e0dd8e5c-ee51-4f84-b93a-ab8e26e7d0ce": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_pink.mint-rt_1400x_6030af38-dd58-4725-8e63-2ed604b7ea8e.jpg",
+              "image_size": "medium",
+              "title": "100% Recycled Polyester",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "7c5a05c3-9808-42c7-a425-83c5954a6f7f": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_black_cash-rt_1400x_5a8edc82-c84f-4506-a905-7741aae9f8a6.jpg",
+              "image_size": "large-width",
+              "title": "100% Recycled Nylon",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          },
+          "a4638472-8e95-494b-b353-7ef20410b8fa": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_black_cash-rt_1400x_5a8edc82-c84f-4506-a905-7741aae9f8a6.jpg",
+              "image_size": "large-width",
+              "title": "100% Organic Cotton",
+              "subtitle": "",
+              "cta_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "dfb12f2c-bd5c-4d66-9fc5-2a509a1db2bb",
+          "e537e22c-2796-459d-a869-7a7081ff87de",
+          "e0dd8e5c-ee51-4f84-b93a-ab8e26e7d0ce",
+          "7c5a05c3-9808-42c7-a425-83c5954a6f7f",
+          "a4638472-8e95-494b-b353-7ef20410b8fa"
+        ],
+        "settings": {
+          "contained": "container-fluid"
+        }
+      },
+      "16060073619a77967f": {
+        "type": "slideshow",
+        "blocks": {
+          "108ee9d8-8256-4cdb-b95d-4668858a6e46": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/7570_FD_NewArrivals_desktop.jpg",
+              "mobimage": "shopify:\/\/shop_images\/7570_FD_NewArrivals_mobile.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "hor_pos_desktop": 50,
+              "hor_pos_mobile": 50,
+              "ver_pos_desktop": 100,
+              "ver_pos_mobile": 100,
+              "hor_pos_tab": 50,
+              "ver_pos_tab": 50,
+              "text_align": "center",
+              "title": "JUST IN",
+              "heading_color": "",
+              "subheading": "New favorites that will become staples in your closet.",
+              "subheading_color": "",
+              "button": "Shop Now",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_hover_color": "",
+              "cta_hover_bg_color": "",
+              "link": "shopify:\/\/collections\/new-arrivals"
+            }
+          },
+          "173dda79-62c9-4fbc-98b2-82f154e281ec": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FAV_DAUGHTER_Lifestyle_0150_desktop_70ee9d19-e1b9-4fe0-803d-e6cfd190bf89.jpg",
+              "mobimage": "shopify:\/\/shop_images\/FAV_DAUGHTER_Lifestyle_0150_mobile_d9bacb86-178b-4ba6-b880-6d3c1a9b5fd9.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "hor_pos_desktop": 50,
+              "hor_pos_mobile": 50,
+              "ver_pos_desktop": 100,
+              "ver_pos_mobile": 100,
+              "hor_pos_tab": 50,
+              "ver_pos_tab": 50,
+              "text_align": "center",
+              "title": "",
+              "heading_color": "rgba(0,0,0,0)",
+              "subheading": "",
+              "subheading_color": "rgba(0,0,0,0)",
+              "button": "",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_hover_color": "",
+              "cta_hover_bg_color": "",
+              "link": "shopify:\/\/collections\/shop"
+            }
+          },
+          "b51508f4-2690-4b26-99fc-9aca3db207b8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Hoodie_Mask_desktop_355b4036-3999-438a-8bf5-ef13ecc0275a.jpg",
+              "mobimage": "shopify:\/\/shop_images\/Hoodie_Mask_mobile_265f78ef-857e-4599-ac46-b0601e1b5b81.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "hor_pos_desktop": 50,
+              "hor_pos_mobile": 50,
+              "ver_pos_desktop": 65,
+              "ver_pos_mobile": 100,
+              "hor_pos_tab": 50,
+              "ver_pos_tab": 50,
+              "text_align": "center",
+              "title": "",
+              "heading_color": "rgba(0,0,0,0)",
+              "subheading": "",
+              "subheading_color": "rgba(0,0,0,0)",
+              "button": "SHOP NOW",
+              "cta_color": "#000000",
+              "cta_bg_color": "",
+              "cta_hover_color": "",
+              "cta_hover_bg_color": "",
+              "link": "shopify:\/\/products\/hoodie-fe14hm6000"
+            }
+          }
+        },
+        "block_order": [
+          "108ee9d8-8256-4cdb-b95d-4668858a6e46",
+          "173dda79-62c9-4fbc-98b2-82f154e281ec",
+          "b51508f4-2690-4b26-99fc-9aca3db207b8"
+        ],
+        "settings": {
+          "secname": "Slideshow",
+          "contained": "container-fluid",
+          "padt": 50,
+          "padb": 50,
+          "autoplay": true,
+          "autoplay_speed": "5000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "1606007943d2aaa6be": {
+        "type": "image-bar",
+        "disabled": true,
+        "blocks": {
+          "1606007943d2aaa6be-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_whiteskinny-rt-2_1400x_418006fd-be66-4f7c-8ba2-eca7e868f2f5.jpg",
+              "alignment": "center",
+              "link": "shopify:\/\/products\/the-sara",
+              "cta_label": "The Sara"
+            }
+          },
+          "1606007943d2aaa6be-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_greycargo-rt_1400x_3698acff-9afc-4b0b-ae45-15b1843f39b8.jpg",
+              "alignment": "center",
+              "cta_label": ""
+            }
+          },
+          "1606007943d2aaa6be-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_blackskinny-rt_1400x_cd1765f5-c0ac-497c-8aa4-30acb7798b07.jpg",
+              "alignment": "center",
+              "cta_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "1606007943d2aaa6be-0",
+          "1606007943d2aaa6be-1",
+          "1606007943d2aaa6be-2"
+        ],
+        "settings": {
+          "secname": "Image Bar",
+          "section_height": "large",
+          "padt": 50,
+          "padb": 0
+        }
+      },
+      "1606007956569109d8": {
+        "type": "collection",
+        "settings": {
+          "title": "Trending",
+          "collection": "shop",
+          "grid": "4",
+          "rows": "2",
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "1606007997f26112d0": {
+        "type": "alternating-blocks",
+        "disabled": true,
+        "blocks": {
+          "1606007997f26112d0-0": {
+            "type": "row",
+            "settings": {
+              "benefit_color": "#ffffff",
+              "benefit_bg": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_jumpsuit-rt_1400x_ba4216ab-2255-4799-b12a-bcff1c817ccb.jpg",
+              "benefit_title": "title area",
+              "title_color": "#31333d",
+              "benefit_copy": "short copy",
+              "copy_color": "#31333d",
+              "link_text": "Shop",
+              "link_url": "#"
+            }
+          },
+          "00b7360a-c59b-4df1-b1f9-e57738ef6691": {
+            "type": "row",
+            "settings": {
+              "benefit_color": "#ffffff",
+              "benefit_bg": "shopify:\/\/shop_images\/joesjeans_CELstudios_2020_greycargo-rt_1400x_3698acff-9afc-4b0b-ae45-15b1843f39b8.jpg",
+              "benefit_title": "title",
+              "title_color": "#000000",
+              "benefit_copy": "sub",
+              "copy_color": "#000000",
+              "link_text": "SHOP"
+            }
+          }
+        },
+        "block_order": [
+          "1606007997f26112d0-0",
+          "00b7360a-c59b-4df1-b1f9-e57738ef6691"
+        ],
+        "settings": {
+          "secname": "Alternating Blocks",
+          "title": "Brand Benefit Rows",
+          "full_width": true,
+          "row_size": "750px"
+        }
+      },
+      "1606008024a7d1c697": {
+        "type": "custom-content",
+        "blocks": {
+          "99f67729-dec0-4a1b-9d8d-9aa7d1ced51e": {
+            "type": "html",
+            "settings": {
+              "code": "",
+              "width": "25%"
+            }
+          },
+          "1606008024a7d1c697-0": {
+            "type": "text",
+            "settings": {
+              "title": "Introducing Favorite Daughter",
+              "subheading": "",
+              "position": "below",
+              "text": "<p>Meet your closet’s newest favorites--a casually cool collection of wardrobe must-haves designed by the fashionably-sensitive sisters, Sara and Erin Foster. Go ahead, find your favorite. <\/p>",
+              "button_text": "",
+              "width": "50%",
+              "alignment": "align-self-center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "99f67729-dec0-4a1b-9d8d-9aa7d1ced51e",
+          "1606008024a7d1c697-0"
+        ],
+        "settings": {
+          "secname": "Custom Content",
+          "title": "",
+          "padt": 0,
+          "padb": 0,
+          "background": "rgba(0,0,0,0)",
+          "extra_padding": "normal"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "blocks": {
+          "f51670f4-2897-46ad-8f7e-254c3680aca5": {
+            "type": "menu_sidebar",
+            "settings": {
+              "title": "",
+              "quick_links": "erin-sara"
+            }
+          },
+          "9703dae5-d67a-47b9-8a6e-a0bef9da3747": {
+            "type": "collection_sidebar",
+            "settings": {
+              "title": "Trending",
+              "collection": "shop",
+              "collection_qty": "2"
+            }
+          }
+        },
+        "block_order": [
+          "f51670f4-2897-46ad-8f7e-254c3680aca5",
+          "9703dae5-d67a-47b9-8a6e-a0bef9da3747"
+        ],
+        "settings": {
+          "layout": "list",
+          "blog_show_author": false,
+          "blog_show_date": false,
+          "enable_sidebar": true
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true
+        }
+      },
+      "160605748708b261cd": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "160605748708b261cd-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shopinsta.png",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "hor_pos_desktop": 50,
+              "hor_pos_mobile": 50,
+              "ver_pos_desktop": 100,
+              "ver_pos_mobile": 100,
+              "hor_pos_tab": 50,
+              "ver_pos_tab": 50,
+              "text_align": "center",
+              "title": "",
+              "heading_color": "rgba(0,0,0,0)",
+              "subheading": "",
+              "subheading_color": "rgba(0,0,0,0)",
+              "button": "",
+              "cta_color": "",
+              "cta_bg_color": "",
+              "cta_hover_color": "",
+              "cta_hover_bg_color": ""
+            }
+          }
+        },
+        "block_order": [
+          "160605748708b261cd-0"
+        ],
+        "settings": {
+          "secname": "Slideshow",
+          "contained": "container-fluid",
+          "padt": 0,
+          "padb": 50,
+          "autoplay": true,
+          "autoplay_speed": "5000",
+          "dots": false,
+          "arrows": false,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "1606057493fa8def93": {
+        "type": "custom-content",
+        "blocks": {
+          "39690c21-9771-40ed-8116-e09fccfbdbd2": {
+            "type": "html",
+            "settings": {
+              "code": "",
+              "width": "25%"
+            }
+          },
+          "1606057493fa8def93-0": {
+            "type": "text",
+            "settings": {
+              "title": "Shop Insta",
+              "subheading": "#favoritedaughter",
+              "position": "below",
+              "text": "",
+              "button_text": "",
+              "width": "50%",
+              "alignment": "align-self-center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "39690c21-9771-40ed-8116-e09fccfbdbd2",
+          "1606057493fa8def93-0"
+        ],
+        "settings": {
+          "secname": "Custom Content",
+          "title": "",
+          "padt": 50,
+          "padb": 0,
+          "background": "rgba(0,0,0,0)",
+          "extra_padding": "normal"
+        }
+      },
+      "1606064659165381da": {
+        "type": "shopthelook",
+        "blocks": {
+          "66162f51-9762-4fa5-9f64-a8123273cb99": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FEANRC4003_BEIGE_2018.jpg",
+              "alignment": "center",
+              "title": "Shop the Look",
+              "text": "<p>Fuss-free fashion with a forgiving fabric that’s made to move. <\/p>",
+              "products": "2",
+              "side_products_background": "#ffffff",
+              "product1": "ribbed-cardigan",
+              "product_title_1": "",
+              "product_image_1": "shopify:\/\/shop_images\/FEANRC4003_BEIGE_a.jpg",
+              "product2": "ribbed-skirt",
+              "product_title_2": "",
+              "product_image_2": "shopify:\/\/shop_images\/FEANRS8004_BEIGE_a.jpg",
+              "product3": "",
+              "product_title_3": "",
+              "product4": "",
+              "product_title_4": ""
+            }
+          },
+          "1606064659165381da-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/feansc3502_sea_glass_c.jpg",
+              "alignment": "center",
+              "title": "Shop the Look",
+              "text": "<p>This relaxed, cool look sets the scene for warm days.<\/p>",
+              "products": "3",
+              "side_products_background": "#ffffff",
+              "product1": "amalfi-short-sleeve-cardigan",
+              "product_title_1": "",
+              "product_image_1": "shopify:\/\/shop_images\/FEANSC3502_SEA_GLASS_a.jpg",
+              "product2": "the-amalfi-tank",
+              "product_title_2": "",
+              "product_image_2": "shopify:\/\/shop_images\/FEANCT3503_SEA_GLASS_a.jpg",
+              "product3": "the-jordie-super-high-rise-straight",
+              "product_title_3": "",
+              "product_image_3": "shopify:\/\/shop_images\/FCD8LK5546_LAKE_a_1.jpg",
+              "product4": "",
+              "product_title_4": ""
+            }
+          },
+          "cde7373b-f5e7-48a9-8598-ce91f819455f": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/30_FD_HO20_FEC8LC3000_storm_cloud_SP21_FCD8LK5546_lake_1626.jpg",
+              "alignment": "center",
+              "title": "Shop the Look",
+              "text": "<p>The perfect outfit if you&#x27;re looking to achieve that chic effortless look. <\/p>",
+              "products": "2",
+              "side_products_background": "#ffffff",
+              "product1": "long-sleeve-cropped-top-fec8lc3000",
+              "product_title_1": "",
+              "product_image_1": "shopify:\/\/shop_images\/FEC8LC3000_STORMCLOUD_a.jpg",
+              "product2": "the-jordie-super-high-rise-straight",
+              "product_title_2": "",
+              "product_image_2": "shopify:\/\/shop_images\/FCD8LK5546_LAKE_a_1_78612059-d480-4dca-9349-766f24dafb7a.jpg",
+              "product3": "",
+              "product_title_3": "",
+              "product4": "",
+              "product_title_4": ""
+            }
+          },
+          "2aec544c-9c4a-481f-9915-7738a3d050b8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fec2ht8502_black_c.jpg",
+              "alignment": "top",
+              "title": "Shop the Look",
+              "text": "<p>From your 5 o&#x27;clock zoom call to your dinner date. We&#x27;ve got you covered.<\/p>",
+              "products": "2",
+              "side_products_background": "#ffffff",
+              "product1": "the-zoom-top",
+              "product_title_1": "",
+              "product_image_1": "shopify:\/\/shop_images\/FEPATW3504_WHITE_a.jpg",
+              "product2": "high-rise-tapered-trouser-fec2ht8502",
+              "product_title_2": "",
+              "product_image_2": "shopify:\/\/shop_images\/FEC2HT8502_BLACK_a.jpg",
+              "product3": "",
+              "product_title_3": "",
+              "product4": "",
+              "product_title_4": ""
+            }
+          }
+        },
+        "block_order": [
+          "66162f51-9762-4fa5-9f64-a8123273cb99",
+          "1606064659165381da-0",
+          "cde7373b-f5e7-48a9-8598-ce91f819455f",
+          "2aec544c-9c4a-481f-9915-7738a3d050b8"
+        ],
+        "settings": {
+          "secname": "Shop the Look",
+          "contained": "container",
+          "autoplay": true,
+          "autoplay_speed": "5000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "small"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "image_size": "medium",
+          "vertical": false,
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "show_share_buttons": true
+        }
+      },
+      "form-builder-pro": {
+        "type": "form-builder-pro",
+        "blocks": {
+          "88bc3dd8-b842-4cf5-8a79-24c721097ef8": {
+            "type": "radio",
+            "settings": {
+              "title": "Privacy Request Type",
+              "input_label": "Privacy Request Type",
+              "choices": "I want access to personal information that has been collected or shared\nI want to request that personal information be deleted",
+              "default_choice": "",
+              "input_required": true,
+              "inline_style": false,
+              "field_width": "1",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          },
+          "f79fd3be-2616-4f31-b013-98dcb5d7b646": {
+            "type": "textinput",
+            "settings": {
+              "title": "First name",
+              "input_label": "First name",
+              "input_placeholder": "",
+              "input_help_text": "",
+              "input_required": true,
+              "field_width": "1",
+              "field_height": "default",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          },
+          "b81ce886-97ac-4e58-96a5-244f42e3945d": {
+            "type": "textinput",
+            "settings": {
+              "title": "Last Name",
+              "input_label": "Last Name",
+              "input_placeholder": "",
+              "input_help_text": "",
+              "input_required": true,
+              "field_width": "1",
+              "field_height": "default",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          },
+          "55659bde-4283-46e5-a770-8a3be0ed4f18": {
+            "type": "textinput",
+            "settings": {
+              "title": "Email",
+              "input_label": "Email",
+              "input_placeholder": "",
+              "input_help_text": "",
+              "input_required": true,
+              "field_width": "1",
+              "field_height": "default",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          },
+          "da75fe8e-27bb-4e5b-88b3-4d0dd5965334": {
+            "type": "divider",
+            "settings": {
+              "divider": "line",
+              "padding": 5,
+              "text_alignment": "left",
+              "field_width": "1",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          },
+          "c8c77b40-a71a-43b7-a006-621155a1c35f": {
+            "type": "address",
+            "settings": {
+              "title": "",
+              "show_field1": true,
+              "input_label1": "Address",
+              "input_placeholder1": "Address",
+              "input_required1": true,
+              "field_width1": "1",
+              "field_height1": "default",
+              "show_field2": true,
+              "input_label2": "Address 2",
+              "input_placeholder2": "Apartment, Suite, etc (optional)",
+              "input_required2": false,
+              "field_width2": "1",
+              "field_height2": "default",
+              "show_field3": true,
+              "input_label3": "City",
+              "input_placeholder3": "City",
+              "input_required3": true,
+              "field_width3": "2",
+              "field_height3": "default",
+              "show_field4": true,
+              "input_label4": "State",
+              "input_placeholder4": "State",
+              "input_required4": true,
+              "field_width4": "2",
+              "field_height4": "default",
+              "show_field5": true,
+              "input_label5": "Zip Code",
+              "input_placeholder5": "Zip Code",
+              "input_required5": true,
+              "field_width5": "2",
+              "field_height5": "default",
+              "show_field6": true,
+              "input_label6": "Country",
+              "input_placeholder6": "Country",
+              "input_required6": true,
+              "field_width6": "2",
+              "field_height6": "default",
+              "condition": false,
+              "field": "",
+              "match": ""
+            }
+          }
+        },
+        "block_order": [
+          "88bc3dd8-b842-4cf5-8a79-24c721097ef8",
+          "f79fd3be-2616-4f31-b013-98dcb5d7b646",
+          "b81ce886-97ac-4e58-96a5-244f42e3945d",
+          "55659bde-4283-46e5-a770-8a3be0ed4f18",
+          "da75fe8e-27bb-4e5b-88b3-4d0dd5965334",
+          "c8c77b40-a71a-43b7-a006-621155a1c35f"
+        ],
+        "settings": {
+          "contained": "container",
+          "proform": false,
+          "emailget": "hello@shopfavoritedaughter.com",
+          "background": "#ffffff",
+          "form_title": "",
+          "text_alignment": "center",
+          "form_title_color": "#31333d",
+          "extra_padding": "normal",
+          "font_size": 16,
+          "labelhide": false,
+          "color": "#31333d",
+          "append_color": "#31333d",
+          "append_background_color": "#e8e9eb",
+          "submittingmsg": "Submitting, Please Wait...",
+          "successmsg": "Recieved, Our team will be in touch shortly",
+          "submitmsg": "Submit Form"
+        }
+      },
+      "slideshow2": {
+        "type": "slideshow2",
+        "blocks": {
+          "db422201-f46a-4184-9bc9-41625389088d": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FAV_DAUGHTER_RGB_d62207b3-2a50-4d47-9a93-56a33901d66d.jpg",
+              "mobimage": "shopify:\/\/shop_images\/FAV_DAUGHTER_mobile.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "Image slide",
+              "heading_color": "rgba(0,0,0,0)",
+              "subheading": "Tell your brand's story through video and images",
+              "subheading_color": "rgba(0,0,0,0)",
+              "button": "Shop Now"
+            }
+          },
+          "d84e778c-8b6c-4dd7-9fcc-4a1c1c50bd45": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FAV_DAUGHTER_Lifestyle_0150_V1B_1.jpg",
+              "mobimage": "shopify:\/\/shop_images\/FAV_DAUGHTER_Lifestyle_0150_V1B_1_e54a6ccd-89bc-4a19-9f70-cd69bcf60216.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "Image slide",
+              "heading_color": "rgba(0,0,0,0)",
+              "subheading": "Tell your brand's story through video and images",
+              "subheading_color": "rgba(0,0,0,0)",
+              "button": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "db422201-f46a-4184-9bc9-41625389088d",
+          "d84e778c-8b6c-4dd7-9fcc-4a1c1c50bd45"
+        ],
+        "settings": {
+          "secname": "Slideshow",
+          "contained": "container-fluid",
+          "padt": 0,
+          "padb": 0,
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "custom-content": {
+        "type": "custom-content",
+        "blocks": {
+          "b382142c-94d2-4dd5-a259-a3dab998ea30": {
+            "type": "text",
+            "settings": {
+              "title": "Meet The Sisters",
+              "subheading": "Erin + Sara",
+              "position": "below",
+              "text": "<p>Erin and Sara Foster are currently in an overall deal at Disney’s 20th Century Studios to create and produce television shows. They have several shows in development that they are producing, writing, and starring in. Erin and Sara were co-heads of creative at Bumble from 2017 to 2020 and now sit as advisors to the company. They also serve as investors and advisors to The Mirror, canned wine company Bev, and women’s wear company Summersalt. Erin and Sara are expanding and diversifying their portfolio in multiple categories. You can also see Erin and Sara in their critically acclaimed television series, Barely Famous.<\/p>",
+              "button_text": "",
+              "width": "100%",
+              "alignment": "align-self-center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "b382142c-94d2-4dd5-a259-a3dab998ea30"
+        ],
+        "settings": {
+          "secname": "Custom content",
+          "title": "",
+          "padt": 50,
+          "padb": 50,
+          "background": "rgba(0,0,0,0)",
+          "extra_padding": "normal"
+        }
+      },
+      "WAMbutton": {
+        "type": "WAMbutton",
+        "settings": {}
+      },
+      "product-images-bundle": {
+        "type": "product-images-bundle",
+        "settings": {
+          "image_size": "medium",
+          "vertical": false,
+          "enable_zoom": true
+        }
+      },
+      "product-template-bundle": {
+        "type": "product-template-bundle",
+        "blocks": {
+          "a9ceef32-8002-4ef5-bd2a-614492ccd88d": {
+            "type": "bundle",
+            "settings": {
+              "title": "Demo Bundle",
+              "product": "demo-bundle",
+              "collection": "demo-bundle",
+              "price": "475"
+            }
+          },
+          "bc358e89-7589-4305-a6a2-4d9176695fae": {
+            "type": "bundle",
+            "settings": {
+              "title": "CARDIGAN + SPAGHETTI SWEATER BRALETTE",
+              "product": "copy-of-spaghetti-sweater-bralette",
+              "collection": "cardigan-spaghetti-sweater-bralette-bundle",
+              "price": ""
+            }
+          },
+          "a76e551a-16ce-4114-9ba8-8d028b1163a0": {
+            "type": "bundle",
+            "settings": {
+              "title": "CARDIGAN SWEATER + SWEATER KNIT TANK TOP",
+              "product": "cardigan-sweater-sweater-knit-tank-top-1",
+              "collection": "cardigan-sweater-sweater-knit-tank-top",
+              "price": "275"
+            }
+          },
+          "c8e8af20-6cbc-44de-8ffa-1410470efb2c": {
+            "type": "bundle",
+            "settings": {
+              "title": "THE SARA & COWL NECK PULLOVER SWEATER SET",
+              "product": "the-sara-cowl-neck-pullover-sweater-set",
+              "collection": "the-sara-cowl-neck-pullover-sweater-set",
+              "price": "408"
+            }
+          },
+          "6cc86ac5-6e32-4016-beb4-9f68e76bed1f": {
+            "type": "bundle",
+            "settings": {
+              "title": "THE ERIN + COWL NECK PULLOVER SWEATER SET",
+              "product": "the-erin-cowl-neck-pullover-sweater",
+              "collection": "the-erin-cowl-neck-pullover-sweater-bundle",
+              "price": "435"
+            }
+          },
+          "f6c20383-e89c-499d-b1ed-04ecd907e69d": {
+            "type": "bundle",
+            "settings": {
+              "title": "CARDIGAN, KNIT TANK & PANT SET",
+              "product": "cardigan-sweater-knit-tank-top-knit-pant-set",
+              "collection": "cardigan-knit-tank-and-pant-set",
+              "price": "435"
+            }
+          },
+          "c4898f7d-372b-4c09-9e86-1cdfb324325c": {
+            "type": "bundle",
+            "settings": {
+              "title": "JORDIE SUPER HIGH RISE STRAIGHT + AMALFI SHORT SLEEVE CARDI SET",
+              "product": "jordie-super-high-rise-straight-amalfi-short-sleeve-cardi-set",
+              "collection": "jordie-super-high-rise-straight-amalfi-short-sleeve-cardi-set",
+              "price": "285"
+            }
+          }
+        },
+        "block_order": [
+          "a9ceef32-8002-4ef5-bd2a-614492ccd88d",
+          "bc358e89-7589-4305-a6a2-4d9176695fae",
+          "a76e551a-16ce-4114-9ba8-8d028b1163a0",
+          "c8e8af20-6cbc-44de-8ffa-1410470efb2c",
+          "6cc86ac5-6e32-4016-beb4-9f68e76bed1f",
+          "f6c20383-e89c-499d-b1ed-04ecd907e69d",
+          "c4898f7d-372b-4c09-9e86-1cdfb324325c"
+        ],
+        "settings": {
+          "image_size": "medium",
+          "vertical": false,
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "show_share_buttons": true
+        }
+      },
+      "attentive-script": {
+        "type": "attentive-script",
+        "settings": {
+          "attentive_desktop": "69278",
+          "attentive_mobile": "69276"
+        }
+      },
+      "collection-header-bg": {
+        "type": "collection-header-bg",
+        "blocks": {
+          "39931cdc-07e0-47c0-8021-e3c72d4977b3": {
+            "type": "page_header",
+            "settings": {
+              "page": "klarna-hauliday",
+              "image": "shopify:\/\/shop_images\/Site_Banner.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/7640_SiteBanner_mobile.jpg"
+            }
+          },
+          "2b400de4-54bf-484e-9eb1-739eb61a5929": {
+            "type": "page_header",
+            "settings": {
+              "page": "sale",
+              "image": "shopify:\/\/shop_images\/7825_FD_Sale_desktop_banner.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/7825_FD_Sale_mobile_banner.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "39931cdc-07e0-47c0-8021-e3c72d4977b3",
+          "2b400de4-54bf-484e-9eb1-739eb61a5929"
+        ],
+        "settings": {}
+      },
+      "product-instagram-posts": {
+        "type": "product-instagram-posts",
+        "settings": {
+          "visible": true,
+          "title": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "16060073619a77967f",
+      "1606008024a7d1c697",
+      "1606007943d2aaa6be",
+      "1606064659165381da",
+      "1606007956569109d8",
+      "1606007997f26112d0",
+      "1606057493fa8def93",
+      "160605748708b261cd"
+    ]
+  }
+}

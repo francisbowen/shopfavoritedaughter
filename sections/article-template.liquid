@@ -1,0 +1,156 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ article.url }}"
+    },
+    "headline": "{{ article.title }}",
+    "image": [
+      "https:{{ article.image.src | img_url: 'original' }}"
+    ],
+    "datePublished": "{{ article.published_at }}",
+    "dateModified": "{{ article.published_at | date: "%Y-%m-%dT%H:%M:%SZ" }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ article.author }}"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "{{ shop.name }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:{{ settings.logo | img_url: 'original' }}"
+      }
+    },
+    "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 100 | escape }}"
+  }
+</script>
+{% comment %}
+<style>
+  {% if article.image %}
+  .article-hero__image {
+    background-image: url({{ article.image.src | img_url: '946x' }});
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .article-hero__image {
+      background-image:url('{{ article.image.src | img_url: '554x' }}'); 
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    .article-hero__image {
+      background-image:url('{{ article.image.src | img_url: '417x' }}'); 
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .article-hero__image {
+      background-image:url('{{ article.image.src | img_url: '524x' }}'); 
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .article-hero__image {
+      background-image:url('{{ article.image.src| img_url: '300x' }}'); 
+    }
+  }
+  {% endif %}
+</style>
+{% endcomment %}
+
+<article class="container" itemscope itemtype="http://schema.org/Article">
+  <div class="row">
+    <div class="col-xl-40 offset-xl-10 col-lg-48 offset-lg-6">
+      <div class="rte">
+        {{ article.content }}
+      </div>
+
+      {% if section.settings.show_share_buttons %}
+        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% assign current_found = false %}
+  {% assign done = false %}
+  {% for a in blog.articles %}
+    {% if current_found and done == false %}
+      {% assign next_article = a %}
+      {% assign done = true %}
+    {% endif %}
+    {% unless done %}
+      {% if a.id == article.id %}
+        {% assign current_found = true %}
+      {% else %}
+        {% assign prev_article = a %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+  {% if prev_article or next_article %}
+    <div class="row">
+      <!-- START post article BAR -->
+      <div class="col-xl-40 offset-xl-10 col-lg-48 offset-lg-6" style="margin-top:40px; margin-bottom:40px;">
+        <h3>Additional Articles</h3>
+        <div class="row">
+          {% if prev_article %}
+            <div class="prev-prod col-md-28 col-xs-60">
+              <a href="{{ prev_article.url }}">
+                <div class="sustainable-repeater">
+                  <div class="half-top {{ prev_article.handle }}" style="{% if prev_article.image %}background-image:url('{{ prev_article | img_url: 'original' }}');{% else %}background-color:#d8d7d3;{%endif%}width:100%;background-size:cover;height:300px"></div>
+                  <p>Previous Article</p>
+                  <h4>{{ prev_article.title | truncatewords: 10 }}</h4>
+                  <div class="btnholder">
+                    <span class="btn btn--secondary btn--has-icon-before return-link" href="{{ prev_article.url }}">{{ 'blogs.article.read_more' | t }}</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+
+          {% if next_article %}
+            <div class="prev-prod col-md-28 offset-md-4 col-xs-60">
+              <a href="{{ next_article.url }}">
+                <div class="sustainable-repeater">
+                  <div class="half-top {{ next_article.handle }}" style="{% if next_article.image %}background-image:url('{{ next_article | img_url: 'original' }}');{% else %}background-color:#d8d7d3;{%endif%}width:100%;background-size:cover;height:300px"></div>
+                  <p>Next Article</p>
+                  <h4>{{ next_article.title | truncatewords: 10 }}</h4>
+                  <div class="btnholder">
+                    <span class="btn btn--secondary btn--has-icon-before return-link" href="{{ next_article.url }}">{{ 'blogs.article.read_more' | t }}</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <!-- END post article BAR -->
+    </div>
+  {% endif %}
+</article>
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

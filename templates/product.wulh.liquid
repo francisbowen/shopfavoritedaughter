@@ -1,0 +1,164 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+<div class="product-template__container container" id="ProductSection-{{ product.id }}" data-section-id="{{ product.id }}" data-section-type="product" data-enable-history-state="true" data-crossclick="{% if settings.enable_crossclick %}allow{% endif %}" data-comingsoon="{% if product.tags contains 'coming soon' %}true{% else %}false{% endif %}">
+
+{% include 'richcards' %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+
+<style>
+  .container.breadcrumbs {background:#fff; }
+  .container.breadcrumbs a {color:#1e1e1e;}
+  .breadcrumb {background:#fff;}
+  @media screen and (min-width: 768px) {
+.shopify-section-topspacing {padding-top: 0px;}}
+@media screen and (min-width: 768px) {
+.shopify-section-topspacing {
+    padding-top: 0px;}}
+</style>
+
+<div class="container breadcrumbs">
+{% include 'breadcrumbs' %} 
+
+</div>
+  <div class="pdp-scroll-wrapper">
+<div class="row product-single">
+{% section 'product-images' %}
+{% section 'product-template' %}
+  </div>
+    </div>
+  
+
+  <a name="tech"></a>
+{% section 'wulh-product-alts' %}
+{% include 'product-reviews' %}
+</div>
+
+
+
+
+
+
+<script>
+  const postDetails = document.querySelector(".product-single");
+const postSidebar = document.querySelector(".post-sidebarsss");
+const postSidebarContent = document.querySelector(".post-sidebarsss > div");
+
+const controller = new ScrollMagic.Controller();
+const scene = new ScrollMagic.Scene({
+  triggerElement: postSidebar,
+  triggerHook: 0,
+  duration: getDuration
+}).addTo(controller);
+
+if (window.matchMedia("(min-width: 768px)").matches) {
+  scene.setPin(postSidebar, {pushFollowers: false});
+  scene.setClassToggle('.post-sidebarsss', 'post-sidebarsss-active');
+}
+
+// in your projects, you might want to debounce resize event for better performance
+window.addEventListener("resize", () => {
+  if (window.matchMedia("(min-width: 768px)").matches) {
+    scene.setPin(postSidebar, {pushFollowers: false});
+    scene.setClassToggle('.post-sidebarsss', 'post-sidebarsss-active');
+  } else {
+    scene.removePin(postSidebar, true);
+  }
+});
+
+function getDuration() {
+  return postDetails.offsetHeight - postSidebarContent.offsetHeight ;
+}
+  
+ 
+</script>
+
+
+{% if settings.enable_crossclick %}
+{% if cross_need and product.images.size != prod_image_size %}
+<div id="description">
+<div class="container">
+<div class="row product-single">
+<div class="col-md-60">
+<div class="row">
+
+<div class="col-md-28 offset-md-2 col-60">
+<div class="thumbnails-wrapper--secondary">
+{% for image in product.images %}
+{% unless image.attached_to_variant? %}
+<a href="{{ image.src | img_url: 'original' }}" alt="{{ image.alt }}" class="mp-image image-rect" style="background-image:url({{ image.src | img_url: product_image_size }});">
+<img src="{{ image.src | img_url: '1024x' }}">
+</a>
+{% endunless %}
+{% endfor %}
+</div>
+</div>
+
+<div class="{% if cross_need %}col-md-28 offset-md-2 col-60{% else %}col{% endif %}">
+<div class="product-single__description rte" style="margin-top:0px; margin-bottom:30px;">
+<h3>Details</h3>
+{{ product.description }}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+$(window).load(function(){
+        $('.thumbnails-wrapper--secondary').slick({
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          speed: 350,
+          fade: true,
+          arrows:true,
+          cssEase: 'ease'
+        });
+
+        $('.thumbnails-wrapper--secondary .slick-track').magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          gallery: {
+            enabled:true
+          }
+        });
+      });
+    </script>
+  {% endif %}
+{% endif %}
+
+
+
+
+{% section 'product-related' %}
+
+{% if collection %}
+  <div class="text-center return-link-wrapper">
+    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+      {% include 'icon-arrow-left' %}
+      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+    </a>
+  </div>
+{% endif %}
+
+{% unless product.empty? %}
+  <script type="application/json" id="ProductJson-{{ product.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+{% section 'product-sizing' %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>

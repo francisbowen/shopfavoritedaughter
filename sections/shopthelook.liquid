@@ -1,0 +1,475 @@
+{% assign max_products = 0%}
+<div class="{{ section.settings.contained }}">
+  <div class="row" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+    {% if section.blocks.size > 0 %}
+      <div class="col-60 slideshow-wrapper product-slider-wrappper">
+        <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+          <span class="slideshow__pause-stop">
+            {% include 'icon-pause' %}
+            <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+          </span>
+          <span class="slideshow__pause-play">
+            {% include 'icon-play' %}
+            <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+          </span>
+        </button>
+        <div class="" id="Slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed }}" data-dots="{{ section.settings.dots }}" data-arrows="{{ section.settings.arrows }}">
+          {% for block in section.blocks %}
+            <div class="slideshow__slide slideshow__slide--{{ block.id }}" {{ block.shopify_attributes }}>
+              <style>
+                {% if block.settings.image != blank %}
+                
+                  .slideshow__image--{{ block.id }} {
+                    background-position: {{ block.settings.alignment }} !important;
+                    background-size:contain;
+                        background-repeat: no-repeat;
+                    background-color:#f7f7f7;
+                  }
+                  @media screen and (max-width: 150px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '150x' }}');
+                    }
+                  }
+                  @media screen and (min-width: 151px) and (max-width: 300px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '300x' }}');
+                    }
+                  }
+                  @media screen and (min-width: 301px) and (max-width: 600px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '600x' }}');
+                    }
+                  }
+                  @media screen and (min-width: 601px) and (max-width: 800px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '800x' }}');
+                    }
+                  }
+                  @media screen and (min-width: 801px) and (max-width: 1000px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '1000x' }}');
+                    }
+                  }
+                  @media screen and (min-width: 1001px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '2000x' }}');
+                    }
+                  }
+                {% endif %}
+                {% if block.settings.heading_color != blank %}
+                  .slideshow__text--{{ block.id }} h2.h1 {
+                    color: {{ block.settings.heading_color }};
+                  }
+                {% endif %}
+                {% if block.settings.subheading_color != blank %}
+                  .slideshow__text--{{ block.id }} span.mega-subtitle {
+                    color: {{ block.settings.subheading_color }};
+                  }
+                  .slideshow__text--{{ block.id }} hr {
+                    border-top-color: {{ block.settings.subheading_color }};
+                  }
+                {% endif %}
+                {% if block.settings.textunderlay %}
+                  .slideshow__text--{{ block.id }} .slideshow__text-content .page-width:before {
+                    opacity: 1;
+                  }
+                {% endif %}
+                .product-slideshow-item.product-slideshow-item--{{block.id }} .card-item {
+                    background-color: {{ block.settings.side_products_background }};
+                }
+              </style>
+                {% if block.settings.image == blank %}
+                  <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+                <div class="product-slideshow-item product-slideshow-item--{{block.id }}">
+                  <div class="container no-padding">
+                    <div class="col-md-60">
+                      <div class="row">
+                        <div class="col-lg-45 fourth no-padding">
+                          <div class="product-slide-image slideshow__image--{{ block.id }}"></div>
+                        </div>
+                        <div class="col-lg-15">
+                          <h2 class="product-main-title mb-4 mt-5 second">{{block.settings.title}}</h2>
+                          <p>{{block.settings.text}}</p>
+                        </div>
+                      </div>
+                      <div class="prodcut-text col-lg-20 col-md-60 offset-lg-13 text-lg-right mt-4 no-padding" >
+                        
+                      </div>
+                      <div class="side-products col-lg-25 col-md-60 ">
+                        <div class="d-md-flex mt-5 row">
+                          {% assign total_products = block.settings.products  | plus: 0 %}
+                          {% if total_products > max_products %}
+                            {% assign max_products = total_products %}
+                          {% endif %}
+                          {% assign products_count = block.settings.products %}
+                          {% for products_count in (1..products_count) %}
+                            {% assign product = "product" | append: products_count %}
+                            {% assign product = all_products[block.settings[product]] %}
+                            {% assign product_image = "product_image_" | append: products_count %}
+                            {% assign product_title = "product_title_" | append: products_count %}
+                            {% if product.title.size > 0 %}
+                          
+                              {% capture product_image %}
+                                {% if block.settings[product_image] %}
+                                    {{ block.settings[product_image] | img_url: '1024x' }}
+                                  {% else %}
+                                    {{ product.featured_image.src | img_url: '1024x' }}
+                                {% endif %}
+                              {% endcapture %}
+
+                              {% capture product_title %}
+                                {% if block.settings[product_title] != blank %}
+                                    {{ block.settings[product_title] }}
+                                  {% else %}
+                                    {{ product.title }}
+                                {% endif %}
+                              {% endcapture %}                          
+                            {% endif %}
+                            {% case total_products %}
+                              {% when 1 %}
+                                 {% assign item_classes = 'col-sm-40 col-md-60 offset-xs-10 offset-md-0 col-60' %}
+                              {% when 2 %}
+                                 {% assign item_classes = 'col-sm-30 col-md-30 offset-xs-0 offset-md-0 col-30' %}
+                              {% when 3 %}
+                                 {% assign item_classes = 'col-sm-30 col-md-30 offset-xs-0 offset-md-0 col-20' %}
+                              {% when 4 %}
+                                 {% assign item_classes = 'col-sm-30 col-md-30 offset-xs-0 offset-md-0 col-30' %}
+                              {% else %}
+                                 {% assign item_classes = 'col-sm-40 col-md-60 offset-xs-0 offset-md-10 col-30' %}
+                            {% endcase %}                            
+                            
+                            <div class="{{ item_classes }}">
+                              <div class="card-item slideshow-product"> 
+                                <a data-sectionname="{{section.settings.secname}}" href="{{product.url}}">
+                                  <div class="product-image " style="background-image: url({{ product_image}});"> </div>
+                                  {% if product.tags contains 'new' or product.tags contains 'New' %}
+                                   <span class="sale-item">New</span>
+                                 {% endif %}
+                                  <h6 class="product-img-caption ">{{product_title}}</h6>
+                                </a> 
+                              </div>
+                            </div>
+                          
+                          {% endfor %}
+                          
+                          
+                        </div>
+                      </div>
+              		</div>
+              	  </div>
+                </div>
+             </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% if section.blocks.size == 0 %}
+      <div class="placeholder-noblocks">
+        {{ 'homepage.onboarding.no_content' | t }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+  {% if max_products > 2 %}
+  <style type="text/css">
+    @media screen and (min-width: 992px) {
+      .product-slider-wrappper .product-slide-image {
+        padding:0;
+        height:880px;
+      }
+    }
+    .side-products .row > div {
+      margin-bottom:50px;
+    }
+  </style>
+  {% endif %}
+
+<style>
+  .product-slider-wrappper .side-products { top:15% !important;}
+  .side-products .row > div {
+    margin-bottom: 30px !important;
+}
+
+</style>
+{% if section.settings.slideshow_height == 'maintain_ratio' %}
+  <style type="text/css">
+
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio {
+      height: auto;
+    }
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide {
+      height: auto;
+    }
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0px;
+      {% capture img_width %}{{ section.blocks[0].settings.image.width }}{% endcapture %}
+      {% capture img_height %}{{ section.blocks[0].settings.image.height | times: 100 }}{% endcapture %}
+      {% capture rounddown %}{{ img_height | divided_by: img_width }}{% endcapture %}
+      padding-top: {{ rounddown | plus: 1 }}%;
+    }
+  </style>
+{% endif %}
+{% schema %}
+  {
+      "name": "Shop the Look",
+    "class": "index-section",
+    "max_blocks": 4,
+    "settings": [
+          {
+            "type": "text",
+            "id": "secname",
+            "label": "Section Name (for tracking)",
+            "default": "Shop the Look"
+          },		
+      {
+        "type": "radio",
+        "id": "contained",
+        "label": "Slideshow should:",
+        "options": [
+          { "value": "container", "label": "Contstrain to container" },
+          { "value": "container-fluid to-edges", "label": "Flow to the width of screen" }
+        ],
+        "default": "container"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "autoplay_speed",
+        "label": "Change slides every",
+        "options": [
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ],
+        "default": "7000"
+      },
+      {
+        "type": "checkbox",
+        "id": "dots",
+        "label": "Use dot navigation",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "arrows",
+        "label": "Use arrow navigation",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "slideshow_height",
+        "label": "Section height",
+        "default": "small",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Maintain Ratio based on First Slide",
+            "value": "maintain_ratio"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Image alignment",
+            "default": "top",
+            "options": [
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "top right",
+                "label": "Top Right"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom Right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom Left"
+              },
+              {
+                "value": "top left",
+                "label": "Top Left"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image slide"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Inclement weather be damned. Our outdoor collection will stand up to abuse and have all the right features you need to show nature who is boss.</p>"
+          },
+          {
+            "type": "select",
+            "id": "products",
+            "label": "How many products do you want to show",
+            "default": "3",
+            "options": [
+              {
+                "value": "1",
+                "label": "One"
+              },
+              {
+                "value": "2",
+                "label": "Two"
+              },
+              {
+                "value": "3",
+                "label": "Three"
+              },
+              {
+                "value": "4",
+                "label": "Four"
+              }
+            ]
+          },
+  
+          {
+            "type":"color",
+            "id":"side_products_background",
+            "label":"Product card background",
+            "default":"#f1f1f1"
+          },
+          {
+            "type": "product",
+            "id": "product1",
+            "label": "Product 1"
+          },
+          {
+            "type": "text",
+            "id": "product_title_1",
+            "label": "Product 1 Title Override"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image_1",
+            "label": "Product 1 Image Override"
+          },
+          {
+            "type": "product",
+            "id": "product2",
+            "label": "Product 2"
+          },
+          {
+            "type": "text",
+            "id": "product_title_2",
+            "label": "Product 2 Title Override"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image_2",
+            "label": "Product 2 Image Override"
+          },
+          {
+            "type": "product",
+            "id": "product3",
+            "label": "Product 3"
+          },
+          {
+            "type": "text",
+            "id": "product_title_3",
+            "label": "Product 3 Title Override"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image_3",
+            "label": "Product 3 Image Override"
+          },
+          {
+            "type": "product",
+            "id": "product4",
+            "label": "Product 4"
+          },
+          {
+            "type": "text",
+            "id": "product_title_4",
+            "label": "Product 4 Title Override"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image_4",
+            "label": "Product 4 Image Override"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Shop the Look",
+      "category": "Image",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": "5000"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

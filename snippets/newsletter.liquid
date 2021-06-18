@@ -1,0 +1,91 @@
+{% capture newsletter_title %}
+<h4 class="newsletter">NEWSLETTER</h4><br/>
+<p style="color:white;font-size:13px;">Subscribe to receive updates, access to exclusive deals, and more.</p>
+  <label style="font-size:0px;" for="Email" class="newsletter">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+{% endcapture %}
+
+{% if settings.newsletter_action_url != blank %}
+  <form class="mailing-list-signup-form row align-items-center" action="{{ settings.newsletter_action_url }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
+
+    {% if newsletter_alone %}
+      <div class="container newsletter">
+    {% endif %}
+
+    {{ newsletter_title }}
+
+    {% if newsletter_alone %}
+      </div>
+      <div class="col-md-30">
+    {% endif %}
+
+
+    
+    <div class="input-group newsletter">
+      <input class="mailing-list-signup-form-email"
+        name="EMAIL"
+        id="Email"
+        type="email"
+        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+        value="{% if customer %}{{ customer.email }}{% endif %}"
+        aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}" />
+      <span class="input-group__btn" style="width:100%;">
+        <button type="submit" class="btn btn--secondary newsletter__submit" name="commit" id="Subscribe">
+          <span class="newsletter__submit-text--large">
+            SUBSCRIBE
+
+          </span>
+        </button>
+      </span>
+    </div>
+
+    {% if newsletter_alone %}
+      </div>
+    {% endif %}
+
+  </form>
+{% else %}
+  {% form 'customer', class:'contact-form row align-items-center' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+
+      {% if newsletter_alone %}
+        <div class="col-md-30">
+      {% endif %}
+
+      {{ newsletter_title }}
+
+      {% if newsletter_alone %}
+        </div>
+        <div class="col-md-30 newsletter">
+      {% endif %}
+
+        <div class="input-group" style="display:block;">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email"
+            name="contact[email]"
+            id="Email"
+            class="input-group__field newsletter__input col-60"
+            value="{% if customer %}{{ customer.email }}{% endif %}"
+            placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+            autocorrect="off"
+            autocapitalize="off">
+          <span class="input-group__btn col-60" style="    margin-top: 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 0px;">
+            <button style="width:100%;padding:10px;" type="submit" class="btn btn--secondary newsletter__submit" name="commit" id="Subscribe">
+              SUBSCRIBE
+            </button>
+          </span>
+        </div>
+
+      {% if newsletter_alone %}
+        </div>
+      {% endif %}
+
+    {% endif %}
+  {% endform %}
+{% endif %}

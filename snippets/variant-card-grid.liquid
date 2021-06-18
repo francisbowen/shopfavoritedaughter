@@ -1,0 +1,153 @@
+{% comment %} check to see if any variant in this color split is available {% endcomment %}
+{% assign colorway_in_stock = false %}
+{% for variant in product.variants %}
+  {% if variant.option1 == grid_variant.option1 and variant.available %}
+  	{% assign colorway_in_stock = true %}
+  {% endif %}
+{% endfor %}
+{% assign colorways_in_stock = '' %}
+{% for variant in product.variants %}
+  {% if variant.available %}
+    {% unless colorways_in_stock contains variant.option1 %}
+    	{% assign colorways_in_stock = colorways_in_stock | append: variant.option1 | append: '|' %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+{%- assign curr_swatches = '' -%}
+{%- assign color_name = 'Color' -%}
+{%- assign color_options = product.options_with_values | where: 'name', color_name -%}
+{%- assign color_option = color_options[0] -%}
+{% if color_option.values.size > 0 %}
+{% capture option_index %}option{{ color_option.position }}{% endcapture %}
+{% capture curr_swatches %}
+<fieldset class="swatch clearfix" data-option-index="{{ option_index }}" data-option-id="{{ product.id }}">
+  <div class="d-flex flex-wrap swatch--color">
+    {% for value in color_option.values %}
+      {% for variant in product.variants %}
+        {% if variant[option_index] == value %}
+          {% if split_prod %}
+          	{%- assign gender_filter_downcase = variant.metafields.global.gender_filter | downcase -%}
+            {% unless spit_prod_gender contains gender_filter_downcase %}
+            	{% break %}
+            {% else %}
+              {% unless featured_image_split %}
+                {%- assign featured_image = variant.image -%}
+                {%- assign featured_image_split = true -%}
+              {% endunless %}
+            {% endunless %}
+        {% endif %}
+        {% if colorways_in_stock contains value or product.tags contains 'show-oos' %}
+    	  {% if collection.handle contains 'sale' %}
+    		{% if variant.compare_at_price > variant.price and product.type != 'BUNDLE' %}
+              <div {{colorways_in_stock}} data-value="{{ value | escape }}" class="swatch-element color {{ value | handle }}{% if color_order != blank %}{%- assign extra_items = color_order.size -%}{% if color_order contains value %}{% for color in color_order %}{% if color == value %} order-{{ forloop.index0 }}{% if forloop.index0 == 0 %}{%- assign featured_swatch_pick = true -%}{% endif %}{% break %}{% endif %}{% endfor %}{% else %} order-{{ extra_items }}{%- assign extra_items = extra_items | plus: 1 -%}{% endif %}{% endif %}">
+                <input 
+                       id="swatch-{{ product.id }}{{ option_index }}-{{ value | handle }}" 
+                       type="radio" name="option-{{ product.id }}{{ option_index }}" 
+                       value="{{ value | escape }}"{% if color_order != blank %}{% if featured_swatch_pick %} checked{%- assign featured_swatch_pick = false -%}{% endif %}{% elsif forloop.first %} checked{% endif %} 
+                       data-variant_id="{{ variant.id }}"
+                       data-variant-price="{{ variant.price }}"
+                       data-variant-comprice="{{ variant.compare_at_price }}"
+                       data-image="{{ variant.featured_image | img_url: '600x' }}" />
+                <label {% if grid_variant.option1 == value %}style="box-shadow: 0 0 0 1px #000;margin-left: 1px;"{%endif%} class="color" for="swatch-{{ product.id }}{{ option_index }}-{{ value | handle }}"></label>
+              </div>
+    		{% endif %}
+    	  {% else %}
+            <div data-value="{{ value | escape }}" class="swatch-element color {{ value | handle }}{% if color_order != blank %}{%- assign extra_items = color_order.size -%}{% if color_order contains value %}{% for color in color_order %}{% if color == value %} order-{{ forloop.index0 }}{% if forloop.index0 == 0 %}{%- assign featured_swatch_pick = true -%}{% endif %}{% break %}{% endif %}{% endfor %}{% else %} order-{{ extra_items }}{%- assign extra_items = extra_items | plus: 1 -%}{% endif %}{% endif %}">
+              <input 
+                     id="swatch-{{ product.id }}{{ option_index }}-{{ value | handle }}" 
+                     type="radio" name="option-{{ product.id }}{{ option_index }}" 
+                     value="{{ value | escape }}"{% if color_order != blank %}{% if featured_swatch_pick %} checked{%- assign featured_swatch_pick = false -%}{% endif %}{% elsif forloop.first %} checked{% endif %} 
+                     data-variant_id="{{ variant.id }}"
+                     data-variant-price="{{ variant.price }}"
+                     data-variant-comprice="{{ variant.compare_at_price }}"
+                     data-image="{{ variant.featured_image | img_url: '600x' }}" />
+              <label {% if grid_variant.option1 == value %}style="box-shadow: 0 0 0 1px #000;margin-left: 1px;"{%endif%} class="color" for="swatch-{{ product.id }}{{ option_index }}-{{ value | handle }}"></label>
+            </div>
+    	  {% endif %}
+        {% endif %}
+        {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</fieldset>
+{% endcapture %}
+{% endif %}
+
+
+
+{% if grid_image_width %}
+{%- assign grid_image_width_2 = grid_image_width | split:'x' -%}
+{%- assign grid_image_width_2 = grid_image_width_2[0] | times:  2 | append: 'x' -%}
+{% else %}
+{%- assign grid_image_width_2 = '1100x' -%}
+{% endif %}
+
+{% comment %}hiding OOS variants if unavailable or tagged show out of stock "show-oos"{% endcomment %}
+{% if colorway_in_stock or product.tags contains 'show-oos' %}
+<div  class="{{ grid_item_width }}">
+  <div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+    <a class="grid-view-item__link animsition-link varid{{grid_variant.sku | handleize }}{{grid_variant.title | handleize }}" href="{{ grid_variant.url | within: collection }}">
+      <div style="overflow:hidden;background-color: #fafafa;margin-bottom:20px;">
+        <div class="grid-view-item__image" style="transition: all .4s;background-image:url({{ grid_variant.image.src | img_url: grid_image_width_2 }});"></div>
+      </div>
+
+
+      <style>
+        body:after{
+          display:none;
+          content: url({{ mainimg | replace: "_1", "_3"}});
+        }
+        {% assign mainimg = grid_variant.image.src | img_url: grid_image_width_2 %}
+        .varid{{grid_variant.sku | handleize }}{{grid_variant.title | handleize }}:hover > div > .grid-view-item__image {
+          /* background-image:url('{{ mainimg | replace: "_1", "_3"}}') !important; */
+          transform: scale(1.05);
+        }
+        .product-swatch-wrapper {float:Left; width:100%;}
+
+      </style>
+
+      <div id="product-card-grid-info">
+
+        <div class="row">
+          <div class="col-40 h4 grid-view-item__title"><strong>{{ product.title }}</strong></div>
+          <div class="col-20 product-card-grid-price-wrap" style="text-align:right;">{% include 'variant-price' %}</div>
+        </div>
+        <p style="color:#31333d;font-size:12px;">{{ grid_variant.option1 }}</p>
+        {% if section.settings.show_vendor %}
+        <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        {{ curr_swatches }}
+        <div class="grid-view-item__meta">
+          {% if template == 'index' %}
+          <a class="product-featured-shop-now" href="{{ grid_variant.url | within: collection }}"><b>Shop Now</b></a>
+          {% endif %}
+        </div>
+      </div>
+
+
+    </a>
+  </div>
+</div>
+
+{% comment %}
+<style>
+  .grid-view-item__image {
+    background-color: #fafafa;
+    margin: 0 20px 15px !important;
+  }
+
+  .grid-view-item__link {
+    display: block;
+    overflow: hidden;
+  }
+  span.color-swatch {    background: inherit;
+    border: 1px solid #000;
+    border-radius: 50px;
+    width: 20px;
+    float: left;
+    height: 20px;
+    margin: 10px;}
+</style>
+{% endcomment %}
+{% endif %}{% comment %}EOF hiding OOS variants{% endcomment %}

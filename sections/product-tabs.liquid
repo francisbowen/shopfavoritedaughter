@@ -1,0 +1,111 @@
+<style>
+  .rte p {color: #1e1e1e;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-family: "TradeGothicLTProLight";
+    text-align: left;}
+    .rte li{color: #1e1e1e;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-family: "TradeGothicLTProLight";
+    text-align: left;}
+  .rte td {padding:1%;}
+  .rte h3, .rte .h3, .rte h4, .rte .h4, .rte h5, .rte .h5, .rte h6, .rte .h6 {
+    /* margin-top: 50px; */
+    /* margin-bottom: 25px; */
+    font-family: "TradeGothicLTProBDCN20";
+    font-size: 1.15em;
+}
+
+    #shopify-section-product-tabs {width:100%; margin-top:65px;}
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border-bottom: 1px solid #000;
+  background-color: #fff;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  color:#000;
+background-color: inherit;
+font-family: "TradeGothicLTProCN18";
+float: left;
+border-right: 1px solid #000;
+border-top: 1px solid #000;
+border-bottom:none;
+outline: none;
+cursor: pointer;
+padding: 10px 15px 8px 15px;
+transition: 0.3s;
+font-size: 15px;
+    letter-spacing: 0.14em;
+text-transform:uppercase;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color:none;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000; color:#fff; text-transform:uppercase;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+font-size:14px; color:#1e1e1e;
+  border-top: none;
+}
+</style>
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'product_description')" id="defaultOpen">Product Description</button>
+  <button class="tablinks" onclick="openCity(event, 'technical_features')">Technical Features</button>
+  <button class="tablinks" onclick="openCity(event, 'yotpo_reviews')">Reviews</button>
+</div>
+
+<div id="product_description" class="tabcontent">
+<div class="product-single__description rte" id="first_product_description">
+{{ product.description | split: '<!-- split -->' | first }}
+</div>
+</div>  
+
+<div id="technical_features" class="tabcontent">
+<div class="product-single__description rte" id="last_product_description">
+{{ product.description | split: '<!-- split -->' | last }}
+</div>
+</div>
+
+<div id="yotpo_reviews" class="tabcontent">
+( YOTPO Review Embed Goes Here )
+<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   

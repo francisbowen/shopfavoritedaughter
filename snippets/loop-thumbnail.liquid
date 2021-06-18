@@ -1,0 +1,7 @@
+<div
+   href="{{ image.src | img_url: product_image_size }}"
+   class="col-30 text-link product-single__thumbnail product-single__thumbnail--{{ product.id }}"
+   {% for variant in image.variants limit:1 %}data-varattach="{{ variant.id }}" data-sectionid="{{ product.id }}"{% endfor %}
+   {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}"{% endif %}
+   style="background-image:url({{ image.src | img_url: '800x' }});">
+</div>

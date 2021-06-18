@@ -1,0 +1,49 @@
+<div class="shopping-cart">
+  {% if cart.item_count > 0 %}
+    <ul class="shopping-cart-items">
+      {% for item in cart.items %}
+        <li id="cart-item-{{ item.id }}" class="item clearfix">
+          <a href="{{ item.url }}" class="d-flex animsition-link">
+            <img src="{{ item.image | product_img_url: 'small' }}" alt="{{ item.title }}" />
+            <div class="product-details">
+              <span class="item-name">{{ item.product.title }}</span>
+              <span class="item-option">
+                {% if item.product.variants.size != 0 %}
+                  {% unless item.variant.title contains 'Default' %}
+                    <small>{{ item.variant.title }}</small>
+                  {% endunless %}
+                {% endif %}
+              </span>
+              <span class="item-price">{{ item.line_price | money }}</span>
+              <span class="item-quantity">x {{ item.quantity }}</span>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="shopping-cart-header">
+      {{ 'cart.general.subtotal' | t }}: {{ cart.total_price | money }}
+    </div>
+    <a href="/cart" class="btn btn--secondary half">Cart</a>
+    <a href="/checkout" class="btn btn--secondary half">Checkout</a>
+  {% else %}
+    <p class="text-center">{{ 'cart.general.empty' | t }}</p>
+    <a href="/" class="btn btn--secondary full">{{ 'general.404.link' | t }}{% include 'icon-arrow-right' %}</a>
+  {% endif %}
+</div>
+
+<div class="site-header__cart__overlay"></div>
+
+<script>
+  $.fn.slideFadeToggle  = function(speed, easing, callback) {
+    return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+  };
+  $('.site-header__cart').click(function(e) {
+    e.preventDefault();
+    $('.shopping-cart').slideFadeToggle().next('.site-header__cart__overlay').toggle();
+  });
+  $('.site-header__cart__overlay').click(function(e){
+    e.preventDefault();
+    $(this).toggle().prev('.shopping-cart').slideFadeToggle();
+  });
+</script>

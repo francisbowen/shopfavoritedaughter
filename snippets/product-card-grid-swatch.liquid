@@ -1,0 +1,62 @@
+{% if grid_image_width %}
+  {%- assign grid_image_width_2 = grid_image_width | split:'x' -%}
+  {%- assign grid_image_width_2 = grid_image_width_2[0] | times:  2 | append: 'x' -%}
+{% else %}
+  {%- assign grid_image_width_2 = '1100x' -%}
+{% endif %}
+
+<div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+  <a class="grid-view-item__link animsition-link" href="{{ product.url | within: collection }}">
+    <div class="grid-view-item__image" style="background-image:url({{ product.featured_image.src | img_url: grid_image_width_2 }});"></div>
+    
+
+    <style>
+      .product-swatch-wrapper {float:Left; width:100%;}
+      #product-card-grid-info-swatch-slider {width:50%; margin-left:auto; margin-right:auto;}
+    </style>
+
+    <div id="product-card-grid-info-swatch-slider">
+      <div class="product-swatch-wrapper swatch-slider">
+        <!-- Collection Product Color Swatches -->
+        
+        {% for opt in product.options_with_values %}
+        {% assign opt_l = opt.name | downcase %}
+          {% if opt_l == "color" %}
+                {% for val in opt.values %}
+                    <span class="color-swatch" 
+                      style="background-image:url({{val | append:'.png' | asset_img_url: '32x'}});
+                      background-color: {{ val| split:" " | last }};"
+                        ></span>
+                {% endfor %}
+          {% endif %}
+      {% endfor %}
+    </div>
+
+
+    
+    <div class="h4 grid-view-item__title">{{ product.title }}</div>
+    {% if section.settings.show_vendor %}
+      <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+    {% endif %}
+    <div class="grid-view-item__meta">
+      {% include 'product-price' %}
+      {% if template == 'index' %}
+      <a class="product-featured-shop-now" href="{{product.handle}}"><b>Shop Now</b></a>
+      {% endif %}
+    </div>
+  </div>
+ 
+
+  </a>
+</div>
+
+
+<style>
+  span.color-swatch {    background: inherit;
+    border: 1px solid #000;
+    border-radius: 50px;
+    width: 20px;
+    float: left;
+    height: 20px;
+    margin: 10px;}
+</style>

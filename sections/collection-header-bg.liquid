@@ -1,0 +1,57 @@
+{% for block in section.blocks %}
+	{% assign collection_handle = block.settings.page %}
+{% if collection_handle == collection.handle %}
+<div class="header-image image-bar__overlay" style="margin-bottom:0px;">
+</div>
+  <style>
+    .header-image {
+      background-image: url('{{ block.settings.image | img_url: 'master' }}');
+    }
+    {% if block.settings.image_mobile != blank %}
+    @media screen and (max-width: 768px) {
+      .header-image {
+        background-image: url('{{ block.settings.image_mobile | img_url: 'master' }}');
+      }
+    }
+    {% endif %}
+  </style>
+{% endif %}
+{% endfor %}
+    <div class="container-fluid" style="background:#f7f7f7;text-align:center;padding:30px 20px 20px 20px;border-bottom:1px solid black;margin-bottom:20px;">
+      <div class="row">
+        <div class="col-md-30 offset-md-15 col-50 offset-5">
+            <h1>{{ collection.title }}</h1>
+        </div>
+      </div>
+    </div>
+
+
+{% schema %}
+  {
+    "name": "Page Header",
+    "blocks": [
+      {
+        "type": "page_header",
+        "name": "Page Header",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "page",
+            "label": "Select Collection",
+            "info": "Header image defined below will be used for this specific Collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Header image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Header image For Mobile"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

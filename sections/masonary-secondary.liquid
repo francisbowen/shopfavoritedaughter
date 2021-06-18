@@ -1,0 +1,124 @@
+
+{% comment %} {% assign count = section.blocks.size %} {% endcomment %}
+<div class="">
+        <div class="home-masonry">
+          <div class="px-4 {{ section.settings.contained }}">
+          <div class="grid row">
+            <div class="grid-sizer"></div>
+            {% for block in section.blocks %}
+            {% case block.settings.image_size %}
+            {% when 'small' %}
+            {%- assign grid_image_size = 'grid-item col-md-15 ` grid-item--' | append: forloop.index -%}
+            {% when 'medium' %}
+            {%- assign grid_image_size = 'grid-item col-md-20 ' | append: 'grid-item--' | append: forloop.index | append: '' -%}
+            {% when 'large' %}
+            {%- assign grid_image_size = 'grid-item col-md-25 ' | append: 'grid-item--' | append: forloop.index | append: 'grid-item--height2' -%}
+            {% when 'large-height' %}
+            {%- assign grid_image_size = 'grid-item col-md-15 ' | append: 'grid-item--' | append: forloop.index | append: ' grid-item--height2' -%}
+            {% when 'large-width' %}
+              {%- assign grid_image_size = 'grid-item col-md-30 ' | append: 'grid-item--' | append: forloop.index | append: '' -%}
+          {% endcase %}
+            <div class="{{grid_image_size}} {% if block.settings.title != blank %} has-text{% endif %}" style="background-image: url('{{ block.settings.image | img_url: '1000x' }}');">
+              {% if block.settings.title != blank %}
+              <div class="masonary-text">
+              <h3>{{ block.settings.title }} </h3>
+              {% if block.settings.subtitle != blank %}
+              <p>{{ block.settings.subtitle }}</p>
+              {% endif %}
+              {% if block.settings.cta_text and block.settings.cta_link %}
+                <a href="{{ block.settings.cta_link }}" class="btn">{{ block.settings.cta_text }}</a>
+              {% endif %}
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+      </div>
+      </div>
+      </div>
+
+{% schema %}
+{
+  "name": "Masonary Secondary",
+  "class": "index-section masonary-section",
+  "max_blocks": 9,
+  "settings": [      
+  {
+    "type": "radio",
+    "id": "contained",
+    "label": "Slideshow should:",
+    "options": [
+      { "value": "container", "label": "Contstrain to container" },
+      { "value": "container-fluid", "label": "Flow to the width of screen" }
+    ],
+    "default": "container"
+  }],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+       {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "default": "medium",
+          "options": [
+            {
+              "label": "Small",
+              "value": "small"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "Large",
+              "value": "large"
+            },
+            {
+              "label": "Large height",
+              "value": "large-height"
+            },
+            {
+              "label": "Large Width",
+              "value": "large-width"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Caption Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Caption Subtitle"
+        },
+        {
+          "type":"text",
+          "id":"cta_text",
+          "label":"CTA Text"
+        },
+        {
+          "type":"url",
+          "id":"cta_link",
+          "label":"CTA Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Masonary Secondary",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

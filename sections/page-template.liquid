@@ -1,0 +1,151 @@
+<style>
+
+@media screen and (min-width: 768px) {
+.sidebar__item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    width: 30%; }}
+.main-content-wrapper {float:left; width:50%; }
+aside.sidebar-page {
+    float: left;
+    width: 20%;
+    padding-right: 5%;
+    margin-left: 15%;
+    margin-top: 0%;}
+</style>
+
+
+<div class="container">
+  <div class="row">
+    {%comment%}
+      {% if section.settings.enable_sidebar %}
+      <div class="sidebar-page col-md-10 d-none d-md-block">
+        {% include 'sidebar' %}
+      </div>
+      {% endif %}
+{%endcomment%}
+
+
+    <div class="main-content-wrapper col-md-50 offset-md-5 col-60">
+      
+      <div class="rte poc">
+        {{ page.content }}
+      </div>
+      {% if template contains 'accessibility-statement' %}
+      <div class="rte poc">
+        <iframe src="https://portal.audioeye.com/marketplace/accessibilitystatement/format/ajax/site/106062" style="width:100%;height:4700px;border:none;" border="0"></iframe>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .sidebar__item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+}
+</style>
+{% schema %}
+  {
+    "name": "Page Sidebar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_sidebar",
+        "label": "Enable sidebar?"
+      },
+      {
+        "type": "radio",
+        "id": "sidebar_position",
+        "options": [
+          { "value": "sidebar-left", "label": "Left"},
+          { "value": "sidebar-right", "label": "Right"}
+        ],
+        "label": "Sidebar position"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection_sidebar",
+        "name": "Featured Collection",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection to use"
+          },
+          {
+            "type": "select",
+            "id": "collection_qty",
+            "options": [
+              { "value": "2", "label": "2" },
+              { "value": "3", "label": "3" },
+              { "value": "4", "label": "4" },
+              { "value": "5", "label": "5" },
+              { "value": "6", "label": "6" }
+            ],
+            "label": "Number of products to show"
+          }
+        ]
+      },
+      {
+        "type": "menu_sidebar",
+        "name": "Quick Links",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "quick_links",
+            "label": "Linklist to use"
+          }
+        ]
+      },
+      {
+        "type": "image_sidebar",
+        "name": "Advertisement",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Ad image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Ad link"
+          }
+        ]
+      },
+      {
+        "type": "blog_sidebar",
+        "name": "Most Recent Blog Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Latest Article"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

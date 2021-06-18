@@ -1,0 +1,9 @@
+{%- assign src_scale = 1 -%}
+{%- assign srcset_scale = 2 -%}
+{%- if alt == '' -%}{%- assign alt = file -%}{% endif %}
+{%- assign sizes = default_size | split: 'x' -%}
+<img 
+  {% if id != '' %}id="{{ id }}"{% endif %}
+  {% if class != '' %}class="{{ class }}"{% endif %}     
+  src="{{ file | img_url: default_size, crop: crop, scale: src_scale }}"   
+  srcset="{{ srcset_string }}" alt="{{ alt }}" />

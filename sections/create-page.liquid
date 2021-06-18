@@ -1,0 +1,91 @@
+<div class="container{% if section.settings.fluid %}-fluid{% endif %} loginpage">
+
+    <div class="row">
+    <div class="col-md-30 offset-md-15">
+      <div class="note form-success hide" id="ResetSuccess">
+        {{ 'customer.recover_password.success' | t }}
+      </div>
+
+      <div id="CustomerLoginForm" class="form-vertical">
+        {% include 'createaccount' %}
+      </div>
+
+      {% comment %}
+        If accounts are set as optional, the following will be shown as an option
+        during checkout, not on the default /login page.
+      {% endcomment %}
+      {% if shop.checkout.guest_login %}
+        <div class="text-center">
+          <hr class="hr--invisible">
+          <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+          {% form 'guest_login' %}
+            <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>  
+</div>
+</div>
+	<style>
+	{% if section.settings.bgimage %}
+      {% if section.settings.image != blank %}
+ 		.loginpage {background-image: url('{{ section.settings.image | img_url: '2000x' }}');background-size:cover;}
+      {% endif %}
+      	.col-md-30, .col-md-28 {background-color:white;padding:40px;}
+ 	{% endif %}
+          .loginpage {padding-top:{{section.settings.padding-top}}px;padding-bottom:{{section.settings.padding-bottom}}px;}              
+	</style> 
+
+{% schema %}
+  {
+    "name": "Create Account Options",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Top Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Bottom Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+	  {
+        "type": "checkbox",
+        "id": "fluid",
+        "label": "Make Full-width",
+        "default": false
+      },
+
+	  {
+        "type": "checkbox",
+        "id": "bgimage",
+        "label": "Background Image & White boxes?",
+        "default": false
+      },
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+      }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

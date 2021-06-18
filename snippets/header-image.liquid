@@ -1,0 +1,116 @@
+{% if template contains 'article' %}
+  {%- assign header_title = article.title -%}
+{% elsif template contains 'collection' %}
+  {%- assign header_title = collection.title -%}
+{% elsif template contains 'page' %}
+  {%- assign start_title = page.content | slice: 0, 3 -%}
+  {% if start_title contains 'h1' %}
+    {%- assign first_h1 = page.content | split: '</h1>' %}
+    {%- assign first_h1 = first_h1[0] | split: '<h1>' %}
+    {%- assign header_title = first_h1[1] -%}
+  {% else %}
+    {%- assign header_title = page.title -%}
+  {% endif %}
+{% endif %}
+
+{%- assign header_img = false -%}
+{% if template contains 'page' or template contains 'page.about' or template contains 'page.support'  %}
+  {% for block in section.blocks %}
+    {% if page.handle == block.settings.page %}
+      {% if block.settings.image != blank %}
+        {%- assign header_img = true -%}
+        {%- assign header_image_std = block.settings.image | img_url: '2400x' -%}
+        {%- assign header_image_desktop = block.settings.image | img_url: '1500x' -%}
+        {%- assign header_image_tablet = block.settings.image | img_url: '1000x' -%}
+        {%- assign header_image_mobile = block.settings.image | img_url: '600x' -%}
+      {% endif %}
+      {% if block.settings.title != blank %}
+        {%- assign header_title = block.settings.title -%}
+      {% endif %}
+      {% if block.settings.subtitle != blank %}
+        {%- assign header_subtitle = block.settings.subtitle -%}
+      {% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% elsif template contains 'collection' %}
+  {% if collection.image != blank %}
+    {%- assign header_img = true -%}
+    {%- assign header_image_std = collection.image | img_url: '2400x' -%}
+    {%- assign header_image_desktop = collection.image | img_url: '1500x' -%}
+    {%- assign header_image_tablet = collection.image | img_url: '1000x' -%}
+    {%- assign header_image_mobile = collection.image | img_url: '600x' -%}
+  {% endif %}
+  {% for block in section.blocks %}
+    {% if collection.url == block.settings.page %}
+      {% if block.settings.image != blank %}
+        {%- assign header_img = true -%}
+        {%- assign header_image_std = block.settings.image | img_url: '2400x' -%}
+        {%- assign header_image_desktop = block.settings.image | img_url: '1500x' -%}
+        {%- assign header_image_tablet = block.settings.image | img_url: '1000x' -%}
+        {%- assign header_image_mobile = block.settings.image | img_url: '600x' -%}
+      {% endif %}
+      {% if block.settings.title != blank %}
+        {%- assign header_title = block.settings.title -%}
+      {% endif %}
+      {% if block.settings.subtitle != blank %}
+        {%- assign header_subtitle = block.settings.subtitle -%}
+      {% endif %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% elsif section.settings.image != blank %}
+  {%- assign header_img = true -%}
+  {%- assign header_image_std = section.settings.image | img_url: '2400x' -%}
+  {%- assign header_image_desktop = section.settings.image | img_url: '1500x' -%}
+  {%- assign header_image_tablet = section.settings.image | img_url: '1000x' -%}
+  {%- assign header_image_mobile = section.settings.image | img_url: '600x' -%}
+{% elsif article.image %}
+  {%- assign header_image_std = article.image.src | img_url: '2400x' -%}
+  {%- assign header_image_desktop = article.image.src | img_url: '1500x' -%}
+  {%- assign header_image_tablet = article.image.src | img_url: '1000x' -%}
+  {%- assign header_image_mobile = article.image.src | img_url: '600x' -%}
+{% endif %}
+{% if header_img %}
+<div class="header-image {% if header_img %}image-bar__overlay{% else %}minimal{% endif %}" style="margin-bottom:0px;">
+</div>
+{% endif %}
+{% if header_title or header_subtitle %}
+    <div class="container-fluid" style="background:#f7f7f7;text-align:center;padding:30px 20px 20px 20px;border-bottom:1px solid black;margin-bottom:20px;">
+      <div class="row">
+        <div class="col-md-30 offset-md-15 col-50 offset-5">
+          {% if template contains "article"%}
+          	{% if article.image != nil %}<div class="article-hero__image"><img src="{{ article.image.src | img_url: '917x' }}" alt="{{ article.title }}" /></div>{% endif %}
+          {%endif%}       
+          {% if header_title %}
+            <h1>{{ header_title }}</h1>
+          {% endif %}
+          {% if header_subtitle %}
+            <p class="subtitle">{{ header_subtitle }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% if header_img %}
+  <style>
+    .header-image {
+      background-image: url('{{ header_image_std }}');
+    }
+    @media screen and (max-width: 1024px) {
+      .header-image {
+        background-image: url('{{ header_image_desktop }}');
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .header-image {
+        background-image: url('{{ header_image_tablet }}');
+      }
+    }
+    @media screen and (max-width: 425px) {
+      .header-image {
+        background-image: url('{{ header_image_mobile }}');
+      }
+    }
+  </style>
+{% endif %}

@@ -1,0 +1,205 @@
+<div class="account">
+<div class="container{% if section.settings.fluid %}-fluid{%endif%} accountheader">
+  <div class="section-header text-center{% if section.settings.wbit %} wbit{%endif%}">
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-40">
+      <h2>{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th>{{ 'customer.orders.order_number' | t }}</th>
+                <th>{{ 'customer.orders.date' | t }}</th>
+                <th>{{ 'customer.orders.payment_status' | t }}</th>
+                <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th>{{ 'customer.orders.total' | t }}</th>
+                {% if section.settings.reorder %}<th>Reorder</th>{% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr>
+                  <td data-label="{{ 'customer.orders.order_number' | t }}">
+                    <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small">{{ order.name }}</a>
+                  </td>
+                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money | remove: ".00" }}</td>
+                  {% if section.settings.reorder %}<th>
+                  <a class="btn" href="/cart/{% for line_item in order.line_items %}{% unless forloop.first %},{% endunless %}{{ line_item.variant_id }}:{{ line_item.quantity }}{% endfor %}">              
+                Reorder</a>
+                  </th>{%endif%}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+      {% endpaginate %}
+    </div>
+    <div class="col-md-20">
+      <h2>{{ 'customer.account.details' | t }}</h2>
+
+      {{ customer.default_address | format_address }}
+
+      <p><a href="/account/addresses" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+    </div>
+  </div>
+</div>
+</div>
+	<style>
+	{% if section.settings.bgimage %}
+      {% if section.settings.image != blank %}
+ 		.accountheader {background-image: url('{{ section.settings.image | img_url: '2000x' }}');background-size:cover;
+          padding-top:{{section.settings.headpadding-top}}px;padding-bottom:{{section.settings.headpadding-bottom}}px;
+          margin-bottom:{{section.settings.margin-bottom}}px; background-position: center center;}
+      {% endif %}
+      	.col-md-30, .col-md-28 {padding:40px;}
+ 	{% endif %}
+          .account {padding-top:{{section.settings.padding-top}}px;padding-bottom:{{section.settings.padding-bottom}}px;}
+      .wbit {background-color:white;padding:15px; width: 60%;margin-left: 20%;margin-bottom:0px !important;}
+      
+      @media screen and (min-width: 575px) {
+       tr {height:{{section.settings.rowpadding-top}}px;} 
+      }
+      @media screen and (max-width: 575px) {
+      .responsive-table tr, .responsive-table td {
+    	margin-bottom: 30px;    border: 1px solid;
+		}
+        .responsive-table th, .responsive-table td {
+    border-bottom: 1px solid grey;
+}
+      }
+      
+      
+      
+	</style> 
+
+
+{% schema %}
+  {
+    "name": "Account Page",
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Top Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Bottom Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+      "type": "header",
+      "content": "Header Row"
+      },
+	  {
+        "type": "checkbox",
+        "id": "fluid",
+        "label": "Make Header full width?",
+        "default": false
+      },
+	  {
+        "type": "checkbox",
+        "id": "bgimage",
+        "label": "Background Image in header?",
+        "default": false
+      },
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+      },
+	  {
+        "type": "checkbox",
+        "id": "wbit",
+        "label": "Put title in white box",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "headpadding-top",
+        "label": "Header Top Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "headpadding-bottom",
+        "label": "Header Bottom Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin-bottom",
+        "label": "Margin Bottom Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 0
+      },
+      {
+      "type": "header",
+      "content": "Order Rows"
+      },
+      {
+        "type": "range",
+        "id": "rowpadding-top",
+        "label": "Desktop Vertical Row Spacing",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      },
+	  {
+        "type": "checkbox",
+        "id": "reorder",
+        "label": "Add a Reorder Row?",
+        "default": false
+      }
+
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

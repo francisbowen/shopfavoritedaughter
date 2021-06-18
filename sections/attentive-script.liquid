@@ -1,0 +1,31 @@
+<script>
+  $('.attentive-link').on('click',function(){
+    if(window.innerWidth >= 760){
+      //call the desktop creative
+      window.__attentive.trigger(null,null,null,{{ section.settings.attentive_desktop | times: 1 }})
+    } else {
+      //call the mobile creative
+      window.__attentive.trigger(null,null,null,{{ section.settings.attentive_mobile | times: 1 }})
+    }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Attentive Scripts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "attentive_desktop",
+        "label": "Desktop ID",
+        "default": "64122"
+      },
+      {
+        "type": "text",
+        "id": "attentive_mobile",
+        "label": "Mobile ID",
+        "default": "31790"
+      }
+    ]
+  }
+{% endschema %}

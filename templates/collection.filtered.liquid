@@ -1,0 +1,74 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+
+{% section 'filters' %}
+{% section 'collection-template2' %}
+{% section 'swatch-colors' %}
+<style>
+  .row.collection {  width:98%; padding:2%; margin-left:auto; margin-right:auto; }
+
+@media (min-width: 992px) {
+.col-lg-45 {
+  -webkit-box-flex: inherit;
+  -webkit-flex: inherit;
+  -ms-flex: 0 0 75%;
+  flex: inherit;
+  max-width: 100%;}}
+
+  /* Collection Filters */
+.filters-toolbar {float:left; width:100%;}
+.filters-toolbar-placeholder { float:left; width:100%; }
+
+.filterbar { float:left; width:100%;}
+.filters-toolbar__input { 
+font-family: "TradeGothicLTProBDCN20";
+text-transform: uppercase;
+}
+[type="radio"]+label, [type="checkbox"]+label {display:none;}
+input[type="radio"] {display:none;}
+.filters-toolbar-wrapper {    border: none;
+    float: right;
+    width: 300px;
+    position: relative;
+    top: -50px;
+    right: 3%;}
+.filters-toolbar__product-count {font-family:"TradeGothicLTProBDCN20"; color:#000;font-size: 20px;
+font-style: inherit;}/* Collection Filters */
+.filters-toolbar {float:left; width:100%; margin-left:4%;}
+.filters-toolbar-placeholder { float:left; width:100%; }
+.sidebar-filter {float:left; display:inline-block; min-width:170px;}
+select.sidebar-filter {font-size:14px;}
+.col-lg-15.filterbar { float:left; width:100%;}
+.filters-toolbar__input { 
+font-family: "TradeGothicLTProBDCN20";
+text-transform: uppercase;
+}
+[type="radio"]+label, [type="checkbox"]+label {display:none;}
+input[type="radio"] {display:none;}
+.filters-toolbar-wrapper {border:none;}
+.filters-toolbar__product-count {font-family:"TradeGothicLTProBDCN20"; color:#000;font-size: 20px;
+font-style: inherit;}
+
+[type="radio"]+label, [type="checkbox"]+label {
+  display: none;
+  margin-bottom: 0;}
+
+/* Special Product Card Img Styling*/
+/* Collection Grid Image */  
+.grid-view-item__image { display: -webkit-box;
+  margin: 0 auto 15px;
+  padding-top: 66.66%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 500px; }
+
+a.product-featured-shop-now {
+  float:left; width:100%;
+  color:#000; font-size:12px; font-family:"TradeGothicLTProLight"; text-decoration:underline;}
+#product-card-grid-info { width:100%; margin-left:auto; margin-right:auto; }
+
+
+</style>

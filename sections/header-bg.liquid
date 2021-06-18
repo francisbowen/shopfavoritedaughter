@@ -1,0 +1,31 @@
+{% include 'header-image' %}
+
+{% schema %}
+  {
+    "name": "Page Header",
+    "blocks": [
+      {
+        "type": "page_header",
+        "name": "Page Header",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Page Title"
+          },
+          {
+            "type": "page",
+            "id": "page",
+            "label": "Page",
+            "info": "Header image defined below will be used for this specific page"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Header image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

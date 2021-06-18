@@ -1,0 +1,212 @@
+<div class="container-fluid">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_item_width = 'col-md-30' -%}
+      {%- assign image_size = '540x600' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'col-md-20 col-sm-30' -%}
+      {%- assign image_size = '345x550' -%}
+    {% when '4' %}
+      {%- assign grid_item_width = 'col-md-15 col-sm-30' -%}
+      {%- assign image_size = '250x' -%}
+    {% when '5' %}
+      {%- assign grid_item_width = 'col-md-12 col-sm-30' -%}
+      {%- assign image_size = '195x' -%}
+  {% endcase %}
+
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+
+  <div class="grid--view-items row slickthis">
+    {% for product in collection.products limit: product_limit %}
+      <div class="grid__item {{ grid_item_width }}">
+        {% include 'product-card-grid', grid_image_width: image_size %}
+      </div>
+    {% else %}
+
+      {% for i in (1..product_limit) %}
+        <div class="grid__item {{ grid_item_width }}">
+          <div class="grid-view-item">
+            <a href="#" class="grid-view-item__link">
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+              <div class="grid-view-item__meta">
+                {% include 'product-price' %}
+              </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+  
+    <script>
+      $.fn.preload = function() {
+        this.each(function(){
+          $('<img/>')[0].src = this;
+        });
+      }
+      $('.grid__item').one('mouseover', function() {
+        var variant_images = $(this).find('input[type="radio"]')
+            .map(function() {
+              return $(this).data('image');
+            })
+            .get();
+        $(variant_images).preload();
+      });
+      $('.grid__item').on('change','input[type="radio"]',function(){
+        var product_link = $(this).closest('.grid-view-item').find('.grid-view-item__link').attr('href'),
+            product_newlink = product_link.indexOf('?') >= 0 ? product_link : product_link.split('?')[0];
+        $(this).closest('.grid-view-item').find('.grid-view-item__link').attr('href', product_newlink +'?variant='+ $(this).data('variant')).find('.grid-view-item__image').css('background-image','url('+ $(this).data('image') +')');
+      });
+      
+      
+    $('.slickthis').slick({
+  dots: true,
+  infinite: true,
+  arrows: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+      
+  </script>
+
+  {% if section.settings.show_view_all %}
+    <hr class="hr--invisible"></hr>
+    <div class="text-center">
+      <a href="{{ collection.url }}" class="btn">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Products per row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "rows",
+        "label": "Rows",
+        "default": "2",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

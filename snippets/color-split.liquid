@@ -1,0 +1,148 @@
+{%- assign option_index = 'option1' -%}
+{% for option in product.options_with_values %}
+  {%- assign option_lowercase = option | downcase -%}
+  {% if option.name == 'color' or  option.name == 'Color' or option.name == 'COLOR' %}
+    {% capture option_index %}option{{ forloop.index }}{% endcapture %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+
+{% if option_index == 'option1'%}
+  {% if template contains "filtered" %}
+    {% assign filter = false %}
+    {% assign colorneeded = "" %}
+    {% if template contains "filtered" %}
+        {% assign filter = true %}
+        {% for tag in product.tags %}
+            {% if tag contains "|" %}
+                {% assign tp = tag | split: "|" %}
+                    {% if tp[0] == collection.handle %}
+                        {% assign colorneeded = tp[1] %}
+                        {%break%}
+                    {%endif%}
+            {% endif%}
+        {%endfor%}
+    {%endif %}
+
+
+    {% assign color_list = '' %}
+    {% for variant in product.variants %}
+      {% if color_list contains variant.option1 %}
+
+      {% else %}
+        {% unless product.title == "Gift Card" %}
+          {% assign color_list = color_list | append: variant.option1 %}
+          {% if filter %}
+            {% if colorneeded == variant.option1 %}
+              {% unless variant.image == blank %}
+                  <!-- type6: {{ product.type }} -->
+                {% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+              {% endunless %}
+            {% endif %}
+          {%else%}
+            {% unless template contains "filtered" %}
+              {% unless variant.image == blank %}
+                      <!-- type5: {{ product.type }} -->
+                {% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+              {% endunless %}
+            {%endunless%}
+          {%endif%}
+        {%endunless%}
+      {% endif %}
+    {% endfor %}
+
+  {%else %}
+
+    {% assign color_list = '' %}
+    {% for variant in product.variants %}
+      {% if color_list contains variant.option1 %}
+      {% else %}
+      {% unless product.title == "Gift Card" %}
+      {% assign color_list = color_list | append: variant.option1 %}
+      {% unless variant.image == blank %}
+        <!-- type4: {{ product.type }} -->
+        <!--{{ product.title }}-->
+		{% if collection.handle contains 'sale' %}
+		  {% if variant.compare_at_price > variant.price and product.type != 'BUNDLE' %}
+			{% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+		  {% endif %}
+		{% else %}
+        	{% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+		{% endif %}
+        {% if product.type == 'BUNDLE' %}
+          {% break %}
+        {% endif %}
+      {%endunless%}
+      {%endunless%}
+      {% endif %}
+    {% endfor %}
+
+  {%endif%}
+
+{%else%}
+
+  {% if template contains "filtered" %}
+
+  {% assign filter = false %}
+  {% assign colorneeded = "" %}
+  {% if template contains "filtered" %}
+      {% assign filter = true %}
+      {% for tag in product.tags %}
+          {% if tag contains "|" %}
+              {% assign tp = tag | split: "|" %}
+                  {% if tp[0] == collection.handle %}
+                      {% assign colorneeded = tp[1] %}
+                      {%break%}
+                  {%endif%}
+          {% endif%}
+      {%endfor%}
+  {%endif %}
+
+
+  {% assign color_list = '' %}
+  {% for variant in product.variants %}
+    {% if color_list contains variant.option2 %}
+
+    {% else %}
+      {% unless product.title == "Gift Card" %}
+        {% assign color_list = color_list | append: variant.option2 %}
+        {% if filter %}
+            {% if colorneeded == variant.option2 %}
+            {% unless variant.image == blank %}
+                  <!-- type3: {{ product.type }} -->
+              {% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+            {% endunless %}
+            {% endif %}
+        {%else%}
+          {% unless template contains "filtered" %}
+              {% unless variant.image == blank %}
+                    <!-- type2: {{ product.type }} -->
+                {% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+              {% endunless %}
+          {%endunless%}
+        {%endif%}
+      {%endunless%}
+    {% endif %}
+  {% endfor %}
+
+
+  {%else %}
+
+    {% assign color_list = '' %}
+    {% for variant in product.variants %}
+      {% if color_list contains variant.option2 %}
+      {% else %}
+        {% unless product.title == "Gift Card" %}
+          {% assign color_list = color_list | append: variant.option2 %}
+          {% unless variant.image == blank %}
+            <!-- type1: {{ product.type }} -->
+            {% include 'variant-card-grid', grid_image_width: image_size, grid_variant: variant %}
+          {% endunless %}
+        {%endunless%}
+      {% endif %}
+    {% endfor %}
+
+  {%endif%}
+
+{%endif%}

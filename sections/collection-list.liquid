@@ -1,0 +1,562 @@
+<div class="{% if section.settings.full_width %}container-fluid{% else %}container{% endif %}{% if section.settings.remove_top_margin %} index-section--flush{% endif %}">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="row{% if section.settings.no_gutters %} no-gutters{% endif %}">
+    {%- assign post_countdown = 0 -%}
+    {%- assign post_adjust = 0 -%}
+    {% for block in section.blocks %}
+      {% if post_countdown < 1 %}
+        {%- assign post_countdown = 0 -%}
+    	{%- assign post_adjust = 0 -%}
+      {% endif %}
+      {%- assign col_width = block.settings.colwidth -%}
+      {% if block.settings.colheight and post_countdown == 0 %}
+    	{%- assign post_countdown = block.settings.next_posts | times:1 | plus: 1 -%}
+        {%- assign post_adjust = block.settings.next_posts | times:1 -%}
+        {% case block.settings.colwidth %}
+          {% when 'col-lg-15' %}
+            {%- assign new_col = 'col-lg-45' -%}
+            {% if block.settings.colside == 'right' %}
+              {%- assign new_col = new_col | append:' pull-lg-15' -%}
+              {%- assign col_width = col_width | append:' push-lg-45' -%}
+            {% endif %}
+          {% when 'col-lg-20' %}
+            {%- assign new_col = 'col-lg-40' -%}
+            {% if block.settings.colside == 'right' %}
+              {%- assign new_col = new_col | append:' pull-lg-20' -%}
+              {%- assign col_width = col_width | append:' push-lg-40' -%}
+            {% endif %}
+          {% when 'col-lg-30' %}
+            {%- assign new_col = 'col-lg-30' -%}
+            {% if block.settings.colside == 'right' %}
+              {%- assign new_col = new_col | append:' pull-lg-30' -%}
+              {%- assign col_width = col_width | append:' push-lg-30' -%}
+            {% endif %}
+          {% when 'col-lg-40' %}
+            {%- assign new_col = 'col-lg-20' -%}
+            {% if block.settings.colside == 'right' %}
+              {%- assign new_col = new_col | append:' pull-lg-40' -%}
+              {%- assign col_width = col_width | append:' push-lg-20' -%}
+            {% endif %}
+          {% when 'col-lg-45' %}
+            {%- assign new_col = 'col-lg-15' -%}
+            {% if block.settings.colside == 'right' %}
+              {%- assign new_col = new_col | append:' pull-lg-45' -%}
+              {%- assign col_width = col_width | append:' push-lg-15' -%}
+            {% endif %}
+        {% endcase %}
+      {% endif %}
+      {% case block.settings.colwidth %}
+        {% when 'col-lg-15' %}
+          {%- assign collection_image_size = '800x' -%}
+        {% when 'col-lg-20' %}
+          {%- assign collection_image_size = '800x' -%}
+        {% when 'col-lg-30' %}
+          {%- assign collection_image_size = '800x' -%}
+        {% when 'col-lg-40' %}
+          {%- assign collection_image_size = '1000x' -%}
+        {% when 'col-lg-45' %}
+          {%- assign collection_image_size = '1200x' -%}
+      {% endcase %}
+      {% if post_adjust >= 0 and post_countdown <= post_adjust %}
+    	{% case post_adjust %}
+    	  {% when 3 %}
+    		{% if post_countdown == 3 %}
+              {%- assign col_width = 'col-lg-40' -%}
+            {% elsif post_countdown == 2 %}
+              {%- assign col_width = 'col-lg-20' -%}
+            {% else %}
+              {%- assign col_width = 'col-60' -%}
+            {% endif %}
+    	  {% when 2 %}
+            {%- assign col_width = 'col-60' -%}
+    	  {% when 1 %}
+            {%- assign col_width = 'col-60' -%}
+    	{% endcase %}
+      {% endif %}
+      {%- assign div_start = post_adjust -%}
+      {% if post_countdown == div_start and post_countdown > 0 %}
+    	<div class="{{ new_col }} new_col">
+          <div class="row no-gutters">
+      {% endif %}
+      <div class="{{ col_width }}" {{ block.shopify_attributes }}>
+        {%- assign collection = collections[block.settings.collection] -%} 
+        {% unless collection_image_size %}
+          {%- assign collection_image_size = '450x450' -%}
+        {% endunless %}
+
+        {% if collection.empty? %}
+          {% comment %}add default state for collection block in theme editor{% endcomment %}
+          {% assign collection_image_url = block.settings.collectionimage | img_url: collection_image_size, crop: 'center'  %}
+        {% else %}
+        	{% if block.settings.collectionimage %}
+        		{% capture collection_image_url %}{{ block.settings.collectionimage | img_url: collection_image_size, crop: 'center' }}{% endcapture %}
+        	{% else %}
+              {% if collection.image %}
+                {% capture collection_image_url %}{{ collection | img_url: collection_image_size, crop: 'center' }}{% endcapture %}
+              {% elsif collection.products.first %}
+                {% capture collection_image_url %}{{ collection.products.first | img_url: collection_image_size, crop: 'center' }}{% endcapture %}
+              {% endif %}
+        	{% endif %}
+        {% endif %}
+        <div class="collection-grid-item {{ block.settings.colheight }}">
+          <a href="{% if collection.empty? %}#{% else %}{% if block.settings.link_override %}{{ block.settings.link_override }}{%else%}{{ collection.url }}{% endif %}{% endif %}" class="collection-grid-item__link">
+            <div class="collection-grid-item__overlay collection-grid-item__overlay-{{ block.id }}"{% unless block.settings.video_url != blank %} style="background-image: url({{ collection_image_url }});background-position: {{ block.settings.alignment }};"{% endunless %}>
+              {% if block.settings.video_url != blank %}
+                <div class="video_bg">
+                  <video loop muted autoplay autostart playsinline poster="{{ collection_image_url }}">
+                    <source type="video/mp4" src="{{ block.settings.video_url }}">
+                    Your browser doesn't support HTML5 video tag.
+                  </video>
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="collection-grid-item__title-wrapper{%if block.settings.copyblock != "" %} collection-grid-item__adjust{%endif%}"{% unless block.settings.usebg  %}style="bottom: 0% !important;top:auto;"{%endunless%}>
+              <h3 class="collection-grid-item__title collection-grid-item__title-{{ block.id }}" style="{%if block.settings.copyblock != "" %}padding:0px;position:relative;{%endif%}">
+                {% if block.settings.title_override != blank %}
+                  {{ block.settings.title_override }}
+                {% endif %}
+              </h3>
+              {%if block.settings.copyblock != "" %}
+              <div class="blockp" style="margin-top:-40px;{% unless block.settings.usebg  %}font-size:20px;{%endunless%}">{{block.settings.copyblock}}</div>
+              <style>.blockp p {color: white !important;}</style>
+              {% endif %}
+                {% if block.settings.showbutton %}
+                <span class="btn">{{block.settings.buttontext}}</span>
+                {% endif %}
+            </div>
+          </a>
+        </div>
+        
+      </div>
+      {% if post_countdown > 0 %}
+        {%- assign post_countdown = post_countdown | minus:1 -%}
+      {% endif %}
+      {% if post_countdown == 0 and post_adjust > 0 %}
+          </div>
+        </div>
+      {% endif %}
+      <style>
+        {% if block.settings.title_override_color != blank %}
+          h3.collection-grid-item__title.collection-grid-item__title-{{ block.id }} {
+            color: {{ block.settings.title_override_color }} !important;
+          }
+        {% endif %}
+        {% if block.settings.collection_bg != blank and block.settings.collectionimage == blank %}
+          .collection-grid-item__overlay.collection-grid-item__overlay-{{ block.id }} {
+            background:{{ block.settings.collection_bg }} !important;
+          }
+          .collection-grid-item__title-wrapper .collection-grid-item__title.collection-grid-item__title-{{ block.id }} {
+            position: absolute;
+            text-align: center;
+            width: 80%;
+            display: block;
+            padding: 0 5px;
+            -ms-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            transition: 0.1s cubic-bezier(0.44, 0.13, 0.48, 0.87);
+            text-shadow: 0 0 15px rgba(0,0,0,0.1);
+            color: #3d4246;
+            margin: 0px 0 0 10%;
+            top: 55%;
+            padding: 4px 0px 20px !important;
+            font-size: 20px;
+          }
+        {% endif %}
+      </style>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+
+<style>
+  {% if section.settings.padding_top != 40 %}
+    #shopify-section-{{ section.id }}.index-section {
+      padding-top: {{ section.settings.padding_top }}px;
+    }
+  {% endif %}
+  {% if section.settings.padding_bottom != 40 %}
+    #shopify-section-{{ section.id }}.index-section {
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  {% endif %}
+</style>
+
+{% javascript %}
+      $(document).ready(function(){
+
+        var arr = [],
+            count_select = $('#shopify-section-filters select').length;
+        $('#SortTags option').each(function () {
+          arr.push($(this).val());
+        });
+
+        $('#shopify-section-filters select').each(function(){
+          var originalElems = $(this),
+              filterName = originalElems.find('option:first').text(),
+              elems = originalElems.find('option'),
+              count = elems.length,
+              currSelect;
+
+          elems.each(function(){
+            if ($.inArray($(this).val(), arr) == -1 && $(this).val() != '') {
+              $(this).remove();
+            };
+            if (!--count) {
+              if(originalElems.find('option').length > 2) {
+                $('.filters-toolbar').append('<div class="col-lg-12 pull-lg-12 col-md-30">' + originalElems.parent('.filter_holder').html() + '</div>');
+              }
+            }
+          });
+
+          if(!--count_select) {
+            setTimeout(function(){
+              $('.custom-select:visible').each(function() {
+                var classes = $(this).attr("class"),
+                    id      = $(this).attr("id"),
+                    name    = $(this).attr("name");
+                var template =  '<div class="' + classes + '">';
+                    template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+                    template += '<div class="custom-options">';
+                    $(this).find("option").each(function() {
+                      if($(this).val() != '') {
+                        var new_class = '';
+                        if($(this).is(':selected')) {
+                          new_class = ' selection';
+                        }
+                        template += '<span class="custom-option ' + $(this).attr("class") + new_class + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+                      } else {
+                        template += '<span class="custom-option ' + $(this).attr("class") + new_class + '" data-value="' + $(this).attr("value") + '">All ' + $(this).html() + 's</span>';
+                      }
+                    });
+                template += '</div></div>';
+
+                $(this).wrap('<div class="custom-select-wrapper"></div>');
+                $(this).hide();
+                $(this).after(template);
+              });
+            },500);
+          }
+        });
+
+        function getSizedImageUrl(src, size) {
+          var match = src.match(/\.(jpg|jpeg|gif|png|bmp|bitmap|tiff|tif)(\?v=\d+)?$/i);
+          if (match != null) {
+            var prefix = src.split(match[0]);
+            var suffix = match[0];
+            return prefix[0] + '_' + size + suffix;
+          }
+          return null;
+        }
+        $('.swatch-element.color:not(.morecolors)').on('click',function(){
+          var var_id = $(this).data('varid'),
+              sec_id = $(this).closest('.grid-view-item').data('sectionid'),
+              featured_img = $(this).closest('.grid-view-item').find('.grid-view-item__image'),
+              json = JSON.parse(document.getElementById('ProductJson-' + sec_id).innerHTML),
+              prod_vars = json.variants;
+          for(i = 0; i < prod_vars.length; ++i){
+            if(var_id == prod_vars[i].id) {
+              var curr_fi = prod_vars[i].featured_image;
+              if(curr_fi !== null) {
+                var image = getSizedImageUrl(curr_fi.src, '650x550');
+                $(featured_img).css('background-image','url(' + image + ')');
+              }
+            }
+          }
+        });
+
+
+        $(".custom-option:first-of-type").hover(function() {
+          $(this).parents(".custom-options").addClass("option-hover");
+        }, function() {
+          $(this).parents(".custom-options").removeClass("option-hover");
+        });
+        $('body').on('click','.custom-select-trigger', function() {
+          $(".custom-select").not($(this).parents(".custom-select")).removeClass("opened");
+          $(this).parents(".custom-select").toggleClass("opened");
+          event.stopPropagation();
+        });
+        $('body').on('click','.custom-option', function() {
+          $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value")).trigger('change');
+          $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+          $(this).addClass("selection");
+          $(this).parents(".custom-select").removeClass("opened");
+          $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
+        });
+
+      });
+                                         
+{% endjavascript %}
+{%comment %}>{%endcomment %}
+{% schema %}
+  {
+    "name": "Collection list fancy",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Make this full width?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "no_gutters",
+        "label": "Remove gutters?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "remove_top_margin",
+        "label": "Start directly after previous block?",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 40
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+		  {
+            "type": "text",
+            "id": "title_override",
+            "label": "Heading"
+          },
+		  {
+            "type": "richtext",
+            "id": "copyblock",
+            "label": "Copy Block"
+          },
+          {
+            "type": "color",
+            "id": "title_override_color",
+            "label": "Heading Color Override"
+          },
+      {
+        "type": "checkbox",
+        "id": "usebg",
+        "label": "Use color background override?",
+        "default": false
+      },
+          {
+            "type": "color",
+            "id": "collection_bg",
+            "label": "Collection Background Color Override",
+            "info": "Will use a background color instead of the Collection image. Can be overridden by the settings below"
+          },
+          {
+            "type": "image_picker",
+            "id": "collectionimage",
+            "label": "Collection Image Override"
+          },
+          {
+            "type": "url",
+            "id": "video_url",
+            "label": ".mp4 video link URL",
+            "info": "Upload .mp4 video to your files and copy the link to here. Leave blank to not use. The Collection image (or image override) will be used as the poster"
+		  },
+		  {
+            "type": "checkbox",
+            "id": "showbutton",
+            "label": "Show Button?"
+          },
+		  {
+            "type": "text",
+            "id": "buttontext",
+            "label": "Button Text"
+          },
+		  {
+            "type": "url",
+            "id": "link_override",
+            "label": "Collection Link Override"
+          },
+          {
+            "type": "select",
+            "id": "colwidth",
+            "label": "Column Width",
+            "options": [
+              {
+                "value": "col-lg-15",
+                "label": "1/4"
+              },
+              {
+                "value": "col-lg-20",
+                "label": "1/3"
+              },
+              {
+                "value": "col-lg-30",
+                "label": "1/2"
+              },
+              {
+                "value": "col-lg-40",
+                "label": "2/3"
+              },
+              {
+                "value": "col-lg-45",
+                "label": "3/4"
+              }
+            ],
+            "default": "col-lg-30"
+          },
+          {
+            "type": "select",
+            "id": "colheight",
+            "label": "Column Height",
+            "options": [
+              {
+                "value": "one_high",
+                "label": "One Row High"
+              },
+              {
+                "value": "two_high",
+                "label": "Two Rows High"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "next_posts",
+            "label": "Number of Collections to Also Show",
+            "info": "ONLY FOR TWO ROW HEIGHT. Next number of collections will have their column width ignored to fill out the rest of this row",
+            "options": [
+              {
+                "value": "0",
+                "label": "0"
+              },
+              {
+                "value": "1",
+                "label": "1"
+              },
+              {
+                "value": "2",
+                "label": "2"
+              },
+              {
+                "value": "3",
+                "label": "3"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "colside",
+            "label": "Column Side",
+            "info": "ONLY FOR TWO ROW HEIGHT.",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Image alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              },
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "top right",
+                "label": "Top Right"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom Right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom Left"
+              },
+              {
+                "value": "top left",
+                "label": "Top Left"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list fancy",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

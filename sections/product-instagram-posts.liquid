@@ -1,0 +1,51 @@
+{% if section.settings.visible %}
+<div class="product-instagram-posts" style="display: none;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-60 text-center">
+        <h5 style="margin-bottom:30px;" aria-level="3">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}Shop from Our Instagram{% endif %}</h5>
+      </div>
+    </div>
+    <div class="product-instagram-posts-container">
+      <script src="https://showcase.abovemarket.com/embed/gallery/19285" data-gallery-id="19285" data-product-id="{{ product.id }}" data-gallery-style="slider" async></script>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  	// Make sure Showcase is defined
+	if ((typeof Showcase) === 'undefined') { Showcase = {}; }
+    Showcase.loadMedia = function(media) {
+      if($('.showcase-grid-item').length > 0){
+      	$('.product-instagram-posts').show();
+      }
+    };
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Product Posts",
+    "settings": [
+    	{
+    		"type": "checkbox",
+    		"id": "visible",
+    		"label": "Section Visible",
+			"default": true
+    	},
+    	{
+    		"type": "text",
+    		"id": "title",
+    		"label": "Title"
+    	}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

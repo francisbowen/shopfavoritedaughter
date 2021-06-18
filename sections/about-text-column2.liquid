@@ -1,0 +1,40 @@
+{% if section.settings.left_text != blank or section.settings.right_text != blank%}
+<div class="container">
+   <div class="about-text-content">
+      <div class="row" style="text-align:center;">
+      {% if section.settings.left_text != blank %}
+         <div class="offset-md-15 col-md-30">
+            <div class="about-text-left">
+               {{ section.settings.left_text }}
+            </div>
+         </div>
+         {% endif %}
+         {% if section.settings.right_text != blank %}
+         <div style="width: 50%;margin: 0 auto;font-size:22px;">
+            <div class="about-text-right" style="font-size:22px;">
+               {{ section.settings.right_text }}
+            </div>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+</div>
+{% endif %}
+{% schema %}
+   {
+      "name":"Two columns Text",
+      "class":"about-text",
+      "settings":[
+         {
+            "type":"richtext",
+            "id":"left_text",
+            "label":"Left column text"
+         },
+         {
+            "type":"richtext",
+            "id":"right_text",
+            "label":"Right columns text"
+         }
+      ]
+   }
+{% endschema %}

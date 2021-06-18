@@ -1,0 +1,388 @@
+
+
+
+<style>
+.slideshow__text-wrap {float:left;}
+.pdp-poc .slideshow__text-content .video {position:relative; left:0px;}
+.pdp-poc .slick-active .slideshow__text-content .video {position:relative; left:0px;}
+  .placeholder-svg {display:none;}
+  .pdp.poc.slideshow__subtitle {color:#000;
+    display: block;
+    font-size: 12px;
+    width: 90%;
+    letter-spacing: 0.15em;
+  }
+  .pdp-poc.slideshow__text-content {
+    text-align: left;
+    position: relative;
+    width: 100%;
+    max-width: 150px;
+    font-size: 14px;
+    top: 120%;
+    left: 15px;
+    -ms-transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+    transform: translateY(-40%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
+    transition-delay: 0.3s;
+    z-index: 3;
+}
+  .slick-slider .slick-dots li button {color:#000; }
+  h2.h1.mega-title.slideshow__title.pdp-slider {color:#000; font-size:18px;}
+.slideshow__image {width:75%; margin-left:15%;float:left;}
+.slideshow__slide--background-video::after {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#shopify-section-product-gallery .slideshow.slideshow--maintain_ratio .slideshow__slide:before {
+padding-top:0%;
+
+}
+ .slideshow .slick-dots {
+    bottom: 20px;
+    text-align: center;
+    left: 2%;
+    top: 97%;
+    transform: translateX(-50%);
+   }
+   .slideshow .slick-dots li.slick-active button:before {background:#000; color:#000;}
+    .slider-pdp-text-dots.pdp { position:absolute; left:0px;}
+</style>
+
+
+{%- assign images_secondary = '' -%}
+{% for image in product.images %}
+  {%- assign curr_image = image.src | img_url: '800x' -%}
+  {% capture image_base %}{{ image_base }},{{ curr_image }}{% endcapture %}
+  {% for color_option in product.options_by_name['Color'].values %}
+    {% if image.attached_to_variant? or image.alt == color_option %}
+      {% capture image_base %}{{ image_base | remove: curr_image }}{% endcapture %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+{% assign image_split = image_base | split: ',' %}
+{% for img in image_split %}
+  {% if img != blank %}
+    <img src="{{ img }}" alt="I am not attached to a color" />
+  {% endif %}
+{% endfor %}
+
+
+<style>
+    .row.pdp { border-top:1px solid #000; border-bottom:1px solid #000;
+    padding-bottom:50px; padding-top:50px;}
+
+    /* Mimicing Slide Show POC PDP */
+    .slideshow__image {width:70%;}
+</style>
+
+
+
+
+<div class="{{ section.settings.contained }}">
+    <div class="row pdp" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+  
+      {% if section.blocks.size > 0 %}
+        <div class="col-60 slideshow-wrapper">
+          <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+            <span class="slideshow__pause-stop">
+              {% include 'icon-pause' %}
+              <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+            </span>
+            <span class="slideshow__pause-play">
+              {% include 'icon-play' %}
+              <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+            </span>
+          </button>
+  
+          <div class="slideshow slideshow--{{ section.settings.slideshow_height }}" id="Slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed }}" data-dots="{{ section.settings.dots }}" data-arrows="{{ section.settings.arrows }}">
+            {% for block in section.blocks %}
+              {% if product.tags contains block.settings.tag or block.settings.tag == blank %}
+                {%- assign is_background_video = false -%}
+                {% if block.type == 'video' %}
+                  {% if block.settings.video_type == 'background' or block.settings.video_type =='background-chrome' %}
+                    {%- assign is_background_video = true -%}
+                  {% endif %}
+                {% endif %}
+
+                <div class="slideshow__slide slideshow__slide--{{ block.id }}
+                {% if is_background_video %} slideshow__slide--background-video{% endif %}"
+                 {{ block.shopify_attributes }}>
+                 
+                  {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}" class="slideshow__link">
+                  {% endif %}
+
+                  <style>
+                    {% if block.settings.image != blank %}
+                      .slideshow__image--{{ block.id }} {
+                        background-position: {{ block.settings.alignment }};
+                      }
+
+                      @media screen and (max-width: 576px) {
+                        .slideshow__image--{{ block.id }} {
+                          background-image: url('{{ block.settings.image | img_url: '800x' }}');
+                        }
+                      }
+
+                      @media screen and (min-width: 577px) and (max-width: 768px) {
+                        .slideshow__image--{{ block.id }} {
+                          background-image: url('{{ block.settings.image | img_url: '1000x' }}');
+                        }
+                      }
+
+                      @media screen and (min-width: 769px) and (max-width: 769px) {
+                        .slideshow__image--{{ block.id }} {
+                          background-image: url('{{ block.settings.image | img_url: '1200x' }}');
+                        }
+                      }
+
+                      @media screen and (min-width: 993px) and (max-width: 1200px) {
+                        .slideshow__image--{{ block.id }} {
+                          background-image: url('{{ block.settings.image | img_url: '1600x' }}');
+                        }
+                      }
+
+                      @media screen and (min-width: 1201px) {
+                        .slideshow__image--{{ block.id }} {
+                          background-image: url('{{ block.settings.image | img_url: '2000x' }}');
+                        }
+                      }
+
+                    {% endif %}
+
+                    {% if block.settings.heading_color != blank %}
+                      .slideshow__text--{{ block.id }} h2.h1 {
+                        color: {{ block.settings.heading_color }};
+                      }
+                    {% endif %}
+
+                    {% if block.settings.subheading_color != blank %}
+                      .slideshow__text--{{ block.id }} span.mega-subtitle {
+                        color: {{ block.settings.subheading_color }};
+                      }
+                      .slideshow__text--{{ block.id }} hr {
+                        border-top-color: {{ block.settings.subheading_color }};
+                      }
+                    {% endif %}
+
+                    {% if block.settings.textunderlay %}
+                      .slideshow__text--{{ block.id }} .slideshow__text-content .page-width:before {
+                        opacity: 1;
+                      }
+                    {% endif %}
+                  </style>
+
+
+
+
+{% if block.type == 'video' %}
+                     
+<style>
+   .slideshow__text--{{ block.id }} .slideshow__text-content .page-width {left:-15px; }
+.videoWrapper {
+  position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    width: 80%;
+    background: #000;
+    height: 100%;
+    z-index: 99999999999999999;
+    float: right;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.videoWrapper {
+  position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    width: 80%;
+    background: #000;
+    height: 100%;
+    z-index: 99999999999999999;
+    float: right;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+  .vimeo-hack {z-index:99999999999; float:left; width:75%; margin-left:25%; }
+  .pdp-poc .slideshow__text-content {background:#000;}
+</style>
+                            
+
+<div class="videoWrapper"> 
+  <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
+    <div class="slideshow__text-content">
+    <div class="page-width">
+        {% unless block.settings.title == blank %}
+      
+        {% endunless %}
+        {% unless block.settings.title == blank and block.settings.subheading == blank %}
+
+        {% endunless %}
+        {% unless block.settings.subheading == blank %}
+   
+        {% endunless %}
+        {% if block.type == 'video' %}
+          {% unless block.settings.video_type == 'background' %}
+            <div class="slideshow__video-control--play-wrapper{% if block.settings.title != blank or block.settings.subheading != blank %}
+             slideshow__video-control--play-wrapper--push{% endif %}">
+              <button type="button" class="text-link slideshow__video-control slideshow__video-control--play"
+               data-controls="SlideshowVideo-{{ block.id }}">
+                {% include 'icon-play-video' %}
+                <span class="icon__fallback-text">{{ 'sections.slideshow.play_video' | t }}</span>
+              </button>
+            </div>
+          {% endunless %}
+        {% else %}
+          {% if block.settings.link != blank and block.settings.button != blank %}
+            <span class="btn">{{ block.settings.button }}</span>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+<iframe src="//player.vimeo.com/video/{{ block.settings.video_url }}?api=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="video"></iframe>
+</div>
+                      
+            
+                  
+                  {% endif %}
+                 
+                  <div id="pdp-poc-slideshow" class="slideshow__image slideshow__image--{{ block.id }}">
+                    {% if block.settings.image == blank %}
+                      <div class="placeholder-background">
+                        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
+                    <div class="pdp-poc slideshow__text-content">  
+                      <div class="page-width video">
+                        {% unless block.settings.title == blank %}
+                          <h2 class="h1 mega-title slideshow__title pdp-slider{% if settings.link != blank %} slideshow__title--has-link{% endif %}{% if section.settings.text_size == 'large' %} mega-title--large{% endif %}">
+                            {{ block.settings.title | escape }}
+                          </h2>
+                        {% endunless %}
+                        {% unless block.settings.title == blank and block.settings.subheading == blank %}
+                          <hr />
+                        {% endunless %}
+                        {% unless block.settings.subheading == blank %}
+                          <span class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+                            {{ block.settings.subheading | escape }}
+                          </span>
+                        {% endunless %}
+                        {% if block.type == 'video' %}
+                          {% unless block.settings.video_type == 'background' %}
+                            <div class="slideshow__video-control--play-wrapper{% if block.settings.title != blank or block.settings.subheading != blank %} slideshow__video-control--play-wrapper--push{% endif %}">
+                              <button type="button" class="text-link slideshow__video-control slideshow__video-control--play" data-controls="SlideshowVideo-{{ block.id }}">
+                                {% include 'icon-play-video' %}
+                                <span class="icon__fallback-text">{{ 'sections.slideshow.play_video' | t }}</span>
+                              </button>
+                            </div>
+                          {% endunless %}
+                        {% else %}
+                          {% if block.settings.link != blank and block.settings.button != blank %}
+                            <span class="btn">{{ block.settings.button }}</span>
+                          {% endif %}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+
+                  {% if block.settings.link != blank %}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+  
+      {% if section.blocks.size == 0 %}
+        <div class="placeholder-noblocks">
+          <style>.row.pdp {display:none;}</style>
+          {{ 'homepage.onboarding.no_content' | t }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% if section.settings.slideshow_height == 'maintain_ratio' %}
+    <style type="text/css">
+      #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio {
+        height: auto;
+      }
+      #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide {
+        height: auto;
+      }
+      #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 0px;
+        {% capture img_width %}{{ section.blocks[0].settings.image.width }}{% endcapture %}
+        {% capture img_height %}{{ section.blocks[0].settings.image.height | times: 100 }}{% endcapture %}
+        {% capture rounddown %}{{ img_height | divided_by: img_width }}{% endcapture %}
+        padding-top: {{ rounddown | plus: 1 }}%;
+      }
+    </style>
+  {% endif %}
+  
+  <div class="slider-pdp-text-dots">
+  
+   
+      <h2 class="h1 mega-title slideshow__title mega-title--large">
+        {{ block.settings.title | escape }}
+      </h2>
+   
+      {% unless block.settings.title == blank and block.settings.subheading == blank %}
+      
+      {% endunless %}
+      {% unless block.settings.subheading == blank %}
+        <span class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+          {{ block.settings.subheading | escape }}
+        </span>
+      {% endunless %}
+      {% if block.type == 'video' %}
+        {% unless block.settings.video_type == 'background' %}
+          <div class="slideshow__video-control--play-wrapper{% if block.settings.title != blank or block.settings.subheading != blank %} slideshow__video-control--play-wrapper--push{% endif %}">
+            <button type="button" class="text-link slideshow__video-control slideshow__video-control--play" data-controls="SlideshowVideo-{{ block.id }}">
+              {% include 'icon-play-video' %}
+              <span class="icon__fallback-text">{{ 'sections.slideshow.play_video' | t }}</span>
+            </button>
+          </div>
+        {% endunless %}
+      {% else %}
+        {% if block.settings.link != blank and block.settings.button != blank %}
+          <span class="btn">{{ block.settings.button }}</span>
+        {% endif %}
+      {% endif %}
+ 
+
+  </div>
+ 
+
+<script>
+    $('[alt="I come from the section settings"]').css( "display", "none" );
+    $('[data-attribute="color"]').css( "border-radius", "50px" );
+  </script>

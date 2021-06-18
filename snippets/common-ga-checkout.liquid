@@ -1,0 +1,125 @@
+
+
+<script type="text/javascript">
+  var mobile = false,
+      layout = "desktop",
+      site = "US",
+      locale = "United States",
+      locsite = location.host;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    page: {
+      isMobile: mobile,
+      layoutType: layout,
+      type: "checkout",
+      categoryLevel1: {% if request.page_type == "collection" %}"{{ collection.title }}"{% else %}undefined{% endif %},
+      categoryLevel2: undefined,
+      categoryLevel3: undefined,
+      language: "{{ curr_language }}",
+      country: locale,
+      website: site,
+      currencyCode: "{{ curr_currency }}",
+      currencyExchange: undefined
+    },
+    user: {% if checkout.customer %}{
+      id: "{{ checkout.customer.id }}",
+      registrationDate: undefined,
+      accountType: "{% if checkout.customer.tags contains "pro-employee"%}20EMPLY{%elsif checkout.customer.tags contains "pro-retail" or checkout.customer.tags contains "pro-industry" or checkout.customer.tags contains "pro-rep"%}20PROST{%elsif checkout.customer.tags contains "pro-ev"%}20MISC{%else%}20ECOM1{%endif%}",
+      firstPurchaseDate: {% if checkout.customer.last_order != blank %}{% for order in checkout.customer.orders %}{% if forloop.last == true %}"{{ order.created_at | date: "%Y-%m-%d" }}"{%endif%}{% endfor %}{% else %}undefined{% endif %},
+      previousPurchaseDate: {% if checkout.customer.last_order != blank %}"{{ checkout.customer.last_order.created_at | date: "%Y-%m-%d" }}"{% else %}undefined{% endif %},
+      weeksSincePreviousPurchase: {% if checkout.customer.last_order != blank %}{% assign last_order_date = checkout.customer.last_order.created_at | date: "%s" %}{% assign diff = 'now' | date: "%s" | minus: last_order_date | divided_by: 604800 %}"{{ diff }}"{% else %}"0"{% endif %},
+      countOfPurchases: "{{ checkout.customer.orders_count }}",
+      lifetimeValue: "{{ checkout.customer.total_spent | money_without_currency | remove: "," }}",
+      loggedInStatus: true,
+      dateOfBirth: undefined,
+      numberOfReturns: {%assign refunds = 0 %}{% if checkout.customer.last_order != blank %}{% for order in checkout.customer.orders %}{%if order.financial_status == "refunded" or order.financial_status == "partially_refunded"%}{%assign refunds = refunds | plus: 1 %}{%endif%}{%endfor%}{%endif%}{{refunds}} ,
+      isNewsletterSubscriber: {{ checkout.customer.accepts_marketing }},
+      emailAddress: "{{ checkout.customer.email }}",
+      firstName: {% if checkout.customer.first_name != blank %}"{{ checkout.customer.first_name }}"{% else %}undefined{% endif %},
+      lastName: {% if checkout.customer.last_name != blank %}"{{ checkout.customer.last_name }}"{% else %}undefined{% endif %},
+      phoneNumber: {% if checkout.customer.phone  != blank %}"{{ checkout.customer.phone  }}"{% else %}undefined{% endif %},
+      gender: undefined,
+      city: {% if checkout.customer.default_address.city != blank %}"{{ checkout.customer.default_address.city }}"{% else %}undefined{% endif %},
+      state: {% if checkout.customer.default_address.province != blank %}"{{ checkout.customer.default_address.province }}"{% else %}undefined{% endif %},
+      postalCode: {% if checkout.customer.default_address.province_code != blank %}"{{ checkout.customer.default_address.province_code }}"{% else %}undefined{% endif %},
+      wishlist: undefined
+    }{% else %}undefined{% endif %},
+    product: {% if request.page_type == "product" %}{
+    sku: {% if product.selected_or_first_available_variant.barcode %}"{{ product.selected_or_first_available_variant.barcode}}"{%else%} undefined{% endif%},
+      name: "{{ product.title }}",
+      brand: "{{ product.vendor }}",
+      category: [{% for collection in product.collections %}"{{ collection.title }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+      style: {% if product.variants[0].sku != blank %}"{{ product.variants[0].sku }}"{% else %}undefined{% endif %},
+    variants:[
+    {%for variant in product.variants %}
+    {
+    id: {{variant.id}},
+    title: "{{variant.title}}",
+    sku: "{{variant.barcode}}",
+      basePrice: "{% if checkout.currency.iso_code == "CAD" %}{{ variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% else %}{{variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}",
+      offerPrice: "{% if checkout.currency.iso_code == "CAD" %}{% if pro %}{{ variant.metafields.global.dkprice-ca | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if variant.metafields.global.dkprice-ca-sale %}{{ variant.metafields.global.dkprice-ca-sale | times: 100 | money_without_currency }}{% else %}{{ variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{%endif%}{% else %}{{ variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% endif %}{% endif %}{% else %}{% if pro %}{{ variant.metafields.global.dkprice-us | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if variant.metafields.global.dkprice-us-sale %}{{ variant.metafields.global.dkprice-us-sale | times: 100 | money_without_currency }}{%else%}{{ variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{%endif%}{% else %}{{ variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}{% endif %}{% endif %}",
+      finalPrice: "{% if checkout.currency.iso_code == "CAD" %}{% if pro %}{{ variant.metafields.global.dkprice-ca | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if variant.metafields.global.dkprice-ca-sale %}{{ variant.metafields.global.dkprice-ca-sale | times: 100 | money_without_currency }}{% else %}{{ variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{%endif%}{% else %}{{ variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% endif %}{% endif %}{% else %}{% if pro %}{{ variant.metafields.global.dkprice-us | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if variant.metafields.global.dkprice-us-sale %}{{ variant.metafields.global.dkprice-us-sale | times: 100 | money_without_currency }}{%else%}{{ variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{%endif%}{% else %}{{ variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}{% endif %}{% endif %}"
+  }{%unless forloop.last%},{%endunless%}
+    {%endfor%}
+    ],
+    	color: undefined,
+      colorFamily: undefined,
+      size: undefined,
+      availableFamilies: undefined,
+      availableColors: [{% for color_option in product.options_by_name["Color"].values %}"{{ color_option }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+      availableSizes: [{% for size_option in product.options_by_name["Size"].values %}"{{ size_option }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+      isInStock: {% assign gbginv = variant.metafields.global.dkinv-gbg | times: 1 %}{% if settings.bufferon %}{% assign buffer = settings.invbuff | times: 1 %}{% if checkout.currency.iso_code == "CAD" %}{%if settings.closeca%}"Sold Out"{%else%}"In Stock"{% endif %}{% else %}{%if settings.closeus %}"Sold Out"{% else %}"In Stock"{%endif%}{% endif %}{% else %}{% if checkout.currency.iso_code == "CAD" %}{%if settings.closeca%}"Sold Out"{%else%}"In Stock"{%endif%}{% else %}{%if settings.closeus%}"Sold Out"{%else%}"In Stock"{%endif%}{% endif %}{% endif %},
+      isOnSale: {% if product.tags contains "OnSale" %}"On Sale"{% else %}"Not On Sale"{% endif %},
+      saleType: undefined,
+      saleAmount: "{% if checkout.currency.iso_code == "CAD" %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale %}{%- assign sale_amt = product.selected_or_first_available_variant.metafields.global.dkprice-ca | minus: product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale | times:100 -%}{{ sale_amt | money_without_currency }}{% else %}0.00{% endif %}{% else %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-us-sale %}{%- assign sale_amt = product.selected_or_first_available_variant.metafields.global.dkprice-us | minus: product.selected_or_first_available_variant.metafields.global.dkprice-us-sale | times:100 -%}{{ sale_amt | money_without_currency }}{% else %}0.00{% endif %}{% endif %}",
+      gender: [{% for tag in product.tags %}{% if tag contains "gender-" %}"{{ tag | remove: "gender-" | capitalize }}"{% break %}{% endif %}{% endfor %}],
+      volume: [{% for tag in product.tags %}{% if tag contains "volume-" %}"{{ tag | remove: "volume-" | capitalize }}"{% break %}{% endif %}{% endfor %}],
+      basePrice: "{% if checkout.currency.iso_code == "CAD" %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% else %}{{product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}",
+      offerPrice: "{% if checkout.currency.iso_code == "CAD" %}{% if pro %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale | times: 100 | money_without_currency }}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{%endif%}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% endif %}{% endif %}{% else %}{% if pro %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-us-sale %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us-sale | times: 100 | money_without_currency }}{%else%}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{%endif%}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}{% endif %}{% endif %}",
+      finalPrice: "{% if checkout.currency.iso_code == "CAD" %}{% if pro %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca-sale | times: 100 | money_without_currency }}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{%endif%}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-ca | times:100 | money_without_currency }}{% endif %}{% endif %}{% else %}{% if pro %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | times: price_adjust | money_without_currency }}{% else %}{% if product.tags contains "OnSale" %}{% if product.selected_or_first_available_variant.metafields.global.dkprice-us-sale %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us-sale | times: 100 | money_without_currency }}{%else%}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{%endif%}{% else %}{{ product.selected_or_first_available_variant.metafields.global.dkprice-us | times:100 | money_without_currency }}{% endif %}{% endif %}{% endif %}",
+      quantity: undefined
+    }{% else %}undefined{% endif %},
+    {% unless request.page_type == "collection" %}productList: undefined,{% endunless %}
+    {% if checkout.item_count > 0 %}cart: {
+      subtotal: "{{ checkout.line_items_subtotal_price | money_without_currency }}",
+      tax: "{{checkout.tax_price | money_without_currency}}",
+      shippingAmount: "{{checkout.shipping_price | money_without_currency}}",
+      shippingMethod: "{% for shipping_method in checkout.shipping_methods %}{{ shipping_method.title }}{% endfor %}",
+      shipToCountry: locale,
+      paymentType: undefined,
+      orderType: "{% if checkout.customer.tags contains "pro-employee"%}20EMPLY{%elsif checkout.customer.tags contains "pro-retail" or checkout.customer.tags contains "pro-industry" or checkout.customer.tags contains "pro-rep"%}20PROST{%elsif checkout.customer.tags contains "pro-ev"%}20MISC{%else%}20ECOM1{%endif%}",
+      total: "{{ checkout.total_price | money_without_currency }}",
+                        cartId: "{{checkout.id}}",
+      promoCode: "{% for discount_application in checkout.discount_applications %}{{ discount_application.title}}{% endfor %}",
+      promoCodeLocation: "checkout",
+                        promoAmount:"{% for discount_application in checkout.discount_applications %}{%if forloop.last%}{{  discount_application.total_allocated_amount | money_without_currency }}{%endif%}{% endfor %}",
+      products:[
+        {% for item in checkout.line_items %}{
+          sku: {% if item.variant.barcode %}"{{ item.variant.barcode}}"{%else%} undefined{% endif%},
+          name: "{{ item.product.title }}",
+          brand: "{{ item.vendor }}",
+          category: [{% for collect in item.product.collections %}"{{ collect.title }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+          style: "{{ item.sku }}",
+          color: {%- assign option_used = false -%}{% for option in item.options_with_values %}{%- assign option_name = option.name | downcase -%}{% if option_name == 'color' %}{%- assign option_used = true -%}"{{ option.value }}"{% break %}{% endif %}{% endfor %}{% unless option_used %}undefined{% endunless %},
+          colorFamily: undefined,
+          size: {%- assign option_used = false -%}{% for option in item.options_with_values %}{%- assign option_name = option.name | downcase -%}{% if option_name == 'size' %}{%- assign option_used = true -%}"{{ option.value }}"{% break %}{% endif %}{% endfor %}{% unless option_used %}undefined{% endunless %},
+          availableFamilies: undefined,
+          availableColors: [{% for color_option in item.product.options_by_name["Color"].values %}"{{ color_option }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+          availableSizes: [{% for size_option in item.product.options_by_name["Size"].values %}"{{ size_option }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+          isInStock: "In stock",
+          isOnSale: {% if item.product.tags contains "OnSale" %}"On Sale"{% else %}"Not On Sale"{% endif %},
+          saleType: undefined,
+          saleAmount: {% if item.product.tags contains "OnSale" %}{% if checkout.currency.iso_code == "CAD" %}{% if item.variant.metafields.global.dkprice-ca-sale %}"{{ item.variant.metafields.global.dkprice-ca | minus: item.variant.metafields.global.dkprice-ca-sale  | times: 100 | money_without_currency }}"{% else %}undefined{%endif%}{%else%}{% if item.variant.metafields.global.dkprice-us-sale %}"{{ item.variant.metafields.global.dkprice-us | minus: item.variant.metafields.global.dkprice-us-sale | times: 100 | money_without_currency }}"{% else %}undefined{%endif%}{%endif%}{%else%}undefined{%endif%},
+          gender: [{% for tag in item.product.tags %}{% if tag contains "gender-" %}"{{ tag | remove: "gender-" | capitalize }}"{% break %}{% endif %}{% endfor %}],
+          volume: [{% for tag in item.product.tags %}{% if tag contains "volume-" %}"{{ tag | remove: "volume-" | capitalize }}"{% break %}{% endif %}{% endfor %}],
+          basePrice: "{{ item.variant.compare_at_price | money_without_currency }}",
+          offerPrice: "{{ item.variant.price | money_without_currency }}",
+          finalPrice: "{{ item.variant.price | money_without_currency }}",
+          quantity: "{{ item.quantity }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }{% else %}undefined{% endif %},
+    event: "datalayer-initialized"
+  });
+</script>
